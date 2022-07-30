@@ -1,0 +1,23 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+  font-size: 1rem;
+  font-weight: 300;
+  color: currentColor;
+  cursor: pointer;
+
+  & svg {
+    height: 100%;
+    width: auto;
+    fill: currentColor;
+  }
+
+  &:hover {
+    color: var(--color-primary-main);
+  }
+}
