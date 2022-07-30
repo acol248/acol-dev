@@ -1,14 +1,17 @@
 // components
 
 // styles
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Home.module.scss";
 
 export default function Home() {
   return (
     <div className={styles.container}>
-      <main className={styles.main}></main>
-
-      <footer className={styles.footer}></footer>
+      <div className={styles["container__inner"]}>
+        <h1>
+          Welcome to {' '}
+          <span>acol.dev</span>
+        </h1>
+      </div>
     </div>
   );
 }
