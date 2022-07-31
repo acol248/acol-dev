@@ -1,0 +1,25 @@
+* {
+  /* Colors */
+  --color-common-black: #000000;
+  --color-common-white: #ffffff;
+  --color-common-red: #ff0000;
+  --color-common-green: #00ff00;
+  --color-common-blue: #0000ff;
+  --color-common-yellow: #ffff00;
+  --color-common-magenta: #ff00ff;
+  --color-common-cyan: #00ffff;
+  --color-common-orange: #ffa500;
+  --color-common-purple: #800080;
+  --color-common-teal: #008080;
+  --color-common-lime: #00ff00;
+  --color-common-pink: #ffc0cb;
+  --color-common-brown: #a52a2a;
+  --color-common-grey: #808080;
+
+  /* Durations */
+  --duration-fastest: 75ms;
+  --duration-fast: 100ms;
+  --duration-normal: 150ms;
+  --duration-slow: 250ms;
+  --duration-slowest: 500ms;
+}

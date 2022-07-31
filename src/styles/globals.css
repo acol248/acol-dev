@@ -1,3 +1,5 @@
+@import "variables.css";
+
 html,
 body {
   padding: 0;
@@ -11,16 +13,22 @@ a {
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+* .day {
+  --text-color: var(--color-common-black);
+  --background-color: var(--color-common-white);
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+* .night {
+  --text-color: var(--color-common-white);
+  --background-color: var(--color-common-black);
+}
+
+* {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  box-sizing: border-box;
+
+  transition-property: background-color, color;
+  transition-duration: var(--duration-normal);
+  transition-timing-function: ease-in-out;
 }

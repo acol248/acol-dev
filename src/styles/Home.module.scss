@@ -18,12 +18,26 @@
 
     & span {
       background: linear-gradient(
-        70deg,
+        60deg,
         rgba(240, 78, 130, 1) 0%,
         rgba(48, 60, 162, 1) 100%
       );
       background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-size: 250% 250%;
+      animation: backgroundAnimation 8s ease-in-out infinite;
+
+      @keyframes backgroundAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
     }
   }
 }
