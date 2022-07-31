@@ -25,11 +25,3 @@ export default function ThemeToggle({ deviceThemeMatch, ...props }) {
     </div>
   );
 }
-
-export async function getServerSideProps() {
-  const deviceThemeMatch = window.matchMedia("(prefers-color-scheme: dark)")
-    ? "night"
-    : "day";
-
-  return { props: { deviceThemeMatch } };
-}
