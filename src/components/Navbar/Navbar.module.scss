@@ -36,13 +36,12 @@
       margin: 0;
       padding: 0 1rem;
       background-color: transparent;
-      color: white;
       border: 0;
       height: 100%;
       font-size: 1rem;
       text-decoration: none;
 
-      transition-property: color, transform;
+      transition-property: transform;
       transition-duration: 150ms;
 
       &:focus-visible {
