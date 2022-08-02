@@ -1,37 +1,57 @@
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-
-import useTheme, { ThemeContext } from "../hooks/useTheme";
+import PageLoader from "../components/PageLoader";
 
 // styles
 import "../styles/globals.css";
 
-function MyApp({ Component, pageProps }) {
-  const theme = useTheme();
+function App({ Component, pageProps }) {
+  const [theme, setTheme] = useState(false);
+
+  const checkTheme = () => {
+    const theme = localStorage.getItem("theme");
+    if (theme) {
+      document.documentElement.classList.toggle(theme);
+      setTheme(theme);
+    }
+  };
+
+  useEffect(() => {
+    checkTheme();
+  }, []);
 
   return (
-    <ThemeContext.Provider value={theme}>
-      <div className={theme.theme}>
-        <Head>
-          <title>acol.dev</title>
-          <meta name="description" content="The website of a web developer. A showcase of his work and skills; whilst also being somewhere to experiment, learn, and have fun." />
-        </Head>
-        <Navbar
-          items={[
-            { name: "Home", type: "internal", href: "/" },
-            {
-              name: "Github",
-              type: "external",
-              href: "https://github.com/acol248",
-            },
-          ]}
+    <div className={String(theme)}>
+      <Head>
+        <title>acol.dev</title>
+        <meta
+          name="description"
+          content="The website of a web developer. A showcase of his work and skills; whilst also being somewhere to experiment, learn, and have fun."
         />
-        <Component {...pageProps} />
-        <Footer />
-      </div>
-    </ThemeContext.Provider>
+      </Head>
+
+      <PageLoader isLoading={!theme} />
+      <Navbar
+        items={[
+          { name: "Home", type: "internal", href: "/" },
+          {
+            name: "Github",
+            type: "external",
+            href: "https://github.com/acol248",
+          },
+        ]}
+        theme={theme}
+        themeChange={(e) => {
+          setTheme(e);
+          localStorage.setItem("theme", e);
+        }}
+      />
+      <Component {...pageProps} />
+      <Footer />
+    </div>
   );
 }
 
-export default MyApp;
+export default App;

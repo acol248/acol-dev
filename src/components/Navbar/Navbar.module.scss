@@ -11,7 +11,7 @@
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  z-index: 4000;
+  z-index: 2000;
 
   transition-property: background-color;
   transition-duration: 150ms;
@@ -54,6 +54,19 @@
         cursor: pointer;
         color: var(--color-primary-light);
         text-decoration: underline;
+      }
+    }
+
+    & .navbar__theme-toggle {
+      border: 0;
+      background: transparent;
+      margin: 0;
+      cursor: pointer;
+
+      & svg {
+        fill: currentColor;
+        height: 1.4rem;
+        width: 1.4rem;
       }
     }
   }
