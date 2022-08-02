@@ -1,13 +1,15 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 
-// components
-import ThemeToggle from "../ThemeToggle/ThemeToggle";
-
 // styles
 import styles from "./Navbar.module.scss";
+import Icon from "./Navbar.icons";
 
-export default function Navbar({ items, ...props }) {
+export default function Navbar({ items, theme, themeChange, ...props }) {
+  const handleThemeToggle = () => {
+    themeChange(theme === "dark" ? "light" : "dark");
+  };
+
   return (
     <nav className={styles.navbar}>
       <div className={styles["navbar__items"]}>
@@ -34,7 +36,9 @@ export default function Navbar({ items, ...props }) {
         })}
       </div>
       <div className={styles["navbar__items"]}>
-        <ThemeToggle />
+        <button className={styles['navbar__theme-toggle']} onClick={handleThemeToggle}>
+          {theme === "light" ? <Icon type="light" /> : <Icon type="dark" />}
+        </button>
       </div>
     </nav>
   );
