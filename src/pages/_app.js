@@ -12,10 +12,10 @@ function App({ Component, pageProps }) {
 
   const checkTheme = () => {
     const theme = localStorage.getItem("theme");
-    if (theme) {
-      document.documentElement.classList.toggle(theme);
-      setTheme(theme);
-    }
+    const payload = theme === null ? "dark" : theme;
+
+    document.documentElement.classList.toggle(payload);
+    setTheme(payload);
   };
 
   useEffect(() => {
