@@ -1,4 +1,4 @@
-import styles from "./ThemeToggle.module.scss";
+import styles from "./SliderToggle.module.scss";
 
 export default function SliderToggle({ ...props }) {
   return (
