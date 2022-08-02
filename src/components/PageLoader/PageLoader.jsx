@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import styles from "./PageLoader.module.scss";
 
 export default function PageLoader({ isLoading, ...props }) {
-  console.log(isLoading);
-
   return (
     <div
       className={`${styles["page-loader"]} ${
