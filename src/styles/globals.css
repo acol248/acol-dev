@@ -13,12 +13,12 @@ a {
   text-decoration: none;
 }
 
-* .day {
+* .light {
   --text-color: var(--color-common-black);
   --background-color: var(--color-common-white);
 }
 
-* .night {
+* .dark {
   --text-color: var(--color-common-white);
   --background-color: var(--color-common-black);
 }
