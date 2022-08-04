@@ -22,7 +22,7 @@
     width: 100%;
   }
 
-  & .navbar__items {
+  & .navbar__links {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -56,8 +56,20 @@
         text-decoration: underline;
       }
     }
+  }
+
+  & .navbar__items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    color: currentColor;
+    height: 100%;
 
     & .navbar__theme-toggle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border: 0;
       background: transparent;
       margin: 0;
