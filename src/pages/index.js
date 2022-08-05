@@ -1,14 +1,27 @@
+import Image from "next/image";
+
 // components
 
 // styles
+import profilePicture from "../assets/images/profile.png";
 import styles from "../styles/Home.module.scss";
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <div className={styles["container__inner"]}>
-        <h1>
-          Welcome to {' '}
+        <div className={styles["container__profile-wrapper"]}>
+          <Image
+            src={profilePicture}
+            alt="Alex Collyer (acol248) profile picture"
+            width={400}
+            height={400}
+            quality={90}
+          />
+        </div>
+
+        <h1 className={styles["container__title"]}>
+          Welcome to <br />
           <span>acol.dev</span>
         </h1>
       </div>
