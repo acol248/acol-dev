@@ -23,7 +23,7 @@ function App({ Component, pageProps }) {
   }, []);
 
   return (
-    <div className={String(theme)}>
+    <div className={`theme ${theme}`}>
       <Head>
         <title>acol.dev</title>
         <meta
