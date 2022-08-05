@@ -49,7 +49,7 @@ export default function Navbar({ items, theme, themeChange, ...props }) {
 
         <a href="https://drive.google.com/file/d/1_fxqfuKwHhW-Sh7U9IWs4wHH3Rw6AZEK/view?usp=sharing">
           <Button>
-            Resume
+            Résumé
           </Button>
         </a>
       </div>
