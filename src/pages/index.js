@@ -14,8 +14,8 @@ export default function Home() {
           <Image
             src={profilePicture}
             alt="Alex Collyer (acol248) profile picture"
-            width={400}
-            height={400}
+            width={524}
+            height={678}
             quality={90}
           />
         </div>
