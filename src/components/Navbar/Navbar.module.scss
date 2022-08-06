@@ -6,7 +6,7 @@
   height: 52px;
   margin: 0;
   background-color: transparent;
-  padding: 2.25rem 0.75rem 2.25rem 0.25rem;
+  padding: 2.25rem 1.25rem 2.25rem 0.75rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,7 +22,7 @@
     width: 100%;
   }
 
-  & .navbar__items {
+  & .navbar__links {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -56,12 +56,25 @@
         text-decoration: underline;
       }
     }
+  }
+
+  & .navbar__items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    color: currentColor;
+    height: 100%;
 
     & .navbar__theme-toggle {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       border: 0;
       background: transparent;
       margin: 0;
       cursor: pointer;
+      color: var(--text-color);
 
       & svg {
         fill: currentColor;

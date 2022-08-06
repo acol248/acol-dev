@@ -1,5 +1,9 @@
 @import "variables.css";
 
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   padding: 0;
@@ -13,20 +17,23 @@ a {
   text-decoration: none;
 }
 
-* .light {
+.theme.light {
   --text-color: var(--color-common-black);
+  --text-color-inverted: var(--color-common-white);
+
   --background-color: var(--color-common-white);
 }
 
-* .dark {
+.theme.dark {
   --text-color: var(--color-common-white);
+  --text-color-inverted: var(--color-common-black);
+
   --background-color: var(--color-common-black);
 }
 
-* {
+.theme {
   background-color: var(--background-color);
   color: var(--text-color);
-  box-sizing: border-box;
 
   transition-property: background-color, color;
   transition-duration: var(--duration-normal);

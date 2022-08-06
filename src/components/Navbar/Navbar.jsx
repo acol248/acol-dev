@@ -1,5 +1,7 @@
-import { useRouter } from "next/router";
 import Link from "next/link";
+
+// components
+import Button from "../Button/Button";
 
 // styles
 import styles from "./Navbar.module.scss";
@@ -12,7 +14,7 @@ export default function Navbar({ items, theme, themeChange, ...props }) {
 
   return (
     <nav className={styles.navbar}>
-      <div className={styles["navbar__items"]}>
+      <div className={styles["navbar__links"]}>
         {items.map(({ name, href, type }, index) => {
           let out;
 
@@ -35,10 +37,19 @@ export default function Navbar({ items, theme, themeChange, ...props }) {
           return out;
         })}
       </div>
+
       <div className={styles["navbar__items"]}>
-        <button className={styles['navbar__theme-toggle']} onClick={handleThemeToggle}>
+        <button
+          className={styles["navbar__theme-toggle"]}
+          onClick={handleThemeToggle}
+          aria-label="Toggle theme"
+        >
           {theme === "light" ? <Icon type="light" /> : <Icon type="dark" />}
         </button>
+
+        <a href="https://drive.google.com/file/d/1_fxqfuKwHhW-Sh7U9IWs4wHH3Rw6AZEK/view?usp=sharing">
+          <Button>Résumé</Button>
+        </a>
       </div>
     </nav>
   );
