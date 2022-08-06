@@ -1,7 +1,5 @@
 import Image from "next/image";
 
-// components
-
 // styles
 import profilePicture from "../assets/images/profile.png";
 import styles from "../styles/Home.module.scss";
