@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useMediaQuery } from "react-responsive";
 import Link from "next/link";
 
 // components
@@ -38,6 +39,7 @@ export default function Navbar({ items, theme, themeChange, ...props }) {
           return out;
         })}
       </div>
+
       <div className={styles["navbar__items"]}>
         <button
           className={styles["navbar__theme-toggle"]}
@@ -48,9 +50,7 @@ export default function Navbar({ items, theme, themeChange, ...props }) {
         </button>
 
         <a href="https://drive.google.com/file/d/1_fxqfuKwHhW-Sh7U9IWs4wHH3Rw6AZEK/view?usp=sharing">
-          <Button>
-            Résumé
-          </Button>
+          <Button>Résumé</Button>
         </a>
       </div>
     </nav>
