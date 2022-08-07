@@ -10,14 +10,26 @@ import "../styles/globals.css";
 function App({ Component, pageProps }) {
   const [theme, setTheme] = useState(false);
 
+  const toggleTheme = (e) => {
+    localStorage.setItem("theme", e);
+    document.body.classList.add(e === "dark" ? "dark" : "light");
+    document.body.classList.remove(e === "dark" ? "light" : "dark");
+    setTheme(e);
+  };
+
+  /**
+   * Check theme onLoad
+   */
   const checkTheme = () => {
     const theme = localStorage.getItem("theme");
     const payload = theme === null ? "dark" : theme;
 
-    document.documentElement.classList.toggle(payload);
+    document.body.classList.add(payload === "dark" ? "dark" : "light");
+    document.body.classList.remove(payload === "dark" ? "light" : "dark");
     setTheme(payload);
   };
 
+  // Trigger checkTheme
   useEffect(() => {
     checkTheme();
   }, []);
@@ -37,16 +49,18 @@ function App({ Component, pageProps }) {
         items={[
           { name: "Home", type: "internal", href: "/" },
           {
+            name: "Dev Portfolio",
+            type: "internal",
+            href: "/development-portfolio",
+          },
+          {
             name: "Github",
             type: "external",
             href: "https://github.com/acol248",
           },
         ]}
         theme={theme}
-        themeChange={(e) => {
-          setTheme(e);
-          localStorage.setItem("theme", e);
-        }}
+        themeChange={toggleTheme}
       />
       <Component {...pageProps} />
       <Footer />
