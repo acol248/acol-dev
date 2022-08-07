@@ -17,18 +17,24 @@ a {
   text-decoration: none;
 }
 
-.theme.light {
+body.light {
   --text-color: var(--color-common-black);
   --text-color-inverted: var(--color-common-white);
 
   --background-color: var(--color-common-white);
+  --background-color-inverted: var(--color-common-black);
+
+  --modal-background-color: var(--color-grey-300);
 }
 
-.theme.dark {
+body.dark {
   --text-color: var(--color-common-white);
   --text-color-inverted: var(--color-common-black);
 
   --background-color: var(--color-common-black);
+  --background-color-inverted: var(--color-common-white);
+
+  --modal-background-color: var(--color-grey-1000);
 }
 
 .theme {

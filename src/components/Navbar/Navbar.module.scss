@@ -12,6 +12,7 @@
   align-items: center;
   box-sizing: border-box;
   z-index: 2000;
+  background-color: var(--background-color);
 
   transition-property: background-color;
   transition-duration: 150ms;
@@ -20,6 +21,23 @@
   @media screen and (min-width: 992px) {
     padding: 2.25rem 2rem 2.25rem 1.75rem;
     width: 100%;
+  }
+
+  & .navbar__menu-button {
+    background-color: transparent;
+    border: 0;
+    cursor: pointer;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+
+    & svg {
+      width: 2rem;
+      height: 2rem;
+      fill: var(--text-color);
+    }
   }
 
   & .navbar__links {
@@ -81,6 +99,21 @@
         height: 1.4rem;
         width: 1.4rem;
       }
+    }
+  }
+}
+
+.nav-menu {
+  & .nav-menu__container {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem 0 0 0;
+
+    & .nav-menu__item {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+
+      font-size: 1.5rem;
     }
   }
 }

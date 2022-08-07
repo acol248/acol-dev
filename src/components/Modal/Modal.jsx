@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 import { createPortal } from "react-dom";
 
-import "./Modal.scss";
+import styles from "./Modal.module.scss";
 import Icon from "./Modal.icons";
 
 export default function Modal({
@@ -23,7 +23,7 @@ export default function Modal({
 
   // classlist and variant
   useEffect(() => {
-    const _classlist = ["modal"];
+    const _classlist = [styles["modal"]];
 
     if (open) setActive(true);
 
@@ -31,9 +31,10 @@ export default function Modal({
       for (const item of className.split(" ")) _classlist.push(item);
 
     if (variant)
-      for (const item of variant.split(" ")) _classlist.push(`modal--${item}`);
+      for (const item of variant.split(" "))
+        _classlist.push(styles[`modal--${item}`]);
 
-    if (open && active) _classlist.push("modal--active");
+    if (open && active) _classlist.push(styles["modal--active"]);
 
     setClasslist(_classlist.join(" "));
   }, [active, className, open, variant]);
@@ -57,13 +58,13 @@ export default function Modal({
     ? createPortal(
         <div className={classlist} ref={modalRef}>
           <div
-            className="modal__backdrop"
+            className={styles["modal__backdrop"]}
             onClick={() => (!locked ? onClose : "")}
           />
-          <div className="modal__content">
-            <div className="modal__header">
-              {title && <h2 className="modal__title">{title}</h2>}
-              <button className="modal__close" onClick={onClose}>
+          <div className={styles["modal__content"]}>
+            <div className={styles["modal__header"]}>
+              {title && <h2 className={styles["modal__title"]}>{title}</h2>}
+              <button className={styles["modal__close"]} onClick={onClose}>
                 <Icon type="close" />
               </button>
             </div>
