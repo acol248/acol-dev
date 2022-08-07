@@ -49,11 +49,6 @@ function App({ Component, pageProps }) {
         items={[
           { name: "Home", type: "internal", href: "/" },
           {
-            name: "Dev Portfolio",
-            type: "internal",
-            href: "/development-portfolio",
-          },
-          {
             name: "Github",
             type: "external",
             href: "https://github.com/acol248",
