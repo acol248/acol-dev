@@ -22,11 +22,12 @@ export default function Navbar({ items, theme, themeChange, ...props }) {
     themeChange(theme === "dark" ? "light" : "dark");
   };
 
+  // auto-close mobile nav on route change
   useEffect(() => {
-    Router.events.on("routeChangeComplete", setMobileNavOpen(false));
+    Router.events.on("routeChangeComplete", () => setMobileNavOpen(false));
 
     return () =>
-      Router.events.off("routeChangeComplete", setMobileNavOpen(false));
+      Router.events.off("routeChangeComplete", () => setMobileNavOpen(false));
   }, []);
 
   // sets isMobile to true if window width is less than 768px
@@ -52,9 +53,10 @@ export default function Navbar({ items, theme, themeChange, ...props }) {
       <Modal
         open={mobileNavOpen}
         onClose={() => setMobileNavOpen(false)}
+        className={styles["nav-menu"]}
         variant="nav-menu"
       >
-        <div className={styles['nav-menu__container']}>
+        <div className={styles["nav-menu__container"]}>
           {items &&
             items.map(({ name, href, type, ...props }, index) => {
               let out;
