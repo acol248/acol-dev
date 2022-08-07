@@ -102,3 +102,18 @@
     }
   }
 }
+
+.nav-menu {
+  & .nav-menu__container {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem 0 0 0;
+
+    & .nav-menu__item {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+
+      font-size: 1.5rem;
+    }
+  }
+}
