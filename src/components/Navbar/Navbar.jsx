@@ -47,8 +47,8 @@ export default function Navbar({ items, theme, themeChange, ...props }) {
           {theme === "light" ? <Icon type="light" /> : <Icon type="dark" />}
         </button>
 
-        <a href="https://drive.google.com/file/d/1_fxqfuKwHhW-Sh7U9IWs4wHH3Rw6AZEK/view?usp=sharing">
-          <Button>Résumé</Button>
+        <a href="https://www.linkedin.com/in/alex-collyer">
+          <Button>LinkedIn</Button>
         </a>
       </div>
     </nav>
