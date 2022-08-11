@@ -124,6 +124,10 @@ export default function Navbar({ items, theme, themeChange, ...props }) {
           {theme === "light" ? <Icon type="light" /> : <Icon type="dark" />}
         </button>
 
+        <a href="https://github.com/acol248">
+          <Button>Github</Button>
+        </a>
+
         <a href="https://www.linkedin.com/in/alex-collyer">
           <Button>LinkedIn</Button>
         </a>

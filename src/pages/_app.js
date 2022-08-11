@@ -46,14 +46,7 @@ function App({ Component, pageProps }) {
 
       <PageLoader isLoading={!theme} />
       <Navbar
-        items={[
-          { name: "Home", type: "internal", href: "/" },
-          {
-            name: "Github",
-            type: "external",
-            href: "https://github.com/acol248",
-          },
-        ]}
+        items={[{ name: "Home", type: "internal", href: "/" }]}
         theme={theme}
         themeChange={toggleTheme}
       />
