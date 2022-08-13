@@ -3,7 +3,7 @@ import Link from "next/link";
 import Router from "next/router";
 
 // components
-import Button from "../Button/Button";
+import Button from "../../interface/button";
 import Modal from "../Modal";
 
 // styles
