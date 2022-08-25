@@ -124,12 +124,17 @@ export default function Navbar({ items, theme, themeChange, ...props }) {
           {theme === "light" ? <Icon type="light" /> : <Icon type="dark" />}
         </button>
 
-        <a href="https://github.com/acol248">
-          <Button>Github</Button>
+        <div className={styles["navbar__items-divider"]}></div>
+
+        <a className={styles["navbar__icon"]} href="https://github.com/acol248">
+          <Icon type="github" />
         </a>
 
-        <a href="https://www.linkedin.com/in/alex-collyer">
-          <Button>LinkedIn</Button>
+        <a
+          className={styles["navbar__icon"]}
+          href="https://www.linkedin.com/in/alex-collyer"
+        >
+          <Icon type="linkedin" />
         </a>
       </div>
     </nav>
