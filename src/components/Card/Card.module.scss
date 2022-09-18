@@ -30,6 +30,7 @@
       margin: 0 0 0.25rem;
       padding: 0;
       color: currentColor;
+      font-size: 2rem;
     }
 
     & .card__body {
@@ -38,6 +39,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       color: currentColor;
+      font-size: 1rem;
     }
 
     & .card__buttons {
