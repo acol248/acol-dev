@@ -1,5 +1,6 @@
 .container {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
@@ -10,8 +11,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 34rem;
-    height: 22rem;
+    width: 100%;
     font-size: 1.75rem;
     font-weight: bold;
     line-height: 1.2;
@@ -90,7 +90,7 @@
       }
     }
 
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 992px) {
       width: 34rem;
       height: 22rem;
       font-size: 2rem;

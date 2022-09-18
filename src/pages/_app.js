@@ -48,11 +48,7 @@ function App({ Component, pageProps }) {
       <Navbar
         items={[
           { name: "Home", type: "internal", href: "/" },
-          {
-            name: "Github",
-            type: "external",
-            href: "https://github.com/acol248",
-          },
+          { name: "Development", type: "internal", href: "/development" },
         ]}
         theme={theme}
         themeChange={toggleTheme}

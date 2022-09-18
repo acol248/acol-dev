@@ -3,7 +3,7 @@ import Link from "next/link";
 import Router from "next/router";
 
 // components
-import Button from "../Button/Button";
+import Button from "../../interface/button";
 import Modal from "../Modal";
 
 // styles
@@ -124,8 +124,17 @@ export default function Navbar({ items, theme, themeChange, ...props }) {
           {theme === "light" ? <Icon type="light" /> : <Icon type="dark" />}
         </button>
 
-        <a href="https://www.linkedin.com/in/alex-collyer">
-          <Button>LinkedIn</Button>
+        <div className={styles["navbar__items-divider"]}></div>
+
+        <a className={styles["navbar__icon"]} href="https://github.com/acol248">
+          <Icon type="github" />
+        </a>
+
+        <a
+          className={styles["navbar__icon"]}
+          href="https://www.linkedin.com/in/alex-collyer"
+        >
+          <Icon type="linkedin" />
         </a>
       </div>
     </nav>
