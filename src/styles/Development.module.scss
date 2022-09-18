@@ -4,4 +4,69 @@
   justify-content: center;
   min-height: 100vh;
   padding: 4rem 0;
+
+  & .container__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 1320px;
+
+    & .container__header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+      margin: 4rem 0 0;
+
+      & .container__title {
+        font-size: 2.25rem;
+        line-height: 1.2;
+        margin: 0.25rem 0;
+        padding: 0;
+
+        @media screen and (min-width: 992px) {
+          margin: 0.5rem 0;
+          font-size: 6rem;
+        }
+      }
+
+      & .container__body {
+        font-size: 0.8rem;
+        line-height: 1.2;
+        margin: 0.125rem 0;
+        padding: 0;
+        width: 85%;
+
+        @media screen and (min-width: 992px) {
+          margin: 0.25rem 0;
+          font-size: 1.2rem;
+          width: 90%;
+        }
+      }
+
+      @media screen and (min-width: 992px) {
+        margin: 6rem 0 0;
+      }
+    }
+
+    & .container__content {
+      & .container__cards {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 2rem auto;
+        width: 80%;
+
+        @media screen and (min-width: 992px) {
+          flex-wrap: wrap;
+          margin: 0.5rem 0;
+          font-size: 6rem;
+          width: 100%;
+        }
+      }
+    }
+  }
 }
