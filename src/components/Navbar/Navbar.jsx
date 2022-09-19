@@ -126,15 +126,31 @@ export default function Navbar({ items, theme, themeChange, ...props }) {
 
         <div className={styles["navbar__items-divider"]}></div>
 
-        <a className={styles["navbar__icon"]} href="https://github.com/acol248">
+        <a
+          className={styles["navbar__icon"]}
+          target="_blank"
+          rel="noreferrer"
+          href="https://github.com/acol248"
+        >
           <Icon type="github" />
         </a>
 
         <a
           className={styles["navbar__icon"]}
+          target="_blank"
+          rel="noreferrer"
           href="https://www.linkedin.com/in/alex-collyer"
         >
           <Icon type="linkedin" />
+        </a>
+
+        <a
+          className={styles["navbar__icon"]}
+          target="_blank"
+          rel="noreferrer"
+          href="https://drive.google.com/file/d/1VBmGbFeAkBS8umXGFzi27iDj-_7WoyD3/view?usp=sharing"
+        >
+          <Icon type="paper" />
         </a>
       </div>
     </nav>
