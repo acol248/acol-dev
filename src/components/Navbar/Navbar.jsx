@@ -136,6 +136,15 @@ export default function Navbar({ items, theme, themeChange, ...props }) {
         >
           <Icon type="linkedin" />
         </a>
+
+        <a
+          className={styles["navbar__icon"]}
+          target="_blank"
+          rel="noreferrer"
+          href="https://drive.google.com/file/d/1VBmGbFeAkBS8umXGFzi27iDj-_7WoyD3/view?usp=sharing"
+        >
+          <Icon type="paper" />
+        </a>
       </div>
     </nav>
   );
