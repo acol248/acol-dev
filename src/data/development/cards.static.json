@@ -6,7 +6,7 @@
       "buttons": [
         {
           "label": "coming soon...",
-          "variant": "secondary",
+          "variant": "disabled",
           "disabled": true
         }
       ]
