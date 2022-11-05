@@ -37,10 +37,12 @@ function App({ Component, pageProps }) {
   return (
     <div className={`theme ${theme}`}>
       <Head>
+        <meta charset="utf-8" />
+        <meta name="author" content="Alex Collyer (acol248)" />
         <title>acol.dev</title>
         <meta
           name="description"
-          content="The website of a web developer. A showcase of his work and skills; whilst also being somewhere to experiment, learn, and have fun."
+          content="A development website, by acol248 (github). A showcase of his work and skills; whilst also being somewhere to experiment, learn, and have fun."
         />
       </Head>
 
