@@ -1,6 +1,10 @@
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 
+// components
+import Text from "../../components/Text";
+
+// styles
 import styles from "../../styles/Documents.module.scss";
 
 export default function Post() {
@@ -27,7 +31,7 @@ export default function Post() {
       pageData.current = result.content;
       setQuerySuccess(() => pageData.current?.found);
 
-      console.log(pageData.current);
+      console.log(result);
     })();
   }, [target]);
 
@@ -42,11 +46,20 @@ export default function Post() {
 
         <div className={styles["container__content"]}>
           {pageData.current &&
-            pageData.current.sections.map(({ title, type, content }) => {
+            pageData.current.sections.map(({ className, name, type, content }) => {
               let out;
 
               switch (type) {
-                case 'text':
+                case "text":
+                  out = (
+                    <Text
+                      className={className}
+                      title={content.title}
+                      subtitle={content.subtitle}
+                      body={content.body}
+                    />
+                  );
+
                   break;
                 default:
                   break;
