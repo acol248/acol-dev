@@ -3,11 +3,11 @@ import dbConnect from "../../lib/dbconnect/dbconnect.js";
 // Schemas
 import Document from "../../database/Documents.js";
 
-const handlePost = async (req, res) => {
+const POST = async (req, res) => {
   return res.status(200).json({ status: 200, body: "Success!" });
 };
 
-const handleGet = async (req, res) => {
+const GET = async (req, res) => {
   if (!req.headers.target)
     return res
       .status(400)
@@ -34,9 +34,9 @@ export default async function handler(req, res) {
 
   switch (req.method) {
     case "POST":
-      return handlePost(req, res);
+      return POST(req, res);
     case "GET":
-      return handleGet(req, res);
+      return GET(req, res);
     default:
       return res
         .status(500)
