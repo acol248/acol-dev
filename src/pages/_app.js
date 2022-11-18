@@ -37,7 +37,7 @@ function App({ Component, pageProps }) {
   return (
     <div className={`theme ${theme}`}>
       <Head>
-        <meta charset="utf-8" />
+        <meta charSet="utf-8" />
         <meta name="author" content="Alex Collyer (acol248)" />
         <title>acol.dev</title>
         <meta
