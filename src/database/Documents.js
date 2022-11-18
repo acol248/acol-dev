@@ -1,8 +1,9 @@
-import mongoose from "mongoose";
+import { Schema, model } from "mongoose";
 
-const Document = new mongoose.Schema({
+const documentSchema = new Schema({
   name: String,
-}, { collection: 'documents' });
+});
 
-module.exports =
-  mongoose.models.Document || mongoose.model("Document", Document, 'documents');
+const Document = model("Document", documentSchema);
+
+export default Document;
