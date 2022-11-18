@@ -11,5 +11,21 @@
     justify-content: center;
     gap: 1rem;
     max-width: 1320px;
+
+    & .container__header {
+      max-width: 992px;
+      margin: 0 auto 4rem;
+
+      & .container__title {
+        margin: 1rem 0;
+        text-align: center;
+        font-size: 4.25rem;
+      }
+    }
+
+    & .container__content {
+      max-width: 992px;
+      margin: auto;
+    }
   }
 }
