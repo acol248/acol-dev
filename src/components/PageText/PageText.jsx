@@ -1,7 +1,9 @@
-// styles
-import styles from "./Text.module.scss";
+import { useState, useEffect } from "react";
 
-export default function Text({ className, title, subtitle, body }) {
+// styles
+import styles from "./PageText.module.scss";
+
+export default function PageText({ className, title, subtitle, body }) {
   const [classlist, setClasslist] = useState("");
 
   // classlist
