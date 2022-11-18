@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 
 // components
-import Icon from "./mediaPlayer.icons";
+import Icon from "./video.icons";
 
 // helpers
 import { keygen, calcSeek } from "./helpers";
@@ -11,7 +11,7 @@ import { keygen, calcSeek } from "./helpers";
 import styles from "./Video.module.scss";
 
 export default function Video({ className, title, sources, ...props }) {
-  const [classlist, setClasslist] = useState('')
+  const [classlist, setClasslist] = useState("");
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -269,10 +269,7 @@ export default function Video({ className, title, sources, ...props }) {
 
   return (
     <div className={classlist} ref={mediaPlayerRef} {...props}>
-      <div
-        className={styles["video__info-overlay"]}
-        ref={infoOverlayRef}
-      >
+      <div className={styles["video__info-overlay"]} ref={infoOverlayRef}>
         {overlayData}
       </div>
 
@@ -284,10 +281,7 @@ export default function Video({ className, title, sources, ...props }) {
       >
         <div className={styles["video__header"]}></div>
         <div className={styles["video__status-bar"]} ref={statusBarRef}>
-          <button
-            className={styles["video__play"]}
-            onClick={handlePlayPause}
-          >
+          <button className={styles["video__play"]} onClick={handlePlayPause}>
             <Icon type={isPlaying ? "pause" : "play"} />
           </button>
           <div
