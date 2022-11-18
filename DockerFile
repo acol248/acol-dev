@@ -1,0 +1,25 @@
+FROM node:12.8-alpine as test-target
+ENV NODE_ENV=development
+ENV PATH $PATH:/usr/src/app/node_modules/.bin
+
+FROM node:latest
+
+WORKDIR /usr/src/app/acol-dev
+
+COPY package*.json ./
+
+RUN npm install --silent
+
+COPY . .
+
+FROM test-target as build-target
+ENV NODE_ENV=production
+
+RUN npm run build
+
+WORKDIR /usr/src/app/acol-dev
+
+COPY --from=build-target /usr/src/app/node_modules node_modules
+COPY --from=build-target /usr/src/app/.next .next
+
+CMD ["next", "start"]
