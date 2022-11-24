@@ -1,24 +1,52 @@
 version: "3.8"
 
 services:
-  client:
+  nextjs:
+    container_name: nextjs-app
     build:
       context: .
-      target: test-target
-      args:
-        npm_install_command: install
+      dockerfile: Dockerfile
+    restart: always
     volumes:
-      - .:/usr/src/app:delegated
-    ports:
-      - 3000:3000
-    command: npm run dev
+      - .:/app
+      - /app/.next
+      - /app/node_modules
     networks:
       - acol
-  
-  mongo:
-    image: mongo:latest
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_USERNAME}
+    env_file:
+      - .env.production
     ports:
-      - 27017:27017
+      - 8080:3000
+    depends_on:
+      - mongodb
+      - redis
+  
+  mongodb:
+    image: mongo:latest
+    hostname: mongo
+    container_name: mongo
+    restart: always
+    volumes:
+      - ./dockerData/monogdb:/data/db
+    networks:
+      - acol
+    ports:
+      - 27020:17017
+    environment:
+      MONGO_INITDB_DATABASE: acol-dev
+
+  redis:
+    image: redis:latest
+    container_name: redis
+    hostname: redis
+    restart: always
+    command: 'redis-server'
+    volumes:
+      - ./dockerData/redis:/data/redis
+    ports:
+      - 6379:6379
+    networks:
+      - acol
+
+networks:
+  acol:

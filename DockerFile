@@ -1,25 +1,15 @@
-FROM node:12.8-alpine as test-target
-ENV NODE_ENV=development
-ENV PATH $PATH:/usr/src/app/node_modules/.bin
+# Get node
+FROM node:lts-alpine
 
-FROM node:latest
+# Set working directory
+WORKDIR /app
 
-WORKDIR /usr/src/app/acol-dev
+# Copy package and package-lock 
+COPY package.json ./
+COPY package-lock.json ./
 
-COPY package*.json ./
-
+# Run npm install silently
 RUN npm install --silent
 
-COPY . .
-
-FROM test-target as build-target
-ENV NODE_ENV=production
-
-RUN npm run build
-
-WORKDIR /usr/src/app/acol-dev
-
-COPY --from=build-target /usr/src/app/node_modules node_modules
-COPY --from=build-target /usr/src/app/.next .next
-
-CMD ["next", "start"]
+# Run docker start
+CMD ["npm", "run", "docker"]
