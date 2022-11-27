@@ -10,7 +10,7 @@
   width: calc(100% - 1.5rem);
   max-width: 768px;
   padding: 0.75rem;
-  background-color: var(--color-primary-main, white);
+  background-color: var(--footer-popup-background-color);
   box-shadow: 0 0 6px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
   z-index: 2400;
@@ -20,12 +20,14 @@
     font-weight: bold;
     margin: 0.25rem 0 0.5rem;
     text-align: left;
+    color: var(--text-color-inverted);
   }
 
   & .cookies-message__text {
     font-size: 1rem;
     margin: 0.25rem 0;
     text-align: left;
+    color: var(--text-color-inverted);
   }
 
   & .cookies-message__button-container {
@@ -37,16 +39,16 @@
     & .cookies-message__button {
       font-size: 1rem;
       padding: 0.5rem 1rem;
-      border: 1px solid var(--color-common-grey-1000, black);
+      border: 1px solid var(--text-color-inverted);
       border-radius: 0.25rem;
       cursor: pointer;
       transition: all 0.2s ease-in-out;
-      color: var(--color-common-grey-1000, black);
+      color: var(--text-color-inverted);
       background-color: transparent;
 
       &:hover {
-        background-color: var(--color-common-grey-1000, black);
-        color: var(--color-common-white, white);
+        background-color: var(--text-color-inverted);
+        color: var(--text-color);
       }
     }
   }

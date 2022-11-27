@@ -25,6 +25,7 @@ body.light {
   --background-color-inverted: var(--color-common-black);
 
   --modal-background-color: var(--color-grey-300);
+  --footer-popup-background-color: var(--color-grey-900);
 }
 
 body.dark {
@@ -35,6 +36,7 @@ body.dark {
   --background-color-inverted: var(--color-common-white);
 
   --modal-background-color: var(--color-grey-1000);
+  --footer-popup-background-color: var(--color-grey-400);
 }
 
 .theme {

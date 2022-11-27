@@ -1,21 +1,24 @@
 import { useState, useEffect, useContext } from "react";
 
-// Hooks
-import { ConfigContext } from "../../Hooks/useConfig";
-import { CookieContext } from "../../Hooks/useCookies";
+// hooks
+import { AnalyticsContext } from "../../hooks/useAnalytics";
 
 // Styles
-import "./CookiesMessage.scss";
+import styles from "./CookiesMessage.module.scss";
 
 export default function CookiesMessage({
   className,
   title,
   message,
+  websiteName,
+  enabled,
   ...props
 }) {
-  const { getWebsiteName } = useContext(ConfigContext);
-  const { checkCookie, setCookie } = useContext(CookieContext);
+  const { acceptAnalytics } = useContext(AnalyticsContext);
+
   const [classlist, setClasslist] = useState("");
+
+  const [cookiePrompted, setCookiePrompted] = useState(false);
   const [cookiesAccepted, setCookiesAccepted] = useState(false);
 
   /**
@@ -24,30 +27,25 @@ export default function CookiesMessage({
    * @param {array} cookies array of objects with cookie name, value, and time its valid for
    * @returns returns if no cookies need adding/changing
    */
-  const cookieResponse = (cookies) => {
-    const websiteName = getWebsiteName();
+  const cookieResponse = (state, response) => {
+    if (state) acceptAnalytics();
 
-    for (const cookie of cookies) {
-      if (checkCookie(`${websiteName}_${cookie.type}-cookies`)) return;
-
-      setCookie(`${websiteName}_${cookie.type}-cookies`, cookie.resp, 365);
-    }
-
-    setCookie(`${websiteName}_cookies-menu-accepted`, true, 365);
     setCookiesAccepted(true);
   };
 
   // check if cookies have been accepted
   useEffect(() => {
-    const websiteName = getWebsiteName();
-    const state = checkCookie(`${websiteName}_cookies-menu-accepted`);
+    const analyticsAccepted = localStorage.getItem(
+      `${websiteName}_analytics-accepted`
+    );
 
-    setCookiesAccepted(state);
-  }, [checkCookie, getWebsiteName]);
+    setCookiePrompted(analyticsAccepted === null ? false : true);
+    setCookiesAccepted(analyticsAccepted);
+  }, [websiteName]);
 
   // classlist
   useEffect(() => {
-    const _classlist = ["cookies-message"];
+    const _classlist = [styles["cookies-message"]];
 
     if (className)
       for (const item of className.split(" ")) _classlist.push(item);
@@ -56,32 +54,24 @@ export default function CookiesMessage({
   }, [className]);
 
   return (
-    !cookiesAccepted && (
+    enabled &&
+    !cookiesAccepted &&
+    !cookiePrompted && (
       <div className={classlist}>
-        <h2 className="cookies-message__title">{title}</h2>
-        <p className="cookies-message__text">{message}</p>
-        <div className="cookies-message__button-container">
+        <h2 className={styles["cookies-message__title"]}>{title}</h2>
+        <p className={styles["cookies-message__text"]}>{message}</p>
+        <div className={styles["cookies-message__button-container"]}>
           <button
-            className="cookies-message__button"
-            onClick={() =>
-              cookieResponse([
-                { type: "advanced", resp: true, time: 365 },
-                { type: "basic", resp: true, time: 365 },
-              ])
-            }
+            className={styles["cookies-message__button"]}
+            onClick={() => cookieResponse(true, "analytics")}
           >
-            Accept all
+            Accept
           </button>
           <button
-            className="cookies-message__button"
-            onClick={() =>
-              cookieResponse([
-                { type: "advanced", resp: false, time: 365 },
-                { type: "basic", resp: true, time: 365 },
-              ])
-            }
+            className={styles["cookies-message__button"]}
+            onClick={() => cookieResponse(false, "deny")}
           >
-            Accept basic
+            Deny
           </button>
         </div>
       </div>
