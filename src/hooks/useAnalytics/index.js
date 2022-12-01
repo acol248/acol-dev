@@ -73,11 +73,11 @@ export default function useAnalytics({ siteName, id, enabled }) {
 
   // set accepted if previously accepted
   useEffect(() => {
-    const accepted = localStorage.getItem(`${siteName}_cookie-accepted`);
+    const accepted = localStorage.getItem(`${siteName}_analytics-accepted`);
 
-    if (!accepted) return;
+    if (accepted !== "true") return;
 
-    setIsAccepted(typeof accepted === Boolean ? accepted : false);
+    setIsAccepted(accepted === "true" ? true : false);
   }, [siteName]);
 
   return useMemo(
