@@ -11,10 +11,9 @@ export default function CookiesMessage({
   title,
   message,
   websiteName,
-  enabled,
   ...props
 }) {
-  const { acceptAnalytics } = useContext(AnalyticsContext);
+  const { enabled, acceptAnalytics } = useContext(AnalyticsContext);
 
   const [classlist, setClasslist] = useState("");
 
