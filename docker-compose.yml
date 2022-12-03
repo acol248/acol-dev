@@ -8,9 +8,3 @@ services:
       - ./src:/app/src
     ports:
       - 3000:4080
-    networks:
-      - reverse-proxy
-
-networks:
-  reverse-proxy:
-    external: true
