@@ -6,6 +6,8 @@ services:
       dockerfile: Dockerfile.prod
     volumes:
       - ./src:/app/src
+    ports:
+      - 3000:4080
     networks:
       - reverse-proxy
 
