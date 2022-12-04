@@ -50,12 +50,13 @@ function App({ Component, pageProps }) {
       <Navbar
         items={[
           { name: "Home", type: "internal", href: "/" },
+          { name: "QR Generator", type: "internal", href: "/qr-generator" },
           { name: "Development", type: "internal", href: "/development" },
         ]}
         theme={theme}
         themeChange={toggleTheme}
       />
-      <Component {...pageProps} />
+      <Component theme={theme} {...pageProps} />
       <Footer />
     </div>
   );
