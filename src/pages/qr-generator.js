@@ -1,0 +1,46 @@
+import { useState } from "react";
+import QRCode from "react-qr-code";
+
+// components
+import Input from "../interface/input";
+
+// styles
+import styles from "../styles/QRGenerator.module.scss";
+
+export default function QRGenerator({ theme }) {
+  const [qrValue, setQrValue] = useState("https://acol.dev");
+
+  /**
+   * Handle QR form submit
+   */
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  return (
+    <div className={styles["container"]}>
+      <div className={styles["container__inner"]}>
+        <div className={styles["container__header"]}>
+          <h2 className={styles["container__title"]}>QR Generator</h2>
+        </div>
+
+        <div className={styles["container__content"]}>
+          <div className={styles["container__content-inner"]}>
+            <QRCode
+              size={256}
+              bgColor={theme === "dark" ? "#eeeeee" : "#212121"}
+              fgColor={theme === "dark" ? "#212121" : "#eeeeee"}
+              style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+              value={qrValue ? qrValue : "https://acol.dev"}
+              viewBox={`0 0 256 256`}
+            />
+
+            <form onSubmit={handleFormSubmit}>
+              <Input variant="invert">QR Text Data</Input>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
