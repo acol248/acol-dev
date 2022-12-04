@@ -24,7 +24,7 @@ body.light {
   --background-color: var(--color-common-white);
   --background-color-inverted: var(--color-common-black);
 
-  --modal-background-color: var(--color-grey-300);
+  --modal-background-color: var(--color-grey-1000);
 }
 
 body.dark {
@@ -34,7 +34,7 @@ body.dark {
   --background-color: var(--color-common-black);
   --background-color-inverted: var(--color-common-white);
 
-  --modal-background-color: var(--color-grey-1000);
+  --modal-background-color: var(--color-grey-300);
 }
 
 .theme {
