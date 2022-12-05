@@ -39,6 +39,11 @@ function App({ Component, pageProps }) {
       <Head>
         <meta charset="utf-8" />
         <meta name="author" content="Alex Collyer (acol248)" />
+        <meta
+          name="theme-color"
+          content={theme === "dark" ? "#212121" : "#eeeeee"}
+        />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
         <title>acol.dev</title>
         <meta
           name="description"
