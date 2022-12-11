@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import QRCode from "react-qr-code";
 
 // components
@@ -8,6 +8,8 @@ import Input from "../interface/input";
 import styles from "../styles/QRGenerator.module.scss";
 
 export default function QRGenerator({ theme }) {
+  const QRContentRef = useRef(null);
+
   const [qrValue, setQrValue] = useState("https://acol.dev");
 
   /**
@@ -26,18 +28,31 @@ export default function QRGenerator({ theme }) {
 
         <div className={styles["container__content"]}>
           <div className={styles["container__content-inner"]}>
-            <QRCode
-              size={256}
-              bgColor={theme === "dark" ? "#eeeeee" : "#212121"}
-              fgColor={theme === "dark" ? "#212121" : "#eeeeee"}
-              style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-              value={qrValue ? qrValue : "https://acol.dev"}
-              viewBox={`0 0 256 256`}
-            />
+            <p className={styles['container__content-description']}></p>
 
-            <form onSubmit={handleFormSubmit}>
-              <Input variant="invert">QR Text Data</Input>
-            </form>
+            <div className={styles['container__qr']}>
+              <div className={styles["container__form-container"]}>
+                <form
+                  className={styles["container__form"]}
+                  onSubmit={handleFormSubmit}
+                >
+                  <Input variant="invert" ref={QRContentRef}>
+                    QR Text Data
+                  </Input>
+                </form>
+              </div>
+
+              <div className={styles["container__qr-container"]}>
+                <QRCode
+                  size={256}
+                  bgColor={theme === "dark" ? "#eeeeee" : "#212121"}
+                  fgColor={theme === "dark" ? "#212121" : "#eeeeee"}
+                  style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+                  value={qrValue ? qrValue : "https://acol.dev"}
+                  viewBox={`0 0 256 256`}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </div>
