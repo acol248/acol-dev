@@ -1,0 +1,40 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.325rem;
+
+  & .input__label {
+    color: var(--text-color-inverted);
+    font-size: 0.875rem;
+    font-style: italic;
+    opacity: 0.5;
+    margin-left: 0.125rem;
+
+    transition-property: opacity;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+  }
+
+  & .input__input {
+    padding: 0.6rem;
+    border: 0;
+    border-radius: 6px;
+    font-size: 1.125rem;
+    outline: 0;
+
+    transition-property: background-color, box-shadow;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+  }
+
+  &--focus {
+    & .input__label {
+      opacity: 0.8;
+    }
+
+    & .input__input {
+      background-color: var(--color-grey-100);
+      box-shadow: 0px 5px 12px 0px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
