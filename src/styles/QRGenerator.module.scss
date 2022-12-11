@@ -10,7 +10,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
-    max-width: 1320px;
+    max-width: 768px;
 
     & .container__header {
       display: flex;
@@ -54,9 +54,21 @@
 
     & .container__content {
       & .container__content-inner {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
         border-radius: 8px;
-        padding: 4rem;
+        padding: 2rem;
         background-color: var(--modal-background-color);
+
+        & .container__content-description {
+        }
+
+        & .container__qr {
+          & .container__form-container {
+            flex: 1;
+          }
+        }
       }
     }
   }
