@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 
 import styles from "./Input.module.scss";
 
-export default function Input({ className, icon, children, ...props }) {
+function Input({ className, icon, children, ...props }, ref) {
   const [classlist, setClasslist] = useState([]);
+  const [focusActive, setFocusActive] = useState(false);
 
   // classlist
   useEffect(() => {
@@ -12,13 +13,35 @@ export default function Input({ className, icon, children, ...props }) {
     if (className)
       for (const item of className.split(" ")) _classlist.push(item);
 
+    if (focusActive) _classlist.push(styles['input--focus']);
+
     setClasslist(_classlist.join(" "));
-  }, [className]);
+  }, [className, focusActive]);
+
+  // handle focus detection
+  useEffect(() => {
+    if (!ref) return;
+
+    const { current: input } = ref;
+
+    const onFocusIn = () => setFocusActive(true);
+    const onFocusOut = () => setFocusActive(false);
+
+    input?.addEventListener("focusin", onFocusIn);
+    input?.addEventListener("focusout", onFocusOut);
+
+    return () => {
+      input?.removeEventListener("focusin", onFocusIn);
+      input?.removeEventListener("focusout", onFocusOut);
+    };
+  }, [ref]);
 
   return (
     <label className={classlist}>
-      {icon && icon} <span>{children}</span>
-      <input {...props} />
+      {icon && icon} <span className={styles["input__label"]}>{children}</span>
+      <input className={styles["input__input"]} ref={ref} {...props} />
     </label>
   );
 }
+
+export default forwardRef(Input);
