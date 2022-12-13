@@ -22,16 +22,14 @@ export default function Development() {
 
         <div className={styles["container__content"]}>
           <div className={styles["container__cards"]}>
-            {cardsData &&
-              cardsData.cards.map(({ title, body, buttons, headerImage }) => (
-                <Card
-                  key={title + body}
-                  title={title}
-                  body={body}
-                  buttons={buttons}
-                  headerImage={headerImage?.src}
-                />
-              ))}
+            {cardsData?.cards.map(({ title, body, buttons }) => (
+              <Card
+                key={title + body}
+                title={title}
+                body={body}
+                buttons={buttons}
+              />
+            ))}
           </div>
         </div>
       </div>
