@@ -87,7 +87,6 @@ export default function App({ Component, pageProps }) {
         
         <Component {...pageProps} />
 
-<<<<<<< HEAD
         <CookiesMessage
           page={pageRef.current}
           title="Privacy Policy"
@@ -98,20 +97,5 @@ export default function App({ Component, pageProps }) {
         <Footer setTheme={() => checkTheme()} />
       </div>
     </AnalyticsContext.Provider>
-=======
-      <PageLoader isLoading={!theme} />
-      <Navbar
-        items={[
-          { name: "Home", type: "internal", href: "/" },
-          { name: "QR Generator", type: "internal", href: "/qr-generator" },
-          { name: "Development", type: "internal", href: "/development" },
-        ]}
-        theme={theme}
-        themeChange={toggleTheme}
-      />
-      <Component theme={theme} {...pageProps} />
-      <Footer />
-    </div>
->>>>>>> app updated
   );
 }
