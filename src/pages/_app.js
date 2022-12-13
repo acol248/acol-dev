@@ -1,5 +1,7 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
+
+// components
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import PageLoader from "../components/PageLoader";
@@ -10,6 +12,11 @@ import "../styles/globals.css";
 function App({ Component, pageProps }) {
   const [theme, setTheme] = useState(false);
 
+  /**
+   * Toggle theme on user select
+   * 
+   * @param {object} e event object
+   */
   const toggleTheme = (e) => {
     localStorage.setItem("theme", e);
     document.body.classList.add(e === "dark" ? "dark" : "light");
