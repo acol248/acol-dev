@@ -11,7 +11,7 @@
   border-radius: 0.25rem;
   font-size: 1rem;
   font-weight: 300;
-  color: currentColor;
+  color: var(--text-color);
   cursor: pointer;
 
   & svg {
@@ -29,6 +29,32 @@
 
     & span {
       color: var(--text-color-inverted);
+    }
+  }
+
+  &--inverted {
+    border-color: var(--text-color-inverted);
+    color: var(--text-color-inverted);
+
+    &:hover {
+      background-color: var(--text-color-inverted);
+
+      & span {
+        color: var(--text-color);
+      }
+    }
+  }
+
+  &--hold-dark {
+    border-color: var(--color-grey-1000);
+    color: var(--color-grey-1000);
+
+    &:hover {
+      background-color: var(--color-grey-1000);
+
+      & span {
+        color: var(--color-grey-100);
+      }
     }
   }
 }
