@@ -1,22 +1,40 @@
 import { useRef, useState } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+
 import QRCode from "react-qr-code";
 
 // components
 import Input from "../interface/input";
+import Button from "../interface/button";
+import Modal from "../components/Modal";
 
 // styles
 import styles from "../styles/QRGenerator.module.scss";
 
-export default function QRGenerator({ theme }) {
+export default function QRGenerator() {
   const QRContentRef = useRef(null);
+  const QRColorRef = useRef(null);
 
-  const [qrValue, setQrValue] = useState("https://acol.dev");
+  const [exportOpen, setExportOpen] = useState(false);
 
-  /**
-   * Handle QR form submit
-   */
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
+  const [qrValue, setQrValue] = useState("");
+  const [colorValue, setColorValue] = useState("");
+
+  const [qrSize, setQrSize] = useState("1000px");
+
+  const handleDownloadSVG = () => {
+    const svgString = renderToStaticMarkup(
+      <QRCode
+        size={parseInt(qrSize)}
+        bgColor="#f5f5f5"
+        fgColor={colorValue ? colorValue : "#212121"}
+        style={{ height: "auto", maxWidth: "100%", width: "100%" }}
+        value={qrValue ? qrValue : "https://acol.dev"}
+        viewBox={`0 0 256 256`}
+      />
+    );
+
+    console.log(svgString);
   };
 
   return (
@@ -28,25 +46,45 @@ export default function QRGenerator({ theme }) {
 
         <div className={styles["container__content"]}>
           <div className={styles["container__content-inner"]}>
-            <p className={styles['container__content-description']}></p>
+            <p className={styles["container__content-description"]}>
+              Fill out the below fields to customise your QR code. Watch it
+              change as you type.
+            </p>
 
-            <div className={styles['container__qr']}>
-              <div className={styles["container__form-container"]}>
-                <form
-                  className={styles["container__form"]}
-                  onSubmit={handleFormSubmit}
-                >
-                  <Input variant="invert" ref={QRContentRef}>
-                    QR Text Data
+            <div className={styles["container__qr"]}>
+              <div className={styles["container__input-container"]}>
+                <div className={styles["container__inputs"]}>
+                  <Input
+                    variant="hold-dark"
+                    ref={QRContentRef}
+                    value={qrValue}
+                    onChange={({ target }) => setQrValue(target.value)}
+                    placeholder="e.g. https://www.acol.dev/"
+                  >
+                    Content
                   </Input>
-                </form>
+
+                  <Input
+                    variant="hold-dark"
+                    ref={QRColorRef}
+                    value={colorValue}
+                    onChange={({ target }) => setColorValue(target.value)}
+                    placeholder="e.g. #212121"
+                  >
+                    Color
+                  </Input>
+                </div>
+
+                <Button variant="hold-dark" onClick={() => setExportOpen(true)}>
+                  Export
+                </Button>
               </div>
 
               <div className={styles["container__qr-container"]}>
                 <QRCode
                   size={256}
-                  bgColor={theme === "dark" ? "#eeeeee" : "#212121"}
-                  fgColor={theme === "dark" ? "#212121" : "#eeeeee"}
+                  bgColor="#f5f5f5"
+                  fgColor={colorValue ? colorValue : "#212121"}
                   style={{ height: "auto", maxWidth: "100%", width: "100%" }}
                   value={qrValue ? qrValue : "https://acol.dev"}
                   viewBox={`0 0 256 256`}
@@ -56,6 +94,19 @@ export default function QRGenerator({ theme }) {
           </div>
         </div>
       </div>
+
+      <Modal
+        title="Export"
+        open={exportOpen}
+        onClose={() => setExportOpen(false)}
+      >
+        <Input
+          value={qrSize}
+          onChange={({ target }) => setQrSize(target.value)}
+        ></Input>
+
+        <Button variant="inverted" onClick={handleDownloadSVG}>Download SVG</Button>
+      </Modal>
     </div>
   );
 }
