@@ -2,7 +2,10 @@ import { forwardRef, useEffect, useState } from "react";
 
 import styles from "./Input.module.scss";
 
-function Input({ className, icon, children, ...props }, ref) {
+function Input(
+  { className, variant, icon, children, defaultValue, ...props },
+  ref
+) {
   const [classlist, setClasslist] = useState([]);
   const [focusActive, setFocusActive] = useState(false);
 
@@ -13,10 +16,14 @@ function Input({ className, icon, children, ...props }, ref) {
     if (className)
       for (const item of className.split(" ")) _classlist.push(item);
 
-    if (focusActive) _classlist.push(styles['input--focus']);
+    if (variant)
+      for (const item of variant.split(" "))
+        _classlist.push(styles[`input--${item}`]);
+
+    if (focusActive) _classlist.push(styles["input--focus"]);
 
     setClasslist(_classlist.join(" "));
-  }, [className, focusActive]);
+  }, [className, variant, focusActive]);
 
   // handle focus detection
   useEffect(() => {
@@ -35,6 +42,17 @@ function Input({ className, icon, children, ...props }, ref) {
       input?.removeEventListener("focusout", onFocusOut);
     };
   }, [ref]);
+
+  // handle auto-population
+  useEffect(() => {
+    if (!ref) return;
+
+    const { current: input } = ref;
+
+    if (!input || !defaultValue) return;
+
+    if (!input.value) ref.current.value === defaultValue;
+  }, [defaultValue, ref]);
 
   return (
     <label className={classlist}>
