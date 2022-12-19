@@ -9,7 +9,7 @@ function Input(
   const [classlist, setClasslist] = useState([]);
   const [focusActive, setFocusActive] = useState(false);
 
-  // classlist
+  // classlist and variant
   useEffect(() => {
     const _classlist = [styles["input"]];
 
