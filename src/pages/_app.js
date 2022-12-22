@@ -69,8 +69,8 @@ function App({ Component, pageProps }) {
         <Component {...pageProps} />
 
         <CookiesMessage
-          title="Enhanced Data"
-          message="We need to ask your permission to enhance the analytics data we collect. To find out more about data that would be collected, click <a href='https://acol.dev/policies'>here</a> or go to acol.dev/policies."
+          title="Enhanced Data & Cookies"
+          message={`We need to ask your permission to enhance the analytics data we collect. To find out more about data that would be collected, click <a href='https://acol.dev/policies'><u>here</u></a> or go to acol.dev/policies.`}
           websiteName="acol-dev"
         />
         <Footer />
