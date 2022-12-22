@@ -33,9 +33,7 @@ export default function CookiesMessage({
   const cookieResponse = (state, response) => {
     if (state) acceptAnalytics();
 
-    setCookiesAccepted(true);
     setPromptOpen(false);
-    
   };
 
   // if enabled, set open
@@ -65,24 +63,26 @@ export default function CookiesMessage({
 
   return (
     <Modal open={promptOpen} className={classlist} noClose={true}>
-      <h2 className={styles["cookies-message__title"]}>{title}</h2>
-      <p
-        className={styles["cookies-message__text"]}
-        dangerouslySetInnerHTML={{ __html: message }}
-      ></p>
-      <div className={styles["cookies-message__button-container"]}>
-        <button
-          className={styles["cookies-message__button"]}
-          onClick={() => cookieResponse(true, "analytics")}
-        >
-          Accept
-        </button>
-        <button
-          className={styles["cookies-message__button"]}
-          onClick={() => cookieResponse(false, "deny")}
-        >
-          Deny
-        </button>
+      <div className={styles["cookies-message__inner"]}>
+        <h2 className={styles["cookies-message__title"]}>{title}</h2>
+        <p
+          className={styles["cookies-message__text"]}
+          dangerouslySetInnerHTML={{ __html: message }}
+        ></p>
+        <div className={styles["cookies-message__button-container"]}>
+          <button
+            className={styles["cookies-message__button"]}
+            onClick={() => cookieResponse(true, "analytics")}
+          >
+            Accept
+          </button>
+          <button
+            className={styles["cookies-message__button"]}
+            onClick={() => cookieResponse(false, "deny")}
+          >
+            Deny
+          </button>
+        </div>
       </div>
     </Modal>
   );
