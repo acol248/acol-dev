@@ -14,6 +14,8 @@ import styles from "../styles/QRGenerator.module.scss";
 
 export default function QRGenerator() {
   const selectRef = useRef(null);
+
+  const QRNameRef = useRef(null);
   const QRContentRef = useRef(null);
   const QRColorRef = useRef(null);
 
@@ -88,9 +90,9 @@ export default function QRGenerator() {
                 <div className={styles["container__inputs"]}>
                   <Input
                     variant="hold-dark"
-                    ref={QRContentRef}
-                    value={qrValue}
-                    onChange={({ target }) => setQrValue(target.value)}
+                    ref={QRNameRef}
+                    value={qrName}
+                    onChange={({ target }) => setQrName(target.value)}
                     placeholder="e.g. example"
                   >
                     Name
@@ -138,12 +140,12 @@ export default function QRGenerator() {
       </div>
 
       <Modal
-        className={styles['modal']}
+        className={styles["modal"]}
         title="Export"
         open={exportOpen}
         onClose={() => setExportOpen(false)}
       >
-        <div className={styles['modal__inner']}>
+        <div className={styles["modal__inner"]}>
           <Input
             value={qrSize}
             onChange={({ target }) => setQrSize(target.value)}
