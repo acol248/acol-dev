@@ -29,6 +29,10 @@
     background-color: var(--modal-background-color);
     max-width: 95%;
 
+    @media screen and (min-width: 992px) {
+      max-width: 768px;
+    }
+
     transition-duration: 150ms;
     transition-property: opacity, transform;
     transition-timing-function: ease-in-out;
