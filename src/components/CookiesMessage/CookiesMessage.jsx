@@ -1,5 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 
+// components
+import Modal from "../Modal";
+
 // hooks
 import { AnalyticsContext } from "../../hooks/useAnalytics";
 
@@ -17,6 +20,7 @@ export default function CookiesMessage({
 
   const [classlist, setClasslist] = useState("");
 
+  const [promptOpen, setPromptOpen] = useState(false);
   const [cookiePrompted, setCookiePrompted] = useState(false);
   const [cookiesAccepted, setCookiesAccepted] = useState(false);
 
@@ -30,7 +34,14 @@ export default function CookiesMessage({
     if (state) acceptAnalytics();
 
     setCookiesAccepted(true);
+    setPromptOpen(false);
+    
   };
+
+  // if enabled, set open
+  useEffect(() => {
+    if (enabled) setPromptOpen(true);
+  }, [enabled]);
 
   // check if cookies have been accepted
   useEffect(() => {
@@ -53,30 +64,26 @@ export default function CookiesMessage({
   }, [className]);
 
   return (
-    enabled &&
-    !cookiesAccepted &&
-    !cookiePrompted && (
-      <div className={classlist}>
-        <h2 className={styles["cookies-message__title"]}>{title}</h2>
-        <p
-          className={styles["cookies-message__text"]}
-          dangerouslySetInnerHTML={{ __html: message }}
-        ></p>
-        <div className={styles["cookies-message__button-container"]}>
-          <button
-            className={styles["cookies-message__button"]}
-            onClick={() => cookieResponse(true, "analytics")}
-          >
-            Accept
-          </button>
-          <button
-            className={styles["cookies-message__button"]}
-            onClick={() => cookieResponse(false, "deny")}
-          >
-            Deny
-          </button>
-        </div>
+    <Modal open={promptOpen} className={classlist} noClose={true}>
+      <h2 className={styles["cookies-message__title"]}>{title}</h2>
+      <p
+        className={styles["cookies-message__text"]}
+        dangerouslySetInnerHTML={{ __html: message }}
+      ></p>
+      <div className={styles["cookies-message__button-container"]}>
+        <button
+          className={styles["cookies-message__button"]}
+          onClick={() => cookieResponse(true, "analytics")}
+        >
+          Accept
+        </button>
+        <button
+          className={styles["cookies-message__button"]}
+          onClick={() => cookieResponse(false, "deny")}
+        >
+          Deny
+        </button>
       </div>
-    )
+    </Modal>
   );
 }
