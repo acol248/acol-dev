@@ -19,12 +19,25 @@ export default function useAnalytics({ siteName, id, enabled }) {
   /**
    * Accept cookies
    */
-  const acceptAnalytics = useCallback(() => {
-    if (!enabled) return;
+  const acceptAnalytics = useCallback(
+    (state, type) => {
+      if (!enabled) return;
 
-    setIsAccepted(true);
-    localStorage.setItem(`${siteName}_analytics-accepted`, true);
-  }, [enabled, siteName]);
+      localStorage.setItem(`${siteName}_analytics-prompted`, true);
+
+      if (!state) return;
+
+      setIsAccepted(state);
+      localStorage.setItem(`${siteName}_analytics-accepted`, state);
+
+      if (type === "basic")
+        localStorage.setItem(`${siteName}_analytics-basic`, state);
+
+      if (type === "enhanced")
+        localStorage.setItem(`${siteName}_analytics-enhanced`, state);
+    },
+    [enabled, siteName]
+  );
 
   /**
    * Custom track event
