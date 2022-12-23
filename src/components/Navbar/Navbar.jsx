@@ -84,7 +84,7 @@ export default function Navbar({ items, theme, themeChange, ...props }) {
         </div>
       </Modal>
 
-      {isMobile && isMobile ? (
+      {isMobile ? (
         <button
           onClick={() => setMobileNavOpen(true)}
           className={styles["navbar__menu-button"]}
