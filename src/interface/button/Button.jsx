@@ -4,6 +4,7 @@ import styles from "./Button.module.scss";
 
 export default function Button({
   className,
+  variant,
   onClick,
   icon,
   children,
@@ -18,8 +19,12 @@ export default function Button({
     if (className)
       for (const item of className.split(" ")) _classlist.push(item);
 
+    if (variant)
+      for (const item of variant.split(" "))
+        _classlist.push(styles[`button--${item}`]);
+
     setClasslist(_classlist.join(" "));
-  }, [className]);
+  }, [className, variant]);
 
   return (
     <button className={classlist} onClick={onClick}>
