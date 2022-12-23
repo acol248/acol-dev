@@ -8,12 +8,14 @@ import { AnalyticsContext } from "../../hooks/useAnalytics";
 
 // Styles
 import styles from "./CookiesMessage.module.scss";
+import Button from "../../interface/button";
 
 export default function CookiesMessage({
   className,
   title,
   message,
   websiteName,
+  page,
   ...props
 }) {
   const { enabled, acceptAnalytics } = useContext(AnalyticsContext);
@@ -31,15 +33,21 @@ export default function CookiesMessage({
    * @returns returns if no cookies need adding/changing
    */
   const cookieResponse = (state, response) => {
-    if (state) acceptAnalytics();
+    acceptAnalytics(state, response);
 
     setPromptOpen(false);
   };
 
   // if enabled, set open
   useEffect(() => {
-    if (enabled) setPromptOpen(true);
-  }, [enabled]);
+    if (page === "policies") return;
+
+    const analyticsAccepted = localStorage.getItem(
+      `${websiteName}_analytics-prompted`
+    );
+
+    if (enabled && !cookiesAccepted && !analyticsAccepted) setPromptOpen(true);
+  }, [cookiesAccepted, enabled, page, websiteName]);
 
   // check if cookies have been accepted
   useEffect(() => {
@@ -70,18 +78,28 @@ export default function CookiesMessage({
           dangerouslySetInnerHTML={{ __html: message }}
         ></p>
         <div className={styles["cookies-message__button-container"]}>
-          <button
+          <Button
             className={styles["cookies-message__button"]}
-            onClick={() => cookieResponse(true, "analytics")}
-          >
-            Accept
-          </button>
-          <button
-            className={styles["cookies-message__button"]}
-            onClick={() => cookieResponse(false, "deny")}
+            variant="secondary"
+            onClick={() => cookieResponse(false)}
           >
             Deny
-          </button>
+          </Button>
+
+          <Button
+            className={styles["cookies-message__button"]}
+            variant="secondary"
+            onClick={() => cookieResponse(true, "basic")}
+          >
+            Accept Basic
+          </Button>
+
+          <Button
+            className={styles["cookies-message__button"]}
+            onClick={() => cookieResponse(true, "enhanced")}
+          >
+            Accept Enhanced
+          </Button>
         </div>
       </div>
     </Modal>

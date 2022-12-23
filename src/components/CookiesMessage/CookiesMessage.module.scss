@@ -3,7 +3,7 @@
     padding: 0 0.25rem;
 
     & .cookies-message__title {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       font-weight: bold;
       margin: 0.25rem 0 0.5rem;
       text-align: left;
@@ -22,26 +22,10 @@
       gap: 0.5rem;
       width: 100%;
       align-self: flex-end;
-      margin: 1rem 0 0;
+      margin: 1.25rem 0 0;
 
       & .cookies-message__button {
         flex: 1;
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-        border: 1px solid var(--text-color);
-        border-radius: 0.25rem;
-        cursor: pointer;
-        color: var(--text-color);
-        background-color: transparent;
-
-        @media screen and (min-width: 768px) {
-          flex: unset;
-        }
-
-        &:hover {
-          background-color: var(--text-color);
-          color: var(--text-color-inverted);
-        }
       }
     }
   }
