@@ -27,7 +27,14 @@
   --color-lime: #00ff00;
   --color-pink: #ffc0cb;
   --color-brown: #a52a2a;
-  
+
+  --color-primary-light: #20a9cd;
+  --color-primary-main: #1985a1;
+  --color-primary-dark: #16738b;
+
+  --color-secondary-light: #627685;
+  --color-secondary-main: #4c5c68;
+  --color-secondary-dark: #414f59;
 
   /* Durations */
   --duration-fastest: 75ms;
