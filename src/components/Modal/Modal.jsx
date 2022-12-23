@@ -61,6 +61,7 @@ export default function Modal({
     if (!nextApp) return;
 
     nextApp.inert = open;
+    document.body.style.overflow = open ? "hidden" : "unset";
   }, [active, open]);
 
   return open || active
