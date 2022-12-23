@@ -87,6 +87,8 @@ export default function useAnalytics({ siteName, id, enabled }) {
   // set accepted if previously accepted
   useEffect(() => {
     const accepted = localStorage.getItem(`${siteName}_analytics-accepted`);
+    const basic = localStorage.getItem(`${siteName}_analytics-basic`);
+    const enhanced = localStorage.getItem(`${siteName}_analytics-enhanced`);
 
     if (accepted !== "true") return;
 
