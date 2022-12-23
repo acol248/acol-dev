@@ -15,7 +15,6 @@ export default function CookiesMessage({
   title,
   message,
   websiteName,
-  page,
   ...props
 }) {
   const { enabled, acceptAnalytics } = useContext(AnalyticsContext);
@@ -40,14 +39,12 @@ export default function CookiesMessage({
 
   // if enabled, set open
   useEffect(() => {
-    if (page === "policies") return;
-
     const analyticsAccepted = localStorage.getItem(
       `${websiteName}_analytics-prompted`
     );
 
     if (enabled && !cookiesAccepted && !analyticsAccepted) setPromptOpen(true);
-  }, [cookiesAccepted, enabled, page, websiteName]);
+  }, [cookiesAccepted, enabled, websiteName]);
 
   // check if cookies have been accepted
   useEffect(() => {
