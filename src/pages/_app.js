@@ -18,6 +18,8 @@ function App({ Component, pageProps }) {
     enabled: true,
   });
 
+  const pageRef = useRef(Component ? Component.name.toLowerCase() : null);
+
   const [theme, setTheme] = useState(false);
 
   const toggleTheme = (e) => {
@@ -69,8 +71,9 @@ function App({ Component, pageProps }) {
         <Component {...pageProps} />
 
         <CookiesMessage
-          title="Analytics & Cookies"
-          message={`We need to ask your permission to use cookies for website analytics. We will not collect any personal information about our users. To find out more about data that would be collected and how it is handled, click <a href='https://acol.dev/policies' target='_blank'><u>here</u></a> or go to acol.dev/policies.`}
+          page={pageRef.current}
+          title="Privacy Policy"
+          message={`We need to ask your permission to use cookies for usage analytics. To find out more about data that would be collected and how it is handled, click <a href='/privacy-policy' target='_blank'><u>here</u></a> or go to acol.dev/privacy-policy.`}
           websiteName="acol-dev"
         />
         <Footer />
