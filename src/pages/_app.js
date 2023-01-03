@@ -50,7 +50,7 @@ function App({ Component, pageProps }) {
     <AnalyticsContext.Provider value={analytics}>
       <div className={`theme ${theme}`}>
         <Head>
-          <meta charset="utf-8" />
+          <meta charSet="utf-8" />
           <meta name="author" content="Alex Collyer (acol248)" />
           <title>acol.dev</title>
           <meta
@@ -81,5 +81,3 @@ function App({ Component, pageProps }) {
     </AnalyticsContext.Provider>
   );
 }
-
-export default App;
