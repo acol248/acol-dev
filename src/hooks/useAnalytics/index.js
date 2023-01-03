@@ -72,7 +72,7 @@ export default function useAnalytics({ siteName, id, enabled }) {
 
   // sets up analytics plugin if enabled & accepted
   useEffect(() => {
-    if (!isAccepted || !enabled) return;
+    if (!id || !isAccepted || !enabled) return;
 
     analyticsRef.current = Analytics({
       app: "acol-dev",
