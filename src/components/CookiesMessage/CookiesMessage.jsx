@@ -12,6 +12,7 @@ import Button from "../../interface/button";
 
 export default function CookiesMessage({
   className,
+  page,
   title,
   message,
   websiteName,
@@ -39,12 +40,14 @@ export default function CookiesMessage({
 
   // if enabled, set open
   useEffect(() => {
+    if (page === "error" || page === "privacypolicy") return;
+
     const analyticsAccepted = localStorage.getItem(
       `${websiteName}_analytics-prompted`
     );
 
     if (enabled && !cookiesAccepted && !analyticsAccepted) setPromptOpen(true);
-  }, [cookiesAccepted, enabled, websiteName]);
+  }, [cookiesAccepted, enabled, websiteName, page]);
 
   // check if cookies have been accepted
   useEffect(() => {
@@ -85,17 +88,9 @@ export default function CookiesMessage({
 
           <Button
             className={styles["cookies-message__button"]}
-            variant="secondary"
             onClick={() => cookieResponse(true, "basic")}
           >
-            Accept Basic
-          </Button>
-
-          <Button
-            className={styles["cookies-message__button"]}
-            onClick={() => cookieResponse(true, "enhanced")}
-          >
-            Accept Enhanced
+            Accept
           </Button>
         </div>
       </div>
