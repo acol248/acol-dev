@@ -3,6 +3,7 @@ import { useState } from "react";
 
 // components
 import Modal from "../Modal";
+import Toggle from "../../interface/toggle/Toggle";
 
 // styles
 import styles from "./Footer.module.scss";
@@ -37,7 +38,10 @@ export default function Footer() {
         onClose={() => setOptionsOpen(false)}
         title="Privacy Options"
       >
-        <div className={styles["settings-modal__inner"]}></div>
+        <div className={styles["settings-modal__inner"]}>
+          <Toggle>Use System Theme</Toggle>
+          <Toggle>Privacy Policy Accepted</Toggle>
+        </div>
       </Modal>
     </footer>
   );
