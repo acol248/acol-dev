@@ -48,6 +48,7 @@
         font-size: 1.25rem;
         font-weight: bold;
         color: var(--text-color);
+        width: 100%;
         margin: 0;
         padding: 0;
         line-height: 1.2;
@@ -69,6 +70,10 @@
           fill: var(--text-color);
         }
       }
+    }
+
+    & .modal__body {
+      margin: 1rem 0 0 0;
     }
   }
 

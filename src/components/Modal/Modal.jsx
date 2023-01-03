@@ -80,7 +80,7 @@ export default function Modal({
                 </button>
               )}
             </div>
-            {children}
+            <div className={styles["modal__body"]}>{children}</div>
           </div>
         </div>,
         document.body
