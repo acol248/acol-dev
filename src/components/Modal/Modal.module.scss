@@ -45,12 +45,12 @@
       align-items: center;
 
       & .modal__title {
-        align-self: flex-start;
         font-size: 1.25rem;
         font-weight: bold;
-        color: var(--color-common-black);
+        color: var(--text-color);
         margin: 0;
         padding: 0;
+        line-height: 1.2;
       }
 
       & .modal__close {
