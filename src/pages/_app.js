@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import CookiesMessage from "../components/CookiesMessage/CookiesMessage";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
@@ -11,11 +11,15 @@ import useAnalytics, { AnalyticsContext } from "../hooks/useAnalytics";
 // styles
 import "../styles/globals.css";
 
-function App({ Component, pageProps }) {
+export default function App({ Component, pageProps }) {
   const analytics = useAnalytics({
-    siteName: "acol-dev",
-    id: "",
-    enabled: true,
+    siteName: process.env.NEXT_PUBLIC_SITE_NAME
+      ? process.env.NEXT_PUBLIC_SITE_NAME
+      : "",
+    id: process.env.NEXT_PUBLIC_GA_ID ? process.env.NEXT_PUBLIC_GA_ID : "",
+    enabled: process.env.NEXT_PUBLIC_GA_ENABLED
+      ? process.env.NEXT_PUBLIC_GA_ENABLED
+      : false,
   });
 
   const pageRef = useRef(Component ? Component.name.toLowerCase() : null);
