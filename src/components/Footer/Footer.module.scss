@@ -27,5 +27,16 @@
       color: var(--color-common-grey);
       font-style: italic;
     }
+
+    & .footer__link {
+      margin: 0.15rem 0;
+      font-size: 0.75rem;
+      color: var(--color-common-grey);
+      font-style: italic;
+      text-decoration: underline;
+      cursor: pointer;
+      border: 0;
+      background-color: transparent;
+    }
   }
 }
