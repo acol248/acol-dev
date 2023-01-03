@@ -24,7 +24,7 @@ export default function Footer() {
           className={styles["footer__link"]}
           onClick={() => setOptionsOpen(true)}
         >
-          Privacy Options
+          User Options
         </button>
 
         <p className={styles["footer__copyright"]}>
@@ -33,12 +33,12 @@ export default function Footer() {
       </div>
 
       <Modal
-        className={styles["settings-modal"]}
+        className={styles["options-modal"]}
         open={optionsOpen}
         onClose={() => setOptionsOpen(false)}
-        title="Privacy Options"
+        title="User Options"
       >
-        <div className={styles["settings-modal__inner"]}>
+        <div className={styles["options-modal__inner"]}>
           <Toggle>Use System Theme</Toggle>
           <Toggle>Privacy Policy Accepted</Toggle>
         </div>
