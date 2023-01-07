@@ -46,8 +46,8 @@ export default function CookiesMessage({
       `${websiteName}_analytics-prompted`
     );
 
-    if (enabled && !cookiesAccepted && !analyticsAccepted) setPromptOpen(true);
-  }, [cookiesAccepted, enabled, websiteName, page]);
+    if (enabled && !cookiePrompted && !analyticsAccepted) setPromptOpen(true);
+  }, [cookiePrompted, enabled, websiteName, page]);
 
   // check if cookies have been accepted
   useEffect(() => {
@@ -70,7 +70,11 @@ export default function CookiesMessage({
   }, [className]);
 
   return (
-    <Modal open={promptOpen} className={classlist} noClose={true}>
+    <Modal
+      open={promptOpen && !cookiePrompted}
+      className={classlist}
+      noClose={true}
+    >
       <div className={styles["cookies-message__inner"]}>
         <h2 className={styles["cookies-message__title"]}>{title}</h2>
         <p
