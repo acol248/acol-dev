@@ -37,8 +37,22 @@ export default function App({ Component, pageProps }) {
    * Check theme onLoad
    */
   const checkTheme = () => {
+    const useSystemTheme = localStorage.getItem(
+      `${process.env.NEXT_PUBLIC_SITE_NAME}_use-system-theme`
+    );
     const theme = localStorage.getItem("theme");
     const payload = theme === null ? "dark" : theme;
+
+    if (useSystemTheme === "true" || theme === null) {
+      const getCurrentTheme = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+
+      document.body.classList.add(getCurrentTheme ? "dark" : "light");
+      document.body.classList.remove(getCurrentTheme ? "light" : "dark");
+
+      return setTheme(getCurrentTheme ? "dark" : "light");
+    }
 
     document.body.classList.add(payload === "dark" ? "dark" : "light");
     document.body.classList.remove(payload === "dark" ? "light" : "dark");
