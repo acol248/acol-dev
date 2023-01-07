@@ -6,10 +6,7 @@ import generateString from "../../helpers/generateString";
 // styles
 import styles from "./Toggle.module.scss";
 
-function Toggle(
-  { className, variant, children, checked, setChecked, ...props },
-  ref
-) {
+function Toggle({ className, variant, children, ...props }, ref) {
   const idRef = useRef(generateString(8));
 
   const [classlist, setClasslist] = useState("");
@@ -37,8 +34,6 @@ function Toggle(
           className={styles["toggle__switch-checkbox"]}
           type="checkbox"
           id={idRef.current}
-          value={checked ? checked : false}
-          onChange={(s) => setChecked(s)}
           ref={ref}
           {...props}
         />
