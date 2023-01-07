@@ -72,7 +72,7 @@ export default function Footer({ setTheme }) {
     );
 
     theme.checked = useSystemTheme === "true" ? true : false;
-    privacy.check = privacyAccepted === "true" ? true : false;
+    privacy.checked = privacyAccepted === "true" ? true : false;
 
     setSystemThemeToggle(useSystemTheme === "true" ? true : false);
     setPrivacyAcceptedToggle(privacyAccepted === "true" ? true : false);
