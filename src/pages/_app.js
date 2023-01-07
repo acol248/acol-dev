@@ -94,7 +94,7 @@ export default function App({ Component, pageProps }) {
           message={`We need to ask your permission to use cookies for usage analytics. To find out more about data that would be collected and how it is handled, click <a href='/privacy-policy' target='_blank'><u>here</u></a> or go to acol.dev/privacy-policy.`}
           websiteName="acol-dev"
         />
-        <Footer />
+        <Footer setTheme={() => checkTheme()} />
       </div>
     </AnalyticsContext.Provider>
   );
