@@ -20,21 +20,15 @@ export default function useAnalytics({ siteName, id, enabled }) {
    * Accept cookies
    */
   const acceptAnalytics = useCallback(
-    (state, type) => {
+    (state) => {
       if (!enabled) return;
 
-      localStorage.setItem(`${siteName}_analytics-prompted`, true);
+      localStorage.setItem(`${siteName}_privacy-prompted`, true);
 
       if (!state) return;
 
       setIsAccepted(state);
-      localStorage.setItem(`${siteName}_analytics-accepted`, state);
-
-      if (type === "basic")
-        localStorage.setItem(`${siteName}_analytics-basic`, state);
-
-      if (type === "enhanced")
-        localStorage.setItem(`${siteName}_analytics-enhanced`, state);
+      localStorage.setItem(`${siteName}_privacy-accepted`, state);
     },
     [enabled, siteName]
   );
@@ -86,9 +80,7 @@ export default function useAnalytics({ siteName, id, enabled }) {
 
   // set accepted if previously accepted
   useEffect(() => {
-    const accepted = localStorage.getItem(`${siteName}_analytics-accepted`);
-    const basic = localStorage.getItem(`${siteName}_analytics-basic`);
-    const enhanced = localStorage.getItem(`${siteName}_analytics-enhanced`);
+    const accepted = localStorage.getItem(`${siteName}_privacy-accepted`);
 
     if (accepted !== "true") return;
 

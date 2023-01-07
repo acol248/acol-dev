@@ -52,7 +52,7 @@ export default function CookiesMessage({
   // check if cookies have been accepted
   useEffect(() => {
     const analyticsAccepted = localStorage.getItem(
-      `${websiteName}_analytics-accepted`
+      `${websiteName}_privacy-accepted`
     );
 
     setCookiePrompted(analyticsAccepted === null ? false : true);
