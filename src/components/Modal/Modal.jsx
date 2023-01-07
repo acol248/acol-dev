@@ -14,6 +14,7 @@ export default function Modal({
   onTransitionEnd,
   locked,
   title,
+  noClose,
   ...props
 }) {
   const modalRef = useRef(null);
@@ -54,6 +55,15 @@ export default function Modal({
     };
   }, [className, open, onClose, onTransitionEnd]);
 
+  // set inert on open
+  useEffect(() => {
+    const nextApp = document.getElementById("__next");
+    if (!nextApp) return;
+
+    nextApp.inert = open;
+    document.body.style.overflow = open ? "hidden" : "unset";
+  }, [active, open]);
+
   return open || active
     ? createPortal(
         <div className={classlist} ref={modalRef}>
@@ -64,11 +74,13 @@ export default function Modal({
           <div className={styles["modal__content"]}>
             <div className={styles["modal__header"]}>
               {title && <h2 className={styles["modal__title"]}>{title}</h2>}
-              <button className={styles["modal__close"]} onClick={onClose}>
-                <Icon type="close" />
-              </button>
+              {!noClose && (
+                <button className={styles["modal__close"]} onClick={onClose}>
+                  <Icon type="close" />
+                </button>
+              )}
             </div>
-            {children}
+            <div className={styles["modal__body"]}>{children}</div>
           </div>
         </div>,
         document.body

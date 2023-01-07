@@ -1,21 +1,29 @@
 import { useState, useEffect, useContext } from "react";
 
-// Hooks
-import { ConfigContext } from "../../Hooks/useConfig";
-import { CookieContext } from "../../Hooks/useCookies";
+// components
+import Modal from "../Modal";
+
+// hooks
+import { AnalyticsContext } from "../../hooks/useAnalytics";
 
 // Styles
-import "./CookiesMessage.scss";
+import styles from "./CookiesMessage.module.scss";
+import Button from "../../interface/button";
 
 export default function CookiesMessage({
   className,
+  page,
   title,
   message,
+  websiteName,
   ...props
 }) {
-  const { getWebsiteName } = useContext(ConfigContext);
-  const { checkCookie, setCookie } = useContext(CookieContext);
+  const { enabled, acceptAnalytics } = useContext(AnalyticsContext);
+
   const [classlist, setClasslist] = useState("");
+
+  const [promptOpen, setPromptOpen] = useState(false);
+  const [cookiePrompted, setCookiePrompted] = useState(false);
   const [cookiesAccepted, setCookiesAccepted] = useState(false);
 
   /**
@@ -24,30 +32,36 @@ export default function CookiesMessage({
    * @param {array} cookies array of objects with cookie name, value, and time its valid for
    * @returns returns if no cookies need adding/changing
    */
-  const cookieResponse = (cookies) => {
-    const websiteName = getWebsiteName();
+  const cookieResponse = (state, response) => {
+    acceptAnalytics(state, response);
 
-    for (const cookie of cookies) {
-      if (checkCookie(`${websiteName}_${cookie.type}-cookies`)) return;
-
-      setCookie(`${websiteName}_${cookie.type}-cookies`, cookie.resp, 365);
-    }
-
-    setCookie(`${websiteName}_cookies-menu-accepted`, true, 365);
-    setCookiesAccepted(true);
+    setPromptOpen(false);
   };
+
+  // if enabled, set open
+  useEffect(() => {
+    if (page === "error" || page === "privacypolicy") return;
+
+    const analyticsAccepted = localStorage.getItem(
+      `${websiteName}_analytics-prompted`
+    );
+
+    if (enabled && !cookiesAccepted && !analyticsAccepted) setPromptOpen(true);
+  }, [cookiesAccepted, enabled, websiteName, page]);
 
   // check if cookies have been accepted
   useEffect(() => {
-    const websiteName = getWebsiteName();
-    const state = checkCookie(`${websiteName}_cookies-menu-accepted`);
+    const analyticsAccepted = localStorage.getItem(
+      `${websiteName}_privacy-accepted`
+    );
 
-    setCookiesAccepted(state);
-  }, [checkCookie, getWebsiteName]);
+    setCookiePrompted(analyticsAccepted === null ? false : true);
+    setCookiesAccepted(analyticsAccepted);
+  }, [websiteName]);
 
   // classlist
   useEffect(() => {
-    const _classlist = ["cookies-message"];
+    const _classlist = [styles["cookies-message"]];
 
     if (className)
       for (const item of className.split(" ")) _classlist.push(item);
@@ -56,35 +70,30 @@ export default function CookiesMessage({
   }, [className]);
 
   return (
-    !cookiesAccepted && (
-      <div className={classlist}>
-        <h2 className="cookies-message__title">{title}</h2>
-        <p className="cookies-message__text">{message}</p>
-        <div className="cookies-message__button-container">
-          <button
-            className="cookies-message__button"
-            onClick={() =>
-              cookieResponse([
-                { type: "advanced", resp: true, time: 365 },
-                { type: "basic", resp: true, time: 365 },
-              ])
-            }
+    <Modal open={promptOpen} className={classlist} noClose={true}>
+      <div className={styles["cookies-message__inner"]}>
+        <h2 className={styles["cookies-message__title"]}>{title}</h2>
+        <p
+          className={styles["cookies-message__text"]}
+          dangerouslySetInnerHTML={{ __html: message }}
+        ></p>
+        <div className={styles["cookies-message__button-container"]}>
+          <Button
+            className={styles["cookies-message__button"]}
+            variant="secondary"
+            onClick={() => cookieResponse(false)}
           >
-            Accept all
-          </button>
-          <button
-            className="cookies-message__button"
-            onClick={() =>
-              cookieResponse([
-                { type: "advanced", resp: false, time: 365 },
-                { type: "basic", resp: true, time: 365 },
-              ])
-            }
+            Deny
+          </Button>
+
+          <Button
+            className={styles["cookies-message__button"]}
+            onClick={() => cookieResponse(true, "basic")}
           >
-            Accept basic
-          </button>
+            Accept
+          </Button>
         </div>
       </div>
-    )
+    </Modal>
   );
 }

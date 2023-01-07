@@ -38,7 +38,7 @@ export default function Card({
     <div
       className={classlist}
       style={{ backgroundImage: `url(${headerImage})` }}
-      ariaLabel="card"
+      aria-label="card"
     >
       <div className={styles["card__inner"]}>
         <h2 className={styles["card__title"]}>{title}</h2>

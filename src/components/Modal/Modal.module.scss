@@ -1,5 +1,5 @@
 .modal {
-  position: absolute;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,6 +29,10 @@
     background-color: var(--modal-background-color);
     max-width: 95%;
 
+    @media screen and (min-width: 992px) {
+      max-width: 768px;
+    }
+
     transition-duration: 150ms;
     transition-property: opacity, transform;
     transition-timing-function: ease-in-out;
@@ -41,12 +45,13 @@
       align-items: center;
 
       & .modal__title {
-        align-self: flex-start;
         font-size: 1.25rem;
         font-weight: bold;
-        color: var(--color-common-black);
+        color: var(--text-color);
+        width: 100%;
         margin: 0;
         padding: 0;
+        line-height: 1.2;
       }
 
       & .modal__close {
@@ -65,6 +70,10 @@
           fill: var(--text-color);
         }
       }
+    }
+
+    & .modal__body {
+      margin: 1rem 0 0 0;
     }
   }
 
