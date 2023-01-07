@@ -1,6 +1,12 @@
 import Head from "next/head";
+<<<<<<< HEAD
 import { useEffect, useState, useRef } from "react";
 import CookiesMessage from "../components/CookiesMessage/CookiesMessage";
+=======
+import { useEffect, useState } from "react";
+
+// components
+>>>>>>> 6f5c73b841912eb21758f3fd996a73b5cc3e820b
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import PageLoader from "../components/PageLoader";
@@ -26,6 +32,11 @@ export default function App({ Component, pageProps }) {
 
   const [theme, setTheme] = useState(false);
 
+  /**
+   * Toggle theme on user select
+   * 
+   * @param {object} e event object
+   */
   const toggleTheme = (e) => {
     localStorage.setItem("theme", e);
     document.body.classList.add(e === "dark" ? "dark" : "light");
