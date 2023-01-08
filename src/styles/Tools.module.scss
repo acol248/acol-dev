@@ -1,0 +1,118 @@
+.tools {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 4rem 0;
+
+  & .tools__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 768px;
+    width: 100%;
+
+    & .tools__header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+      margin: 2rem 0 0;
+
+      & .tools__title {
+        font-size: 2.75rem;
+        line-height: 1.2;
+        margin: 0.25rem 0;
+        padding: 0;
+
+        transition-property: color;
+        transition-duration: var(--duration-normal);
+
+        @media screen and (min-width: 992px) {
+          margin: 0.5rem 0;
+          font-size: 6rem;
+        }
+      }
+
+      @media screen and (min-width: 992px) {
+        margin: 4rem 0 0;
+      }
+    }
+
+    & .tools__body {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 1rem;
+      background-color: var(--content-background-color);
+      box-shadow: 0px 8px 10px -2px rgba(0, 0, 0, 0.1);
+
+      transition-property: background-color;
+      transition-duration: var(--duration-normal);
+
+      & .tools__body-text {
+        color: var(--text-color-inverted);
+        margin: 0;
+      }
+
+      & .tools__button-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 0.5rem;
+
+        & .tools__button {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.6rem;
+          background-color: var(--button-color);
+          border: 0;
+          border-radius: 4px;
+          cursor: pointer;
+
+          transition-property: color;
+          transition-duration: var(--duration-normal);
+
+          & .tools__content {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0 0.5rem 0 0;
+
+            & svg {
+              width: 2rem;
+              height: 2rem;
+              fill: var(--button-color-inverted);
+              opacity: 0.8;
+            }
+
+            & span {
+              font-size: 1rem;
+              color: var(--button-color-inverted);
+              text-align: center;
+              opacity: 0.8;
+            }
+          }
+
+          &:hover {
+            & svg {
+              opacity: 1;
+            }
+
+            & span {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
