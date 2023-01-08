@@ -91,24 +91,24 @@
               width: 2rem;
               height: 2rem;
               fill: var(--button-color-inverted);
-              opacity: 0.8;
+              opacity: 1;
             }
 
             & span {
               font-size: 1rem;
               color: var(--button-color-inverted);
               text-align: center;
-              opacity: 0.8;
+              opacity: 1;
             }
           }
 
           &:hover {
             & svg {
-              opacity: 1;
+              opacity: 0.8;
             }
 
             & span {
-              opacity: 1;
+              opacity: 0.8;
             }
           }
         }
