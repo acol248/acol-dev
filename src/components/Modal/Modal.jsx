@@ -22,6 +22,8 @@ export default function Modal({
   const [classlist, setClasslist] = useState([]);
   const [active, setActive] = useState(false);
 
+  const [isDesktop, setIsDesktop] = useState(null);
+
   // classlist and variant
   useEffect(() => {
     const _classlist = [styles["modal"]];
@@ -62,7 +64,25 @@ export default function Modal({
 
     nextApp.inert = open;
     document.body.style.overflow = open ? "hidden" : "unset";
-  }, [active, open]);
+    document.body.style.paddingRight = open && isDesktop ? "8px" : "0";
+  }, [active, open, isDesktop]);
+
+  // update query
+  useEffect(() => {
+    if (!window) return;
+
+    const handleUpdateQuery = () => {
+      setIsDesktop(window.matchMedia("(min-width: 768px)").matches);
+
+      console.log(window.matchMedia("(min-width: 768px)").matches);
+    };
+
+    window.addEventListener("resize", handleUpdateQuery);
+
+    handleUpdateQuery();
+
+    return () => window.removeEventListener("resize", handleUpdateQuery);
+  }, []);
 
   return open || active
     ? createPortal(
