@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 0.25rem;
   margin: 0;
   padding: 0.45rem;
   background-color: var(--color-primary-main);
@@ -13,7 +14,7 @@
   cursor: pointer;
 
   & svg {
-    height: 100%;
+    height: 1.8rem;
     width: auto;
     fill: currentColor;
   }
@@ -21,6 +22,7 @@
   & span {
     background-color: transparent;
     color: currentColor;
+    margin: 0 0.25rem;
   }
 
   &:hover {
@@ -54,6 +56,28 @@
       & span {
         color: var(--text-color);
       }
+    }
+  }
+
+  &--tertiary {
+    border: 0;
+    background-color: transparent;
+    color: var(--text-color);
+
+    & span {
+      color: var(--text-color);
+    }
+
+    &.button--inverted {
+      color: var(--text-color-inverted);
+
+      & span {
+        color: var(--text-color-inverted);
+      }
+    }
+
+    &:hover {
+      background-color: transparent;
     }
   }
 
