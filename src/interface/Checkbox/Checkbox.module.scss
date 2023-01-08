@@ -1,0 +1,11 @@
+.checkbox {
+  & span {
+    color: var(--text-color);
+  }
+
+  &--inverted {
+    & span {
+      color: var(--text-color-inverted);
+    }
+  }
+}

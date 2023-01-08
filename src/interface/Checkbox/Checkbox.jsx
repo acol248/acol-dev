@@ -1,30 +1,33 @@
-import { useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 
 import styles from "./Checkbox.module.scss";
 
-export default function Checkbox({
-  className,
-  onClick,
-  icon,
-  children,
-  ...props
-}) {
+function Checkbox(
+  { className, variant, onClick, icon, children, ...props },
+  ref
+) {
   const [classlist, setClasslist] = useState([]);
 
   // classlist
   useEffect(() => {
-    const _classlist = [styles["button"]];
+    const _classlist = [styles["checkbox"]];
 
     if (className)
       for (const item of className.split(" ")) _classlist.push(item);
 
+    if (variant)
+      for (const item of variant.split(" "))
+        _classlist.push(styles[`checkbox--${item}`]);
+
     setClasslist(_classlist.join(" "));
-  }, [className]);
+  }, [className, variant]);
 
   return (
     <label className={classlist}>
-      <input {...props} type="checkbox" />
+      <input {...props} type="checkbox" ref={ref ? ref : null} />
       <span>{children}</span>
     </label>
   );
 }
+
+export default forwardRef(Checkbox);
