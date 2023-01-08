@@ -73,8 +73,6 @@ export default function Modal({
 
     const handleUpdateQuery = () => {
       setIsDesktop(window.matchMedia("(min-width: 768px)").matches);
-
-      console.log(window.matchMedia("(min-width: 768px)").matches);
     };
 
     window.addEventListener("resize", handleUpdateQuery);
