@@ -24,6 +24,9 @@ body.light {
   --text-color: var(--color-common-black);
   --text-color-inverted: var(--color-common-white);
 
+  --button-color: var(--color-grey-400);
+  --button-color-inverted: var(--color-grey-1000);
+
   --background-color: var(--color-common-white);
   --background-color-inverted: var(--color-common-black);
 
@@ -39,6 +42,9 @@ body.dark {
 
   --text-color: var(--color-common-white);
   --text-color-inverted: var(--color-common-black);
+
+  --button-color: var(--color-grey-1000);
+  --button-color-inverted: var(--color-grey-200);
 
   --background-color: var(--color-common-black);
   --background-color-inverted: var(--color-common-white);
