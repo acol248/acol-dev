@@ -1,5 +1,9 @@
-// styles
 import { forwardRef, useState, useEffect } from "react";
+
+// components
+import Icon from "./Select.icon";
+
+// styles
 import styles from "./Select.module.scss";
 
 function Select({ className, variant, items, selectedPayload }, ref) {
@@ -40,7 +44,8 @@ function Select({ className, variant, items, selectedPayload }, ref) {
         className={styles["select__persistent"]}
         onClick={() => setSelectedOpen((s) => !s)}
       >
-        {Number.isInteger(selected) ? items[selected]?.text : "-"}
+        <span>{Number.isInteger(selected) ? items[selected]?.text : "-"}</span>
+        <Icon type="expand" />
       </button>
 
       <div className={styles["select__dropdown"]}>
