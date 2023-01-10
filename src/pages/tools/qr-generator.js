@@ -140,7 +140,7 @@ export default function QRGenerator() {
           <div className={styles["qr-generator__content-inner"]}>
             <p className={styles["qr-generator__content-description"]}>
               Fill out the below fields to customise your QR code. Watch it
-              change as you change the configuration.
+              change as you update the configuration.
             </p>
 
             <div className={styles["qr-generator__qr"]}>
