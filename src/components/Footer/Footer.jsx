@@ -38,8 +38,6 @@ export default function Footer({ setTheme }) {
       `${process.env.NEXT_PUBLIC_SITE_NAME}_use-system-theme`,
       systemThemeToggle
     );
-
-    setTheme();
   }, [systemThemeToggle, setTheme]);
 
   // handle 'privacy accepted' change
