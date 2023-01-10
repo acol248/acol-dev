@@ -82,11 +82,11 @@
   }
 
   &--hold-dark {
-    border-color: var(--color-grey-1000);
-    color: var(--color-grey-1000);
+    border-color: var(--color-grey-1100);
+    color: var(--color-grey-1100);
 
     &:hover {
-      background-color: var(--color-grey-1000);
+      background-color: var(--color-grey-1100);
 
       & span {
         color: var(--color-grey-100);

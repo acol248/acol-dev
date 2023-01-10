@@ -36,7 +36,7 @@
     & svg {
       width: 2rem;
       height: 2rem;
-      fill: var(--text-color);
+      fill: var(--title-color);
     }
   }
 
@@ -46,6 +46,7 @@
     align-items: center;
     color: currentColor;
     height: 100%;
+    color: var(--title-color);
 
     & a {
       display: flex;
@@ -87,7 +88,7 @@
       height: 1.6rem;
       width: 1px;
       margin: 0 0.5rem;
-      background-color: var(--text-color);
+      background-color: var(--title-color);
       opacity: 0.5;
     }
 
@@ -96,12 +97,12 @@
       justify-content: center;
       align-items: center;
       padding: 0 0.5rem;
-      color: var(--text-color);
+      color: var(--title-color);
 
       & svg {
         width: 1.4rem;
         height: 1.4rem;
-        fill: var(--text-color);
+        fill: var(--title-color);
         opacity: 0.65;
 
         transition-property: opacity;
@@ -125,7 +126,7 @@
       margin: 0;
       padding: 0 0.5rem;
       cursor: pointer;
-      color: var(--text-color);
+      color: var(--title-color);
 
       & svg {
         fill: currentColor;
@@ -160,7 +161,7 @@
     display: flex;
     flex-direction: column;
     margin: 1.5rem 0 0 0;
-    color: var(--text-color);
+    color: var(--title-color);
 
     & .nav-menu__item {
       padding: 0.5rem 1rem;

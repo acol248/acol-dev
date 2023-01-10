@@ -28,6 +28,7 @@
         line-height: 1.2;
         margin: 0.25rem 0;
         padding: 0;
+        color: var(--title-color);
 
         transition-property: color;
         transition-duration: var(--duration-normal);
@@ -57,7 +58,7 @@
       transition-duration: var(--duration-normal);
 
       & .tools__body-text {
-        color: var(--text-color-inverted);
+        color: var(--color-common-black);
         margin: 0;
       }
 
@@ -73,7 +74,7 @@
           justify-content: space-between;
           align-items: center;
           padding: 0.6rem;
-          background-color: var(--button-color);
+          background-color: var(--color-grey-1000);
           border: 0;
           border-radius: 4px;
           cursor: pointer;
@@ -90,13 +91,13 @@
             & svg {
               width: 2rem;
               height: 2rem;
-              fill: var(--button-color-inverted);
+              fill: var(--color-common-white);
               opacity: 1;
             }
 
             & span {
               font-size: 1rem;
-              color: var(--button-color-inverted);
+              color: var(--color-common-white);
               text-align: center;
               opacity: 1;
             }

@@ -27,6 +27,7 @@
         line-height: 1.2;
         margin: 0.25rem 0;
         padding: 0;
+        color: var(--title-color);
 
         transition-property: color;
         transition-duration: var(--duration-normal);
@@ -73,7 +74,7 @@
 
         & .qr-generator__content-description {
           font-size: 1rem;
-          color: var(--text-color-inverted);
+          color: var(--text-color);
           margin: 0.25rem 0 0.8rem 0;
         }
 
