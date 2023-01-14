@@ -1,11 +1,17 @@
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef, useEffect, useState, useRef } from "react";
 
+// helpers
+import generateString from "../../helpers/generateString";
+
+// styles
 import styles from "./Checkbox.module.scss";
 
 function Checkbox(
   { className, variant, onClick, icon, children, ...props },
   ref
 ) {
+  const idRef = useRef(generateString(8));
+
   const [classlist, setClasslist] = useState([]);
 
   // classlist
@@ -23,9 +29,15 @@ function Checkbox(
   }, [className, variant]);
 
   return (
-    <label className={classlist}>
-      <input {...props} type="checkbox" ref={ref ? ref : null} />
-      <span>{children}</span>
+    <label className={classlist} htmlFor={idRef.current}>
+      <span className={styles["checkbox__label"]}>{children}</span>
+      <input
+        type="checkbox"
+        id={idRef.current}
+        ref={ref ? ref : null}
+        {...props}
+      />
+      <span className={styles["checkbox__checkmark"]}></span>
     </label>
   );
 }
