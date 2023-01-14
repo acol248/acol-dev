@@ -67,7 +67,9 @@
         border-radius: 8px;
         padding: 2rem;
         background-color: var(--content-background-color);
-        box-shadow: 0px 8px 10px -2px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+          0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+          0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
 
         transition-property: background-color;
         transition-duration: var(--duration-normal);
@@ -109,8 +111,8 @@
 
           & .qr-generator__qr-container {
             & .qr-generator__container-inner {
-              padding: 1rem;
-              border-radius: 4px;
+              padding: 1.5rem;
+              border-radius: 8px;
             }
           }
         }

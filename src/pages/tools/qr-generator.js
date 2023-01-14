@@ -181,7 +181,7 @@ export default function QRGenerator() {
                     onChange={({ target }) =>
                       setBackgroundColorValue(target.value)
                     }
-                    placeholder="e.g. #212121"
+                    placeholder="e.g. #FFFFFF"
                   >
                     Background Color
                   </Input>
@@ -210,7 +210,7 @@ export default function QRGenerator() {
                   }}
                 >
                   <QRCode
-                    size={320}
+                    size={296}
                     bgColor={
                       backgroundColorValue ? backgroundColorValue : "#ffffff"
                     }
@@ -219,7 +219,7 @@ export default function QRGenerator() {
                     }
                     style={{ height: "auto", maxWidth: "100%", width: "100%" }}
                     value={qrValue ? qrValue : "https://acol.dev"}
-                    viewBox={`0 0 320 320`}
+                    viewBox={`0 0 296 296`}
                   />
                 </div>
               </div>
