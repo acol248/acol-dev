@@ -33,7 +33,7 @@ body.light {
   --background-color: var(--color-common-white);
   --background-color-inverted: var(--color-common-black);
 
-  --content-background-color: var(--color-grey-400);
+  --content-background-color: var(--color-grey-200);
 
   --modal-background-color: var(--color-grey-300);
   --footer-popup-background-color: var(--color-grey-900);
