@@ -1,0 +1,48 @@
+.layout-manager {
+  display: block;
+  background-color: var(--background-color);
+
+  &--light {
+    --scrollbar-thumb: var(--color-grey-800);
+    --scrollbar-track: var(--color-grey-500);
+
+    --title-color: var(--color-common-black);
+    --title-color-inverted: var(--color-common-white);
+
+    --text-color: var(--color-common-black);
+    --text-color-inverted: var(--color-common-white);
+
+    --button-color: var(--color-grey-400);
+    --button-color-inverted: var(--color-grey-1100);
+
+    --background-color: var(--color-common-white);
+    --background-color-inverted: var(--color-common-black);
+
+    --content-background-color: var(--color-grey-300);
+
+    --modal-background-color: var(--color-grey-300);
+    --footer-popup-background-color: var(--color-grey-900);
+  }
+
+  &--dark {
+    --scrollbar-thumb: var(--color-grey-800);
+    --scrollbar-track: var(--color-grey-500);
+
+    --title-color: var(--color-common-white);
+    --title-color-inverted: var(--color-common-black);
+
+    --text-color: var(--color-common-white);
+    --text-color-inverted: var(--color-common-black);
+
+    --button-color: var(--color-grey-1100);
+    --button-color-inverted: var(--color-grey-200);
+
+    --background-color: var(--color-common-black);
+    --background-color-inverted: var(--color-common-white);
+
+    --content-background-color: var(--color-grey-1100);
+
+    --modal-background-color: var(--color-grey-1000);
+    --footer-popup-background-color: var(--color-grey-400);
+  }
+}

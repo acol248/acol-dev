@@ -1,5 +1,10 @@
+/* FONTS */
+@import "../fonts/Raleway/font.css";
+@import "../fonts/Inter/font.css";
+@import "../fonts/Poppins/font.css";
+
+/* VARIABLES */
 @import "variables.css";
-@import "../fonts/poppins/fonts.css";
 
 * {
   box-sizing: border-box;
@@ -9,7 +14,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Raleway;
+  font-family: Poppins;
 }
 
 a {
@@ -17,71 +22,14 @@ a {
   text-decoration: none;
 }
 
-body.light {
-  --scrollbar-thumb: var(--color-grey-800);
-  --scrollbar-track: var(--color-grey-500);
-
-  --title-color: var(--color-common-black);
-  --title-color-inverted: var(--color-common-white);
-
-  --text-color: var(--color-common-black);
-  --text-color-inverted: var(--color-common-white);
-
-  --button-color: var(--color-grey-400);
-  --button-color-inverted: var(--color-grey-1100);
-
-  --background-color: var(--color-common-white);
-  --background-color-inverted: var(--color-common-black);
-
-  --content-background-color: var(--color-grey-200);
-
-  --modal-background-color: var(--color-grey-300);
-  --footer-popup-background-color: var(--color-grey-900);
-}
-
-body.dark {
-  --scrollbar-thumb: var(--color-grey-800);
-  --scrollbar-track: var(--color-grey-500);
-
-  --title-color: var(--color-common-white);
-  --title-color-inverted: var(--color-common-black);
-
-  --text-color: var(--color-common-black);
-  --text-color-inverted: var(--color-common-white);
-
-  --button-color: var(--color-grey-1100);
-  --button-color-inverted: var(--color-grey-200);
-
-  --background-color: var(--color-common-black);
-  --background-color-inverted: var(--color-common-white);
-
-  --content-background-color: var(--color-grey-200);
-
-  --modal-background-color: var(--color-grey-200);
-  --footer-popup-background-color: var(--color-grey-400);
-}
-
-body {
-  background-color: var(--background-color);
-}
-
-.theme {
-  background-color: var(--background-color);
-  color: var(--text-color);
-
-  transition-property: background-color, color;
-  transition-duration: var(--duration-normal);
-  transition-timing-function: ease-in-out;
-}
-
 *::-webkit-scrollbar {
   width: 8px;
 }
 
 *::-webkit-scrollbar-track {
-  background-color: var(--scrollbar-track);
+  background-color: #bdbdbd;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--scrollbar-thumb);
+  background-color: #616161;
 }

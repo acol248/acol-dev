@@ -14,10 +14,6 @@
   z-index: 2000;
   background-color: var(--background-color);
 
-  transition-property: background-color;
-  transition-duration: 150ms;
-  transition-timing-function: ease-in-out;
-
   @media screen and (min-width: 992px) {
     padding: 2.25rem 2rem 2.25rem 1.75rem;
     width: 100%;

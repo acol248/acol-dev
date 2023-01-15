@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Link from "next/link";
 import Router from "next/router";
+
+// hooks
+import { ThemeContext } from "../../hooks/useTheme";
 
 // components
 import Button from "../../interface/button";
@@ -11,7 +14,9 @@ import styles from "./Navbar.module.scss";
 import Icon from "./Navbar.icons";
 import { useEffect } from "react";
 
-export default function Navbar({ items, theme, themeChange, ...props }) {
+export default function Navbar({ items, ...props }) {
+  const { toggleTheme, theme } = useContext(ThemeContext);
+
   const [isMobile, setIsMobile] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
@@ -19,7 +24,7 @@ export default function Navbar({ items, theme, themeChange, ...props }) {
    * Handles theme toggle
    */
   const handleThemeToggle = () => {
-    themeChange(theme === "dark" ? "light" : "dark");
+    toggleTheme();
   };
 
   // auto-close mobile nav on route change

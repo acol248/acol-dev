@@ -26,10 +26,6 @@
       opacity: 0.5;
       filter: drop-shadow(0 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
 
-      transition-property: opacity, z-index;
-      transition-duration: 400ms;
-      transition-timing-function: ease-in-out;
-
       @media screen and (min-width: 768px) {
         transform: translateX(6.5rem);
         max-width: 18rem;
