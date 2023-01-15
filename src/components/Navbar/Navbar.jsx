@@ -6,7 +6,6 @@ import Router from "next/router";
 import { ThemeContext } from "../../hooks/useTheme";
 
 // components
-import Button from "../../interface/button";
 import Modal from "../Modal";
 
 // styles

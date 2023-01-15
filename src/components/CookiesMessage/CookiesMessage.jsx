@@ -8,7 +8,7 @@ import { AnalyticsContext } from "../../hooks/useAnalytics";
 
 // Styles
 import styles from "./CookiesMessage.module.scss";
-import Button from "../../interface/button";
+import Button from "../../interface/Button";
 
 export default function CookiesMessage({
   className,

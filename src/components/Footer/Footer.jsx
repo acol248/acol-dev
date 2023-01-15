@@ -6,7 +6,7 @@ import { ThemeContext } from "../../hooks/useTheme";
 
 // components
 import Modal from "../Modal";
-import Toggle from "../../interface/toggle/Toggle";
+import Toggle from "../../interface/Toggle";
 
 // styles
 import styles from "./Footer.module.scss";
