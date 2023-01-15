@@ -57,7 +57,7 @@ function Input(
   return (
     <label className={classlist}>
       {icon && icon} <span className={styles["input__label"]}>{children}</span>
-      <input className={styles["input__input"]} ref={ref} {...props} />
+      <input className={styles["input__input"]} ref={ref ? ref : null} {...props} />
     </label>
   );
 }
