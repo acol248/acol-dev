@@ -26,6 +26,11 @@ export default function App({ Component, pageProps }) {
 
   const [theme, setTheme] = useState(false);
 
+  /**
+   * Toggle theme on user select
+   *
+   * @param {object} e event object
+   */
   const toggleTheme = (e) => {
     localStorage.setItem("theme", e);
     document.body.classList.add(e === "dark" ? "dark" : "light");
@@ -78,13 +83,16 @@ export default function App({ Component, pageProps }) {
         </Head>
 
         <PageLoader isLoading={!theme} />
-        
+
         <Navbar
-          items={[{ name: "Home", type: "internal", href: "/" }]}
+          items={[
+            { name: "Home", type: "internal", href: "/" },
+            { name: "Tools", type: "internal", href: "/tools" },
+          ]}
           theme={theme}
           themeChange={toggleTheme}
         />
-        
+
         <Component {...pageProps} />
 
         <CookiesMessage
@@ -93,7 +101,7 @@ export default function App({ Component, pageProps }) {
           message={`We need to ask your permission to use cookies for usage analytics. To find out more about data that would be collected and how it is handled, click <a href='/privacy-policy' target='_blank'><u>here</u></a> or go to acol.dev/privacy-policy.`}
           websiteName="acol-dev"
         />
-        
+
         <Footer setTheme={() => checkTheme()} />
       </div>
     </AnalyticsContext.Provider>

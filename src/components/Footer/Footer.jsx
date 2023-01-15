@@ -77,7 +77,7 @@ export default function Footer({ setTheme }) {
   }, [optionsOpen]);
 
   return (
-    <footer className={styles.footer}>
+    <footer className={styles['footer']}>
       <div className={styles["footer__title-box"]}>
         <p className={styles["footer__site-title"]}>acol.dev</p>
 

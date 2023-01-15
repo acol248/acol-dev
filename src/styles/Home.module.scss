@@ -56,6 +56,7 @@
       filter: drop-shadow(0 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
       z-index: 50;
       pointer-events: none;
+      color: var(--title-color);
 
       & span {
         background: linear-gradient(
