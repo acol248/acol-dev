@@ -44,16 +44,19 @@ export default function Modal({
 
   // TransitionEnd detection
   useEffect(() => {
-    const { current: e } = modalRef;
+    const { current: modal } = modalRef;
 
     const transitionEnd = () => {
-      if (!open) setActive(false);
+      if (!open) {
+        setActive(false);
+        if (onTransitionEnd) onTransitionEnd();
+      }
     };
 
-    if (e) e.addEventListener("transitionend", transitionEnd);
+    if (modal) modal.addEventListener("transitionend", transitionEnd);
 
     return () => {
-      if (e) e.removeEventListener("transitionend", transitionEnd);
+      if (modal) modal.removeEventListener("transitionend", transitionEnd);
     };
   }, [className, open, onClose, onTransitionEnd]);
 
