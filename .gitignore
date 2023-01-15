@@ -26,6 +26,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
+.env
 .env*.local
 .env*.production
 
@@ -34,3 +35,7 @@ yarn-error.log*
 
 # docker
 /dockerData
+
+# keys
+*.key
+*.csr
