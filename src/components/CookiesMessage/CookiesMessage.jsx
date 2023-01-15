@@ -74,9 +74,9 @@ export default function CookiesMessage({
       open={promptOpen && !cookiePrompted}
       className={classlist}
       noClose={true}
+      title={title}
     >
       <div className={styles["cookies-message__inner"]}>
-        <h2 className={styles["cookies-message__title"]}>{title}</h2>
         <p
           className={styles["cookies-message__text"]}
           dangerouslySetInnerHTML={{ __html: message }}

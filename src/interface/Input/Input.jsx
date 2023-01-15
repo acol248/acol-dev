@@ -1,16 +1,22 @@
-import { forwardRef, useEffect, useState } from "react";
+import { forwardRef, useContext, useEffect, useLayoutEffect, useState } from "react";
 
+// hooks
+import { ThemeContext } from "../../hooks/useTheme";
+
+// styles
 import styles from "./Input.module.scss";
 
 function Input(
   { className, variant, icon, children, defaultValue, ...props },
   ref
 ) {
+  const { theme } = useContext(ThemeContext);
+
   const [classlist, setClasslist] = useState([]);
   const [focusActive, setFocusActive] = useState(false);
 
   // classlist and variant
-  useEffect(() => {
+  useLayoutEffect(() => {
     const _classlist = [styles["input"]];
 
     if (className)
@@ -22,8 +28,10 @@ function Input(
 
     if (focusActive) _classlist.push(styles["input--focus"]);
 
+    _classlist.push(styles[`input--${theme}`]);
+
     setClasslist(_classlist.join(" "));
-  }, [className, variant, focusActive]);
+  }, [className, variant, focusActive, theme]);
 
   // handle focus detection
   useEffect(() => {
@@ -57,7 +65,11 @@ function Input(
   return (
     <label className={classlist}>
       {icon && icon} <span className={styles["input__label"]}>{children}</span>
-      <input className={styles["input__input"]} ref={ref ? ref : null} {...props} />
+      <input
+        className={styles["input__input"]}
+        ref={ref ? ref : null}
+        {...props}
+      />
     </label>
   );
 }

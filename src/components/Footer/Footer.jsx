@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+
+// hooks
+import { ThemeContext } from "../../hooks/useTheme";
 
 // components
 import Modal from "../Modal";
@@ -9,12 +12,13 @@ import Toggle from "../../interface/toggle/Toggle";
 import styles from "./Footer.module.scss";
 
 export default function Footer({ setTheme }) {
+  const { toggleSystemTheme, useSystemTheme } = useContext(ThemeContext);
+
   const useSystemThemeRef = useRef(null);
   const privacyPolicyAcceptedRef = useRef(null);
 
   const [optionsOpen, setOptionsOpen] = useState(false);
 
-  const [systemThemeToggle, setSystemThemeToggle] = useState(null);
   const [privacyAcceptedToggle, setPrivacyAcceptedToggle] = useState(null);
 
   /**
@@ -23,22 +27,8 @@ export default function Footer({ setTheme }) {
   const handleOptionsClose = () => {
     setOptionsOpen(false);
 
-    setSystemThemeToggle(null);
     setPrivacyAcceptedToggle(null);
   };
-
-  // handle 'use system theme' change
-  useEffect(() => {
-    if (systemThemeToggle === null) return;
-
-    localStorage.removeItem(
-      `${process.env.NEXT_PUBLIC_SITE_NAME}_use-system-theme`
-    );
-    localStorage.setItem(
-      `${process.env.NEXT_PUBLIC_SITE_NAME}_use-system-theme`,
-      systemThemeToggle
-    );
-  }, [systemThemeToggle, setTheme]);
 
   // handle 'privacy accepted' change
   useEffect(() => {
@@ -62,22 +52,18 @@ export default function Footer({ setTheme }) {
 
     if (!theme || !privacy) return;
 
-    const useSystemTheme = localStorage.getItem(
-      `${process.env.NEXT_PUBLIC_SITE_NAME}_use-system-theme`
-    );
     const privacyAccepted = localStorage.getItem(
       `${process.env.NEXT_PUBLIC_SITE_NAME}_privacy-accepted`
     );
 
-    theme.checked = useSystemTheme === "true" ? true : false;
+    theme.checked = useSystemTheme;
     privacy.checked = privacyAccepted === "true" ? true : false;
 
-    setSystemThemeToggle(useSystemTheme === "true" ? true : false);
     setPrivacyAcceptedToggle(privacyAccepted === "true" ? true : false);
-  }, [optionsOpen]);
+  }, [optionsOpen, useSystemTheme]);
 
   return (
-    <footer className={styles['footer']}>
+    <footer className={styles["footer"]}>
       <div className={styles["footer__title-box"]}>
         <p className={styles["footer__site-title"]}>acol.dev</p>
 
@@ -105,7 +91,7 @@ export default function Footer({ setTheme }) {
       >
         <div className={styles["options-modal__inner"]}>
           <Toggle
-            onChange={({ target }) => setSystemThemeToggle(target.checked)}
+            onChange={({ target }) => toggleSystemTheme(target.checked)}
             ref={useSystemThemeRef}
           >
             Use System Theme

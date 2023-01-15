@@ -13,7 +13,7 @@ import Modal from "../../components/Modal";
 // styles
 import styles from "../../styles/QRGenerator.module.scss";
 
-export default function QRGenerator() {
+export default function QR_Generator() {
   const selectRef = useRef(null);
 
   const QRNameRef = useRef(null);

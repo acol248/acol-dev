@@ -60,12 +60,8 @@ export default function Modal({
     };
   }, [className, open, onClose, onTransitionEnd]);
 
-  // set inert on open
+  // set compensations on open
   useEffect(() => {
-    const nextApp = document.getElementById("__next");
-    if (!nextApp) return;
-
-    nextApp.inert = open;
     document.body.style.overflow = open ? "hidden" : "unset";
     document.body.style.paddingRight = open && isDesktop ? "8px" : "0";
   }, [active, open, isDesktop]);
@@ -104,7 +100,7 @@ export default function Modal({
             <div className={styles["modal__body"]}>{children}</div>
           </div>
         </div>,
-        document.body
+        document.getElementById("__layout")
       )
     : null;
 }

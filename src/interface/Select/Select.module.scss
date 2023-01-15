@@ -30,18 +30,11 @@
       min-width: 100px;
       width: 100%;
       cursor: pointer;
-      background-color: var(--color-grey-100);
-      border-color: var(--color-grey-500);
       border-width: 2px;
       border-style: solid;
 
-      transition-property: background-color, box-shadow, color, border-color;
-      transition-duration: var(--duration-normal);
-      transition-timing-function: ease-in-out;
-
       & span {
         text-align: left;
-        color: var(--color-grey-800);
       }
 
       & svg {
@@ -60,20 +53,14 @@
       position: absolute;
       inset: 100% auto auto 0;
       width: 100%;
-      background-color: var(--color-common-white);
       border-radius: 0 0 6px 6px;
       overflow: hidden;
-      border-color: var(--color-grey-500);
       border-width: 2px;
       border-style: solid;
       opacity: 0;
       width: 0;
       height: 0;
       transform: translateY(-2px);
-
-      transition-property: background-color, box-shadow, color, border-color;
-      transition-duration: var(--duration-normal);
-      transition-timing-function: ease-in-out;
 
       & .select__dropmenu-item {
         border: 0;
@@ -120,6 +107,74 @@
 
         & svg {
           transform: rotate(180deg);
+        }
+      }
+    }
+  }
+
+  &--dark {
+    & .select__dropdown {
+      & .select__persistent {
+        background-color: var(--color-grey-1100);
+        border-color: var(--color-grey-500);
+
+        & span {
+          color: var(--color-grey-100);
+        }
+
+        & svg {
+          fill: var(--color-grey-100);
+        }
+
+        &:hover {
+          background-color: var(--color-grey-1000);
+        }
+      }
+
+      & .select__dropmenu {
+        background-color: var(--color-grey-1100);
+        border-color: var(--color-grey-500);
+
+        & .select__dropmenu-item {
+          color: var(--color-grey-100);
+
+          &:hover {
+            background-color: var(--color-grey-1000);
+          }
+        }
+      }
+    }
+  }
+
+  &--light {
+    & .select__dropdown {
+      & .select__persistent {
+        background-color: var(--color-common-white);
+        border-color: var(--color-grey-500);
+
+        & span {
+          color: var(--color-grey-800);
+        }
+
+        & svg {
+          fill: var(--color-grey-800);
+        }
+
+        &:hover {
+          background-color: var(--color-grey-100);
+        }
+      }
+
+      & .select__dropmenu {
+        background-color: var(--color-common-white);
+        border-color: var(--color-grey-500);
+
+        & .select__dropmenu-item {
+          background-color: var(--color-common-white);
+
+          &:hover {
+            background-color: var(--color-grey-100);
+          }
         }
       }
     }

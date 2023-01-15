@@ -1,4 +1,7 @@
-import { forwardRef, useState, useEffect } from "react";
+import { forwardRef, useState, useContext, useLayoutEffect } from "react";
+
+// hooks
+import { ThemeContext } from "../../hooks/useTheme";
 
 // components
 import Icon from "./Select.icon";
@@ -7,6 +10,8 @@ import Icon from "./Select.icon";
 import styles from "./Select.module.scss";
 
 function Select({ className, variant, items, selectedPayload, children }, ref) {
+  const { theme } = useContext(ThemeContext);
+
   const [classlist, setClasslist] = useState("");
   const [selected, setSelected] = useState(null);
 
@@ -23,7 +28,7 @@ function Select({ className, variant, items, selectedPayload, children }, ref) {
   };
 
   // classlist and variant
-  useEffect(() => {
+  useLayoutEffect(() => {
     const _classlist = [styles["select"]];
 
     if (className)
@@ -35,12 +40,14 @@ function Select({ className, variant, items, selectedPayload, children }, ref) {
 
     if (selectedOpen) _classlist.push(styles["select--open"]);
 
+    _classlist.push(styles[`select--${theme}`]);
+
     setClasslist(_classlist.join(" "));
-  }, [className, selectedOpen, variant]);
+  }, [className, selectedOpen, variant, theme]);
 
   return (
     <div className={classlist}>
-      <span className={styles['select__label']}>{children}</span>
+      <span className={styles["select__label"]}>{children}</span>
       <div className={styles["select__dropdown"]} ref={ref}>
         <button
           className={styles["select__persistent"]}
