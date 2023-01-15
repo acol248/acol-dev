@@ -21,6 +21,7 @@ export default function QRGenerator() {
   const QRForegroundColorRef = useRef(null);
   const QRBackgroundColorRef = useRef(null);
   const QRBackgroundTransparentRef = useRef(null);
+  const QRExportDimensions = useRef(null);
 
   const [modalError, setModalError] = useState(null);
 
@@ -33,9 +34,12 @@ export default function QRGenerator() {
   const [transparentBackgroundChecked, setTransparentBackgroundChecked] =
     useState(false);
 
-  const [qrFileType, setQrFileType] = useState("");
+  const [qrFileType, setQrFileType] = useState(null);
   const [qrSize, setQrSize] = useState("1000px");
 
+  /**
+   * Handles download of QR file
+   */
   const handleDownloadSVG = () => {
     if (!qrFileType) return;
 
@@ -120,6 +124,13 @@ export default function QRGenerator() {
 
         break;
     }
+  };
+
+  /**
+   * Tidies after QR export modal closes
+   */
+  const handleExportModalTidy = () => {
+    setQrFileType(null);
   };
 
   useEffect(() => {
@@ -233,12 +244,16 @@ export default function QRGenerator() {
         title="Export"
         open={exportOpen}
         onClose={() => setExportOpen(false)}
+        onTransitionEnd={handleExportModalTidy}
       >
         <div className={styles["modal__inner"]}>
           <Input
+            ref={QRExportDimensions}
             value={qrSize}
             onChange={({ target }) => setQrSize(target.value)}
-          ></Input>
+          >
+            Export Dimensions (W x H)
+          </Input>
 
           <Select
             selectedPayload={(e) => setQrFileType(e)}
@@ -248,13 +263,15 @@ export default function QRGenerator() {
               { text: "SVG", payload: "svg" },
             ]}
             ref={selectRef}
-          ></Select>
+          >File Type</Select>
 
           {modalError !== null && (
             <span className={styles["modal__error"]}>{modalError}</span>
           )}
 
-          <Button onClick={handleDownloadSVG}>Download</Button>
+          <Button disabled={!qrFileType} onClick={handleDownloadSVG}>
+            Download
+          </Button>
         </div>
       </Modal>
     </div>
