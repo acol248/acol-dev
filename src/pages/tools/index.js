@@ -7,7 +7,7 @@ import Button from "../../interface/Button";
 // styles
 import styles from "../../styles/Tools.module.scss";
 
-export default function Tools() {
+export default function Web_Tools() {
   return (
     <div className={styles["tools"]}>
       <div className={styles["tools__inner"]}>

@@ -2,7 +2,7 @@
 // styles
 import styles from "../styles/Policies.module.scss";
 
-export default function PrivacyPolicy() {
+export default function Privacy_Policy() {
   return (
     <div className={styles["policies"]}>
       <div className={styles["policies__inner"]}>

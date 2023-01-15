@@ -34,7 +34,7 @@ export default function App({ Component, pageProps }) {
           <Head>
             <meta charSet="utf-8" />
             <meta name="author" content="Alex Collyer (acol248)" />
-            <title>acol.dev</title>
+            <title>acol.dev - {Component.name.split("_").join(" ")}</title>
             <meta
               name="description"
               content="A development website, by acol248 (github). A showcase of his work and skills; whilst also being somewhere to experiment, learn, and have fun."
@@ -46,7 +46,7 @@ export default function App({ Component, pageProps }) {
           <Navbar
             items={[
               { name: "Home", type: "internal", href: "/" },
-              { name: "Tools", type: "internal", href: "/tools" },
+              { name: "Web Tools", type: "internal", href: "/tools" },
             ]}
           />
 
