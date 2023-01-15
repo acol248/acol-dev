@@ -1,13 +1,25 @@
+import { useContext, useLayoutEffect } from "react";
 import Link from "next/link";
+
+// hooks
+import { AnalyticsContext } from "../../hooks/useAnalytics";
 
 // components
 import Icon from "../../components/Icon";
-import Button from "../../interface/Button";
 
 // styles
 import styles from "../../styles/Tools.module.scss";
 
 export default function Web_Tools() {
+  const { page, setPage } = useContext(AnalyticsContext);
+
+  // set current page
+  useLayoutEffect(() => {
+    if (page === "webtools") return;
+
+    setPage("webtools");
+  }, [page, setPage]);
+
   return (
     <div className={styles["tools"]}>
       <div className={styles["tools__inner"]}>

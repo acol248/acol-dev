@@ -25,8 +25,6 @@ export default function App({ Component, pageProps }) {
   });
   const theme = useTheme();
 
-  const pageRef = useRef(Component ? Component.name.toLowerCase() : null);
-
   return (
     <ThemeContext.Provider value={theme}>
       <AnalyticsContext.Provider value={analytics}>
@@ -34,7 +32,7 @@ export default function App({ Component, pageProps }) {
           <Head>
             <meta charSet="utf-8" />
             <meta name="author" content="Alex Collyer (acol248)" />
-            <title>acol.dev - {Component.name.split("_").join(" ")}</title>
+            <title>acol.dev</title>
             <meta
               name="description"
               content="A development website, by acol248 (github). A showcase of his work and skills; whilst also being somewhere to experiment, learn, and have fun."
@@ -53,7 +51,6 @@ export default function App({ Component, pageProps }) {
           <Component {...pageProps} />
 
           <CookiesMessage
-            page={pageRef.current}
             title="Privacy Policy"
             message={`We need to ask your permission to use cookies for usage analytics. To find out more about data that would be collected and how it is handled, click <a href='/privacy-policy' target='_blank'><u>here</u></a> or go to acol.dev/privacy-policy.`}
             websiteName="acol-dev"

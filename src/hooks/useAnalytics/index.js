@@ -14,6 +14,7 @@ import googleAnalytics from "@analytics/google-analytics";
 export default function useAnalytics({ siteName, id, enabled }) {
   const analyticsRef = useRef(null);
 
+  const [page, setPage] = useState(null);
   const [isAccepted, setIsAccepted] = useState(false);
 
   /**
@@ -88,8 +89,8 @@ export default function useAnalytics({ siteName, id, enabled }) {
   }, [siteName]);
 
   return useMemo(
-    () => ({ enabled, track, pageView, acceptAnalytics }),
-    [enabled, track, pageView, acceptAnalytics]
+    () => ({ enabled, page, setPage, track, pageView, acceptAnalytics }),
+    [enabled, page, setPage, track, pageView, acceptAnalytics]
   );
 }
 

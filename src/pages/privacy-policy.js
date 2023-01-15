@@ -1,8 +1,21 @@
-/* eslint-disable react/no-unescaped-entities */
+import { useLayoutEffect, useContext } from "react";
+
+// hooks
+import { AnalyticsContext } from "../hooks/useAnalytics";
+
 // styles
 import styles from "../styles/Policies.module.scss";
 
 export default function Privacy_Policy() {
+  const { page, setPage } = useContext(AnalyticsContext);
+
+  // set current page
+  useLayoutEffect(() => {
+    if (page === "privacypolicy") return;
+
+    setPage("privacypolicy");
+  }, [page, setPage]);
+
   return (
     <div className={styles["policies"]}>
       <div className={styles["policies__inner"]}>
@@ -16,7 +29,7 @@ export default function Privacy_Policy() {
 
             <p>
               This website uses cookies as a part of Google Analytics. These
-              cookies are used to track a user's usage of this website.
+              cookies are used to track a user&apos;s usage of this website.
             </p>
 
             <p>

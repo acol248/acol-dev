@@ -1,10 +1,22 @@
 import Image from "next/image";
+import { useContext, useLayoutEffect } from "react";
+
+// hooks
+import { AnalyticsContext } from "../hooks/useAnalytics";
 
 // styles
 import profilePicture from "../assets/images/profile.png";
 import styles from "../styles/Home.module.scss";
 
 export default function Home() {
+  const { page, setPage } = useContext(AnalyticsContext);
+
+  useLayoutEffect(() => {
+    if (page === "home") return;
+
+    setPage("home");
+  }, [page, setPage]);
+
   return (
     <div className={styles["container"]}>
       <div className={styles["container__inner"]}>

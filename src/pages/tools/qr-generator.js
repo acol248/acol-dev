@@ -1,7 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useLayoutEffect, useContext } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import QRCode from "react-qr-code";
+
+// hooks
+import { AnalyticsContext } from "../../hooks/useAnalytics";
 
 // components
 import Input from "../../interface/Input";
@@ -14,6 +17,8 @@ import Modal from "../../components/Modal";
 import styles from "../../styles/QRGenerator.module.scss";
 
 export default function QR_Generator() {
+  const { page, setPage } = useContext(AnalyticsContext);
+
   const selectRef = useRef(null);
 
   const QRNameRef = useRef(null);
@@ -139,6 +144,13 @@ export default function QR_Generator() {
     if (transparentBackgroundChecked && qrFileType === "jpeg")
       setModalError("Transparency is not supported using JPEG file type.");
   }, [qrFileType, transparentBackgroundChecked]);
+
+  // set current page
+  useLayoutEffect(() => {
+    if (page === "qrgenerator") return;
+
+    setPage("qrgenerator");
+  }, [page, setPage]);
 
   return (
     <div className={styles["qr-generator"]}>
