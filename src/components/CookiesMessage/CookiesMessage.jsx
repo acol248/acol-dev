@@ -12,13 +12,12 @@ import Button from "../../interface/Button";
 
 export default function CookiesMessage({
   className,
-  page,
   title,
   message,
   websiteName,
   ...props
 }) {
-  const { enabled, acceptAnalytics } = useContext(AnalyticsContext);
+  const { page, enabled, acceptAnalytics } = useContext(AnalyticsContext);
 
   const [classlist, setClasslist] = useState("");
 
@@ -40,7 +39,7 @@ export default function CookiesMessage({
 
   // if enabled, set open
   useEffect(() => {
-    if (page === "error" || page === "privacypolicy") return;
+    if (page === null || page === "error" || page === "privacypolicy") return;
 
     const analyticsAccepted = localStorage.getItem(
       `${websiteName}_analytics-prompted`
