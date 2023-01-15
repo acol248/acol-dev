@@ -58,7 +58,7 @@ export default function Navbar({ items, ...props }) {
       <Modal
         open={mobileNavOpen}
         onClose={() => setMobileNavOpen(false)}
-        className={styles["nav-menu"]}
+        className={`${styles["nav-menu"]} ${styles[`nav-menu--${theme}`]}`}
         variant="nav-menu"
       >
         <div className={styles["nav-menu__container"]}>

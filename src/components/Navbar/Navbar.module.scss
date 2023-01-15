@@ -156,14 +156,32 @@
   & .nav-menu__container {
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
     margin: 1.5rem 0 0 0;
     color: var(--title-color);
 
     & .nav-menu__item {
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
-
+      padding: 0.35rem 0.75rem;
+      border-radius: 8px;
       font-size: 1.5rem;
+      border-width: 2px;
+      border-style: solid;
+    }
+  }
+
+  &--dark {
+    & .nav-menu__container {
+      & .nav-menu__item {
+        border-color: var(--color-grey-300);
+      }
+    }
+  }
+
+  &--light {
+    & .nav-menu__container {
+      & .nav-menu__item {
+        border-color: var(--text-grey-1000);
+      }
     }
   }
 }
