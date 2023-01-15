@@ -27,7 +27,7 @@ export default function Button({
   }, [className, variant]);
 
   return (
-    <button className={classlist} onClick={onClick}>
+    <button className={classlist} onClick={onClick} {...props}>
       {icon && icon} <span>{children}</span>
     </button>
   );

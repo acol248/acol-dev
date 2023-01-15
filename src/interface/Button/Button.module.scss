@@ -93,4 +93,10 @@
       }
     }
   }
+
+  &:disabled {
+    color: var(--color-grey-200);
+    background-color: var(--color-grey-500);
+    cursor: auto;
+  }
 }
