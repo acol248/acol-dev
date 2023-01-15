@@ -6,7 +6,7 @@ import Icon from "./Select.icon";
 // styles
 import styles from "./Select.module.scss";
 
-function Select({ className, variant, items, selectedPayload }, ref) {
+function Select({ className, variant, items, selectedPayload, children }, ref) {
   const [classlist, setClasslist] = useState("");
   const [selected, setSelected] = useState(null);
 
@@ -39,26 +39,31 @@ function Select({ className, variant, items, selectedPayload }, ref) {
   }, [className, selectedOpen, variant]);
 
   return (
-    <div className={classlist} ref={ref}>
-      <button
-        className={styles["select__persistent"]}
-        onClick={() => setSelectedOpen((s) => !s)}
-      >
-        <span>{Number.isInteger(selected) ? items[selected]?.text : "-"}</span>
-        <Icon type="expand" />
-      </button>
+    <div className={classlist}>
+      <span className={styles['select__label']}>{children}</span>
+      <div className={styles["select__dropdown"]} ref={ref}>
+        <button
+          className={styles["select__persistent"]}
+          onClick={() => setSelectedOpen((s) => !s)}
+        >
+          <span>
+            {Number.isInteger(selected) ? items[selected]?.text : "-"}
+          </span>
+          <Icon type="expand" />
+        </button>
 
-      <div className={styles["select__dropdown"]}>
-        {items &&
-          items.map(({ text, payload }, index) => (
-            <button
-              key={text + payload}
-              className={styles["select__dropdown-item"]}
-              onClick={() => handleSelect(index)}
-            >
-              {text}
-            </button>
-          ))}
+        <div className={styles["select__dropmenu"]}>
+          {items &&
+            items.map(({ text, payload }, index) => (
+              <button
+                key={text + payload}
+                className={styles["select__dropmenu-item"]}
+                onClick={() => handleSelect(index)}
+              >
+                {text}
+              </button>
+            ))}
+        </div>
       </div>
     </div>
   );
