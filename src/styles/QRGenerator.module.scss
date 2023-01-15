@@ -3,7 +3,11 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: 4rem 0;
+  padding: 4rem 1rem;
+
+  @media screen and (min-width: 768px) {
+    padding: 4rem 2rem;
+  }
 
   & .qr-generator__inner {
     display: flex;
@@ -50,7 +54,7 @@
       }
 
       @media screen and (min-width: 992px) {
-        margin: 4rem 0 0;
+        margin: 3rem 0 0;
       }
     }
 
