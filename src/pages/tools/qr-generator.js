@@ -150,8 +150,13 @@ export default function QRGenerator() {
         <div className={styles["qr-generator__content"]}>
           <div className={styles["qr-generator__content-inner"]}>
             <p className={styles["qr-generator__content-description"]}>
-              Fill out the below fields to customise your QR code. Watch it
-              change as you update the configuration.
+              Create high quality custom QR codes with just a few clicks,
+              completely for free! <br />
+              <br />
+              The preview QR code updates in real time as you make changes to
+              the fields below. When you&apos;re finished click export, input
+              your file dimensions (width x height), select your file type and
+              download.
             </p>
 
             <div className={styles["qr-generator__qr"]}>
@@ -263,7 +268,9 @@ export default function QRGenerator() {
               { text: "SVG", payload: "svg" },
             ]}
             ref={selectRef}
-          >File Type</Select>
+          >
+            File Type
+          </Select>
 
           {modalError !== null && (
             <span className={styles["modal__error"]}>{modalError}</span>
