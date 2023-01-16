@@ -17,7 +17,8 @@ export default function CookiesMessage({
   websiteName,
   ...props
 }) {
-  const { page, enabled, acceptAnalytics } = useContext(AnalyticsContext);
+  const { page, enabled, acceptAnalytics, isAccepted } =
+    useContext(AnalyticsContext);
 
   const [classlist, setClasslist] = useState("");
 
@@ -70,7 +71,7 @@ export default function CookiesMessage({
 
   return (
     <Modal
-      open={promptOpen && !cookiePrompted}
+      open={promptOpen && !cookiePrompted && !isAccepted}
       className={classlist}
       noClose={true}
       title={title}

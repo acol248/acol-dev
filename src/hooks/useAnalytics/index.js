@@ -89,8 +89,8 @@ export default function useAnalytics({ siteName, id, enabled }) {
   }, [siteName]);
 
   return useMemo(
-    () => ({ enabled, page, setPage, track, pageView, acceptAnalytics }),
-    [enabled, page, setPage, track, pageView, acceptAnalytics]
+    () => ({ enabled, page, isAccepted, setPage, track, pageView, acceptAnalytics }),
+    [enabled, page, isAccepted, setPage, track, pageView, acceptAnalytics]
   );
 }
 
