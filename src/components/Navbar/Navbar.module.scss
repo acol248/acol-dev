@@ -14,9 +14,42 @@
   z-index: 2000;
   background-color: var(--background-color);
 
+  transition-property: box-shadow background-color;
+  transition-duration: var(--duration-normal);
+  transition-timing-function: ease;
+
   @media screen and (min-width: 992px) {
     padding: 2.25rem 2rem 2.25rem 1.75rem;
     width: 100%;
+  }
+
+  & .navbar__logo {
+    & a {
+      margin: 0 0.2rem 0 0;
+      font-weight: 600;
+      font-size: 1.5rem;
+      background: linear-gradient(
+        60deg,
+        rgba(240, 78, 130, 1) 0%,
+        rgba(48, 60, 162, 1) 100%
+      );
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-size: 250% 250%;
+      animation: backgroundAnimation 8s ease-in-out infinite;
+
+      @keyframes backgroundAnimation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+    }
   }
 
   & .navbar__menu-button {
@@ -49,7 +82,7 @@
       justify-content: center;
       align-items: center;
       margin: 0;
-      padding: 0 1rem;
+      padding: 0;
       background-color: transparent;
       border: 0;
       height: 100%;
@@ -150,37 +183,56 @@
       }
     }
   }
+
+  &.navbar--scroll {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px 0px;
+  }
 }
 
 .nav-menu {
   & .nav-menu__container {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    margin: 1.5rem 0 0 0;
+    gap: 1rem;
+    margin: 1rem 0 0 0;
     color: var(--title-color);
 
-    & .nav-menu__item {
-      padding: 0.35rem 0.75rem;
-      border-radius: 8px;
-      font-size: 1.5rem;
-      border-width: 2px;
-      border-style: solid;
-    }
-  }
+    & .nav-menu__logo {
+      & a {
+        margin: 0 0.2rem 0 0;
+        font-weight: 600;
+        font-size: 2rem;
+        background: linear-gradient(
+          60deg,
+          rgba(240, 78, 130, 1) 0%,
+          rgba(48, 60, 162, 1) 100%
+        );
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 250% 250%;
+        animation: backgroundAnimation 8s ease-in-out infinite;
 
-  &--dark {
-    & .nav-menu__container {
-      & .nav-menu__item {
-        border-color: var(--color-grey-300);
+        @keyframes backgroundAnimation {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
       }
     }
-  }
 
-  &--light {
-    & .nav-menu__container {
+    & .nav-menu__items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+
       & .nav-menu__item {
-        border-color: var(--text-grey-1000);
+        font-size: 1.2rem;
       }
     }
   }
