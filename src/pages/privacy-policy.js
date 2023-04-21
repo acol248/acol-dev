@@ -1,4 +1,4 @@
-import { useLayoutEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 
 // hooks
 import { AnalyticsContext } from "../hooks/useAnalytics";
@@ -10,7 +10,7 @@ export default function Privacy_Policy() {
   const { page, setPage } = useContext(AnalyticsContext);
 
   // set current page
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (page === "privacypolicy") return;
 
     setPage("privacypolicy");

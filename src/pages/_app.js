@@ -1,10 +1,8 @@
 import Head from "next/head";
-import { useEffect, useState, useRef } from "react";
 import CookiesMessage from "../components/CookiesMessage/CookiesMessage";
 import Footer from "../components/Footer";
 import LayoutManager from "../components/LayoutManager/LayoutManager";
 import Navbar from "../components/Navbar";
-import PageLoader from "../components/PageLoader";
 
 // hooks
 import useAnalytics, { AnalyticsContext } from "../hooks/useAnalytics";
@@ -39,13 +37,8 @@ export default function App({ Component, pageProps }) {
             />
           </Head>
 
-          <PageLoader isLoading={!theme} />
-
           <Navbar
-            items={[
-              { name: "Home", type: "internal", href: "/" },
-              { name: "Web Tools", type: "internal", href: "/tools" },
-            ]}
+            items={[{ name: "About", type: "internal", href: "/about" }]}
           />
 
           <Component {...pageProps} />

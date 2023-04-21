@@ -1,4 +1,4 @@
-import { useContext, useLayoutEffect } from "react";
+import { useContext, useEffect } from "react";
 import Link from "next/link";
 
 // hooks
@@ -14,7 +14,7 @@ export default function Web_Tools() {
   const { page, setPage } = useContext(AnalyticsContext);
 
   // set current page
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (page === "webtools") return;
 
     setPage("webtools");
