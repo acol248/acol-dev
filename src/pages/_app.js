@@ -38,7 +38,10 @@ export default function App({ Component, pageProps }) {
           </Head>
 
           <Navbar
-            items={[{ name: "About", type: "internal", href: "/about" }]}
+            items={[
+              { name: "About", type: "internal", href: "/about" },
+              { name: "Projects", type: "internal", href: "/projects" },
+            ]}
           />
 
           <Component {...pageProps} />
