@@ -11,7 +11,7 @@ import { AnalyticsContext } from "../hooks/useAnalytics";
 // styles
 import styles from "../styles/About.module.scss";
 
-export default function Home() {
+export default function About() {
   const { page, setPage } = useContext(AnalyticsContext);
 
   const [classList, setClassList] = useState("");
