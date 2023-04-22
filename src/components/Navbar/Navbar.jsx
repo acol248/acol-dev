@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Link from "next/link";
 import Router from "next/router";
 
@@ -6,12 +6,11 @@ import Router from "next/router";
 import { ThemeContext } from "../../hooks/useTheme";
 
 // components
+import Icon from "./Navbar.icons";
 import Modal from "../Modal";
 
 // styles
 import styles from "./Navbar.module.scss";
-import Icon from "./Navbar.icons";
-import { useEffect } from "react";
 
 export default function Navbar({ items, ...props }) {
   const { toggleTheme, theme } = useContext(ThemeContext);
