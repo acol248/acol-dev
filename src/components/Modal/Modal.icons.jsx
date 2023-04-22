@@ -5,8 +5,8 @@ export default function Icon({ type, ...props }) {
     switch (type) {
       case "close":
         return (
-          <svg {...props} viewBox="0 0 48 48">
-            <path d="m12.45 37.65-2.1-2.1L21.9 24 10.35 12.45l2.1-2.1L24 21.9l11.55-11.55 2.1 2.1L26.1 24l11.55 11.55-2.1 2.1L24 26.1Z" />
+          <svg {...props} viewBox="0 96 960 960">
+            <path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z" />
           </svg>
         );
       default:
