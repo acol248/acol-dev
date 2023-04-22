@@ -19,27 +19,27 @@ export default function Modal({
 }) {
   const modalRef = useRef(null);
 
-  const [classlist, setClasslist] = useState([]);
+  const [classList, setClassList] = useState([]);
   const [active, setActive] = useState(false);
 
   const [isDesktop, setIsDesktop] = useState(null);
 
   // classlist and variant
   useEffect(() => {
-    const _classlist = [styles["modal"]];
+    const _classList = [styles["modal"]];
 
     if (open) setActive(true);
 
     if (className)
-      for (const item of className.split(" ")) _classlist.push(item);
+      for (const item of className.split(" ")) _classList.push(item);
 
     if (variant)
       for (const item of variant.split(" "))
-        _classlist.push(styles[`modal--${item}`]);
+        _classList.push(styles[`modal--${item}`]);
 
-    if (open && active) _classlist.push(styles["modal--active"]);
+    if (open && active) _classList.push(styles["modal--active"]);
 
-    setClasslist(_classlist.join(" "));
+    setClassList(_classList.join(" "));
   }, [active, className, open, variant]);
 
   // TransitionEnd detection
@@ -83,7 +83,7 @@ export default function Modal({
 
   return open || active
     ? createPortal(
-        <div className={classlist} ref={modalRef}>
+        <div className={classList} ref={modalRef}>
           <div
             className={styles["modal__backdrop"]}
             onClick={() => (!locked ? onClose : "")}
