@@ -6,9 +6,9 @@
   width: fit-content;
   padding: 1rem 1.5rem;
   border-radius: 2rem;
-  background-color: var(--color-secondary-light);
+  background-color: var(--color-secondary-main);
 
-  transition-property: transform;
+  transition-property: transform background-color;
   transition-duration: var(--duration-normal);
   transition-timing-function: ease;
 
@@ -23,11 +23,11 @@
     line-height: 1;
     color: var(--color-common-white);
     user-select: none;
-    overflow: hidden;
     white-space: nowrap;
   }
 
   &:hover {
     transform: scale(1.1);
+    background-color: var(--color-secondary-light);
   }
 }
