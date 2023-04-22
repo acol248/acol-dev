@@ -18,7 +18,7 @@
   transition-duration: var(--duration-normal);
   transition-timing-function: ease;
 
-  @media screen and (min-width: 992px) {
+  @media screen and (min-width: 768px) {
     padding: 2.25rem 2rem 2.25rem 1.75rem;
     width: 100%;
   }
