@@ -31,7 +31,9 @@ export default function Home() {
           </h1>
 
           <Link href="/about">
-            <Button variant="secondary">Learn More</Button>
+            <Button variant="secondary" tabIndex={-1}>
+              Learn More
+            </Button>
           </Link>
         </div>
 

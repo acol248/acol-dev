@@ -34,15 +34,13 @@ export default function Web_Tools() {
 
           <div className={styles["tools__button-container"]}>
             <Link href="/tools/qr-generator">
-              <a className={styles["tools__button"]}>
-                <div className={styles["tools__content"]}>
-                  <Icon type="qr-code" />
+              <div className={styles["tools__content"]}>
+                <Icon type="qr-code" />
 
-                  <span>QR Code Generator</span>
-                </div>
+                <span>QR Code Generator</span>
+              </div>
 
-                <span className={styles["tools__line"]} />
-              </a>
+              <span className={styles["tools__line"]} />
             </Link>
           </div>
         </div>

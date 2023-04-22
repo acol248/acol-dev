@@ -1,15 +1,15 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 // components
-import Section from "../../components/Section/Section";
-import InfoBubble from "../../components/InfoBubble/InfoBubble";
-import SkillIcon from "../../components/SkillIcon";
+import Section from "../components/Section";
+import InfoBubble from "../components/InfoBubble";
+import SkillIcon from "../components/SkillIcon";
 
 // hooks
-import { AnalyticsContext } from "../../hooks/useAnalytics";
+import { AnalyticsContext } from "../hooks/useAnalytics";
 
 // styles
-import styles from "../../styles/About.module.scss";
+import styles from "../styles/About.module.scss";
 
 export default function Home() {
   const { page, setPage } = useContext(AnalyticsContext);
