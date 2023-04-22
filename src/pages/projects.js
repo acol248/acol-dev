@@ -8,6 +8,7 @@ import { AnalyticsContext } from "../hooks/useAnalytics";
 
 // styles
 import styles from "../styles/Projects.module.scss";
+import DetailedListBox from "../components/DetailedListBox/DetailedListBox";
 
 export default function Projects() {
   const { page, setPage } = useContext(AnalyticsContext);
@@ -34,7 +35,23 @@ export default function Projects() {
       </div>
 
       <div className={styles["projects__content"]}>
-        <Section></Section>
+        <Section>
+          <div className={styles["projects__list"]}>
+            <DetailedListBox
+              variant="reverse"
+              title="QR Generator"
+              tags={["React", "JavaScript", "SCSS", "Frontend"]}
+              icon="qr"
+              status="live"
+            >
+              A web based QR code generator. Each QR code can be given a name
+              and text content. The foreground and background colors of the QR
+              code can be customised with hex color codes. The result can then
+              be exported as either a JPG, PNG or SVG at any 1:1 dimensions
+              (e.g. 1000x1000 or 8000x8000).
+            </DetailedListBox>
+          </div>
+        </Section>
       </div>
     </div>
   );

@@ -32,7 +32,11 @@
   }
 
   & .projects__content {
-    
+    & .projects__list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
   }
 
   @media screen and (min-width: 768px) {
