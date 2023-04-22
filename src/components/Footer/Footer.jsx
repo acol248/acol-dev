@@ -67,12 +67,10 @@ export default function Footer({ setTheme }) {
       <div className={styles["footer__title-box"]}>
         <p className={styles["footer__site-title"]}>acol.dev</p>
 
-        <Link href="/privacy-policy">
-          <a className={styles["footer__link"]}>Privacy Policy</a>
-        </Link>
+        <Link href="/privacy-policy">Privacy Policy</Link>
 
         <button
-          className={styles["footer__link"]}
+          className={styles["footer__link-button"]}
           onClick={() => setOptionsOpen(true)}
         >
           User Options
