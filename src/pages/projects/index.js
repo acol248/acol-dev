@@ -1,19 +1,24 @@
 import { useContext, useEffect, useState } from "react";
 
+// next
+import { useRouter } from "next/router";
+
 // components
-import Section from "../components/Section";
+import Section from "../../components/Section";
+import DetailedListBox from "../../components/DetailedListBox/DetailedListBox";
 
 // hooks
-import { AnalyticsContext } from "../hooks/useAnalytics";
+import { AnalyticsContext } from "../../hooks/useAnalytics";
 
 // styles
-import styles from "../styles/Projects.module.scss";
-import DetailedListBox from "../components/DetailedListBox/DetailedListBox";
+import styles from "../../styles/Projects.module.scss";
 
 export default function Projects() {
   const { page, setPage } = useContext(AnalyticsContext);
 
   const [classList, setClassList] = useState("");
+
+  const router = useRouter();
 
   // classlist and variant
   useEffect(() => {
@@ -39,10 +44,32 @@ export default function Projects() {
           <div className={styles["projects__list"]}>
             <DetailedListBox
               variant="reverse"
-              title="QR Generator"
+              title="Expense"
+              tags={[
+                "React",
+                "JavaScript",
+                "TypeScript",
+                "SCSS",
+                "Frontend",
+                "PWA",
+              ]}
+              icon="expense"
+              status="Early Alpha Preview"
+              onClick={() => router.push("/projects/expense")}
+            >
+              A React based PWA that helps the user to keep track of their
+              monthly spending. Make note of your monthly outgoings, keep track
+              of how much money should be taken and when. Keep finances under
+              control.
+            </DetailedListBox>
+
+            <DetailedListBox
+              variant="reverse"
+              title="Basic QR Generator"
               tags={["React", "JavaScript", "SCSS", "Frontend"]}
               icon="qr"
               status="live"
+              onClick={() => router.push("/projects/qr-generator")}
             >
               A web based QR code generator. Each QR code can be given a name
               and text content. The foreground and background colors of the QR

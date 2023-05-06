@@ -1,5 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 
+// next
+import Link from "next/link";
+
 // components
 import Section from "../components/Section";
 import InfoBubble from "../components/InfoBubble";
@@ -67,7 +70,7 @@ export default function About() {
           </p>
         </Section>
 
-        <Section title="Where are my skills?">
+        <Section title="What are my skills?">
           <div className={styles["about__skills"]}>
             <InfoBubble icon={<SkillIcon type="javascript" />}>
               JavaScript
@@ -88,6 +91,21 @@ export default function About() {
             <InfoBubble icon={<SkillIcon type="git" />}>Git</InfoBubble>
             <InfoBubble icon={<SkillIcon type="env" />}>ENV</InfoBubble>
           </div>
+        </Section>
+
+        <Section title="Where are my skills?">
+          <p>
+            I present some of my skills outside of my working environment in a
+            number of personal projects. These can be found on the website under
+            the{" "}
+            <Link
+              href="/projects"
+              className={styles["about__projects"]}
+            >
+              projects
+            </Link>{" "}
+            page.
+          </p>
         </Section>
       </div>
     </div>
