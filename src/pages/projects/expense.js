@@ -1,7 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 import { useContext, useEffect, useState } from "react";
-
-// next
-import Image from "next/image";
 
 // components
 import Button from "../../interface/Button";
@@ -12,7 +10,6 @@ import { ThemeContext } from "../../hooks/useTheme";
 
 // styles
 import styles from "../../styles/Expense.module.scss";
-import expenseIcon from "../../assets/images/expense/icon.png";
 
 export default function Expense() {
   const { page, setPage } = useContext(AnalyticsContext);
@@ -53,22 +50,13 @@ export default function Expense() {
               </p>
             </div>
 
-            <a
-              href="https://inpensa.acol.dev/"
-              target="_black"
-              rel="noopener noreferrer"
-            >
-              <Button variant="secondary">Try Expense</Button>
-            </a>
+            <Button variant="secondary" disabled>Coming Soon</Button>
           </div>
 
-          <Image
+          <img
             className={styles["expense__logo"]}
-            src={expenseIcon}
+            src="/assets/images/expense-icon.png"
             alt="Icon for Expense application"
-            width={384}
-            height={384}
-            quality={95}
           />
         </div>
       </div>
