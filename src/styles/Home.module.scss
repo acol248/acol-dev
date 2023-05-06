@@ -23,7 +23,7 @@
       aspect-ratio: 503 / 651;
       z-index: 1;
       opacity: 1;
-      filter: drop-shadow(0 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
+      filter: drop-shadow(0 0.25rem 0.25rem rgba(0, 0, 0, 0.2));
       max-width: 16rem;
 
       & img {
@@ -49,7 +49,7 @@
         position: relative;
         text-align: left;
         background-color: transparent;
-        filter: drop-shadow(0 0.25rem 0.25rem rgba(0, 0, 0, 0.35));
+        filter: drop-shadow(0 0.25rem 0.25rem rgba(0, 0, 0, 0.2));
         z-index: 50;
         pointer-events: none;
         color: var(--title-color);

@@ -48,6 +48,17 @@
       font-weight: 600;
     }
 
+    & .about__projects {
+      background: linear-gradient(
+        60deg,
+        rgba(240, 78, 130, 1) 0%,
+        rgba(48, 60, 162, 1) 100%
+      );
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 600;
+    }
+
     & .about__skills {
       display: flex;
       flex-wrap: wrap;

@@ -32,10 +32,12 @@
   }
 
   & .projects__content {
+    padding: max(3.75vh, 2.5rem) 0;
+
     & .projects__list {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: max(3vh, 2rem);
     }
   }
 
