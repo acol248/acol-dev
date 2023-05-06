@@ -32,6 +32,10 @@
   }
 
   & .about__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
     & .about__acol {
       background: linear-gradient(
         60deg,
