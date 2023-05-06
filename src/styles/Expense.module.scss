@@ -20,6 +20,7 @@
       align-items: center;
       width: 100%;
       max-width: 992px;
+      padding: 0 1.5rem;
 
       & .expense__title-box {
         display: flex;
@@ -63,10 +64,20 @@
       }
 
       & .expense__logo {
+        display: none;
         transform: rotate(8deg);
         border-radius: max(6vh, 4rem);
-        width: 384px;
-        height: 384px;
+        width: 256px;
+        height: 256px;
+
+        @media screen and (min-width: 992px) {
+          width: 384px;
+          height: 384px;
+        }
+
+        @media screen and (min-width: 768px) {
+          display: initial;
+        }
       }
     }
   }
