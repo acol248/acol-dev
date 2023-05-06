@@ -14,6 +14,7 @@ export default function DetailedListBox({
   status,
   image,
   icon,
+  onClick,
   children,
 }) {
   const [classList, setClassList] = useState("");
@@ -30,10 +31,10 @@ export default function DetailedListBox({
         _classList.push(styles[`detailed-box--${item}`]);
 
     setClassList(_classList.join(" "));
-  }, [className]);
+  }, [className, variant]);
 
   return (
-    <div className={classList}>
+    <button className={classList} onClick={onClick}>
       <div className={styles["detailed-box__image"]}>
         {image ? image : <Icon type={icon ? icon : "missing"} />}
       </div>
@@ -44,7 +45,7 @@ export default function DetailedListBox({
           {tags && (
             <div className={styles["detailed-box__tags"]}>
               {tags?.map((tag) => (
-                <span className={styles["detailed-box__tag"]}>{tag}</span>
+                <span className={styles["detailed-box__tag"]} key={tag}>{tag}</span>
               ))}
             </div>
           )}
@@ -53,17 +54,12 @@ export default function DetailedListBox({
         <div className={styles["detailed-box__body"]}>{children}</div>
 
         {status && (
-          <div className={styles["detailed-box__footer"]}>
             <div className={styles["detailed-box__status"]}>
               <Icon type="web" /> <span>{status}</span>
             </div>
 
-            <button className={styles["detailed-box__action"]}>
-              Learn More
-            </button>
-          </div>
         )}
       </div>
-    </div>
+    </button>
   );
 }
