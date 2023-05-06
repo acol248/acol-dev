@@ -12,9 +12,8 @@
   align-items: center;
   box-sizing: border-box;
   z-index: 2000;
-  background-color: var(--background-color);
 
-  transition-property: box-shadow;
+  transition-property: box-shadow background-color color;
   transition-duration: var(--duration-normal);
   transition-timing-function: ease;
 
@@ -208,6 +207,7 @@
 
   &.navbar--scroll {
     box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 15px 0px;
+    background-color: var(--background-color);
   }
 }
 
