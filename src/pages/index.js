@@ -1,17 +1,21 @@
 import Image from "next/image";
-import { useContext, useLayoutEffect } from "react";
+import { useContext, useEffect } from "react";
 
 // hooks
 import { AnalyticsContext } from "../hooks/useAnalytics";
 
+// components
+import Button from "../interface/Button";
+
 // styles
 import profilePicture from "../assets/images/profile.png";
 import styles from "../styles/Home.module.scss";
+import Link from "next/link";
 
 export default function Home() {
   const { page, setPage } = useContext(AnalyticsContext);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (page === "home") return;
 
     setPage("home");
@@ -20,7 +24,20 @@ export default function Home() {
   return (
     <div className={styles["container"]}>
       <div className={styles["container__inner"]}>
-        <div className={styles["container__profile-wrapper"]}>
+        <div className={styles["container__left"]}>
+          <h1 className={styles["container__title"]}>
+            Welcome to <br />
+            <span>acol.dev</span>
+          </h1>
+
+          <Link href="/about">
+            <Button variant="secondary" tabIndex={-1}>
+              Learn More
+            </Button>
+          </Link>
+        </div>
+
+        <div className={styles["container__right"]}>
           <Image
             src={profilePicture}
             alt="Alex Collyer (acol248) profile picture"
@@ -29,11 +46,6 @@ export default function Home() {
             quality={90}
           />
         </div>
-
-        <h1 className={styles["container__title"]}>
-          Welcome to <br />
-          <span>acol.dev</span>
-        </h1>
       </div>
     </div>
   );

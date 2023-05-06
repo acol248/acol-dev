@@ -29,6 +29,11 @@
     background-color: var(--color-primary-dark);
   }
 
+  &:focus-visible {
+    outline: 2px solid var(--color-primary-main);
+    outline-offset: -2px;
+  }
+
   &--secondary {
     background-color: transparent;
     border-width: 1px;
@@ -43,6 +48,11 @@
       & span {
         color: var(--text-color-inverted);
       }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-primary-main);
+      outline-offset: -4px;
     }
   }
 

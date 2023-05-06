@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useLayoutEffect, useContext } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import QRCode from "react-qr-code";
@@ -146,7 +146,7 @@ export default function QR_Generator() {
   }, [qrFileType, transparentBackgroundChecked]);
 
   // set current page
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (page === "qrgenerator") return;
 
     setPage("qrgenerator");

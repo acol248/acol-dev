@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import Link from "next/link";
 import Router from "next/router";
 
@@ -6,18 +6,21 @@ import Router from "next/router";
 import { ThemeContext } from "../../hooks/useTheme";
 
 // components
+import Icon from "./Navbar.icons";
 import Modal from "../Modal";
 
 // styles
 import styles from "./Navbar.module.scss";
-import Icon from "./Navbar.icons";
-import { useEffect } from "react";
 
 export default function Navbar({ items, ...props }) {
   const { toggleTheme, theme } = useContext(ThemeContext);
 
+  const [classList, setClassList] = useState("");
+
   const [isMobile, setIsMobile] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+  const [scrolled, setScrolled] = useState(false);
 
   /**
    * Handles theme toggle
@@ -26,12 +29,40 @@ export default function Navbar({ items, ...props }) {
     toggleTheme();
   };
 
+  // classlist and variant
+  useEffect(() => {
+    const _classlist = [styles["navbar"]];
+
+    if (scrolled) _classlist.push(styles["navbar--scroll"]);
+
+    setClassList(_classlist.join(" "));
+  }, [scrolled]);
+
   // auto-close mobile nav on route change
   useEffect(() => {
     Router.events.on("routeChangeComplete", () => setMobileNavOpen(false));
 
     return () =>
       Router.events.off("routeChangeComplete", () => setMobileNavOpen(false));
+  }, []);
+
+  // scroll detection
+  useEffect(() => {
+    if (!window) return;
+
+    const handleScroll = () => {
+      const { scrollY } = window;
+
+      if (scrollY > 0) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // sets isMobile to true if window width is less than 768px
@@ -53,7 +84,7 @@ export default function Navbar({ items, ...props }) {
   }, []);
 
   return (
-    <nav className={styles.navbar}>
+    <nav className={classList}>
       <Modal
         open={mobileNavOpen}
         onClose={() => setMobileNavOpen(false)}
@@ -61,63 +92,85 @@ export default function Navbar({ items, ...props }) {
         variant="nav-menu"
       >
         <div className={styles["nav-menu__container"]}>
-          {items &&
-            items.map(({ name, href, type, ...props }, index) => {
-              let out;
+          <div className={styles["nav-menu__logo"]}>
+            <Link href="/">acol.dev</Link>
+          </div>
 
-              if (type === "internal")
-                out = (
-                  <Link href={href} key={index}>
-                    <a className={styles["nav-menu__item"]}>{name}</a>
-                  </Link>
-                );
+          <div className={styles["nav-menu__items"]}>
+            {items &&
+              items.map(({ name, href, type, ...props }, index) => {
+                let out;
 
-              if (type === "external")
-                out = (
-                  <a
-                    href={href}
-                    key={index}
-                    className={styles["nav-menu__item"]}
-                  >
-                    {name}
-                  </a>
-                );
+                if (type === "internal")
+                  out = (
+                    <Link href={href} key={index}>
+                      {name}
+                    </Link>
+                  );
 
-              return out;
-            })}
+                if (type === "external")
+                  out = (
+                    <a
+                      href={href}
+                      key={index}
+                      className={styles["nav-menu__item"]}
+                    >
+                      {name}
+                    </a>
+                  );
+
+                return out;
+              })}
+          </div>
         </div>
       </Modal>
 
-      {isMobile ? (
-        <button
-          onClick={() => setMobileNavOpen(true)}
-          className={styles["navbar__menu-button"]}
-        >
-          <Icon type="menu" />
-        </button>
-      ) : (
-        <div className={styles["navbar__links"]}>
-          {items.map(({ name, href, type }, index) => {
-            let out;
+      <div className={styles["navbar__items"]}>
+        {isMobile ? (
+          <>
+            <button
+              onClick={() => setMobileNavOpen(true)}
+              className={styles["navbar__menu-button"]}
+            >
+              <Icon type="menu" />
+            </button>
+          </>
+        ) : (
+          <>
+            <div className={styles["navbar__logo"]}>
+              <Link href="/">acol.dev</Link>
+            </div>
 
-            if (type === "internal")
-              out = (
-                <Link href={href} key={index}>
-                  <a className={styles["navbar__item"]}>{name}</a>
-                </Link>
-              );
+            <div className={styles["navbar__items-divider"]}></div>
 
-            if (type === "external")
-              out = (
-                <a href={href} key={index} className={styles["navbar__item"]}>
-                  {name}
-                </a>
-              );
+            <div className={styles["navbar__links"]}>
+              {items.map(({ name, href, type }, index) => {
+                let out;
 
-            return out;
-          })}
-        </div>
-      )}
+                if (type === "internal")
+                  out = (
+                    <Link href={href} key={index}>
+                      {name}
+                    </Link>
+                  );
+
+                if (type === "external")
+                  out = (
+                    <a
+                      href={href}
+                      key={index}
+                      className={styles["navbar__item"]}
+                    >
+                      {name}
+                    </a>
+                  );
+
+                return out;
+              })}
+            </div>
+          </>
+        )}
+      </div>
 
       <div className={styles["navbar__items"]}>
         <button
@@ -130,32 +183,34 @@ export default function Navbar({ items, ...props }) {
 
         <div className={styles["navbar__items-divider"]}></div>
 
-        <a
-          className={styles["navbar__icon"]}
-          target="_blank"
-          rel="noreferrer"
-          href="https://github.com/acol248"
-        >
-          <Icon type="github" />
-        </a>
+        <div className={styles["navbar__icons"]}>
+          <a
+            className={styles["navbar__icon"]}
+            target="_blank"
+            rel="noreferrer"
+            href="https://github.com/acol248"
+          >
+            <Icon type="github" />
+          </a>
 
-        <a
-          className={styles["navbar__icon"]}
-          target="_blank"
-          rel="noreferrer"
-          href="https://www.linkedin.com/in/alex-collyer"
-        >
-          <Icon type="linkedin" />
-        </a>
+          <a
+            className={styles["navbar__icon"]}
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.linkedin.com/in/alex-collyer"
+          >
+            <Icon type="linkedin" />
+          </a>
 
-        <a
-          className={styles["navbar__icon"]}
-          target="_blank"
-          rel="noreferrer"
-          href="https://drive.google.com/file/d/1VBmGbFeAkBS8umXGFzi27iDj-_7WoyD3/view?usp=sharing"
-        >
-          <Icon type="paper" />
-        </a>
+          <a
+            className={styles["navbar__icon"]}
+            target="_blank"
+            rel="noreferrer"
+            href="https://drive.google.com/file/d/1VBmGbFeAkBS8umXGFzi27iDj-_7WoyD3/view?usp=sharing"
+          >
+            <Icon type="paper" />
+          </a>
+        </div>
       </div>
     </nav>
   );
