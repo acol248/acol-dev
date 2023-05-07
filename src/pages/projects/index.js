@@ -54,28 +54,13 @@ export default function Projects() {
                 "PWA",
               ]}
               icon="expense"
-              status="Early Alpha Preview"
+              status="Coming Soon"
               onClick={() => router.push("/projects/expense")}
             >
               A React based PWA that helps the user to keep track of their
               monthly spending. Make note of your monthly outgoings, keep track
               of how much money should be taken and when. Keep finances under
               control.
-            </DetailedListBox>
-
-            <DetailedListBox
-              variant="reverse"
-              title="Basic QR Generator"
-              tags={["React", "JavaScript", "SCSS", "Frontend"]}
-              icon="qr"
-              status="live"
-              onClick={() => router.push("/projects/qr-generator")}
-            >
-              A web based QR code generator. Each QR code can be given a name
-              and text content. The foreground and background colors of the QR
-              code can be customised with hex color codes. The result can then
-              be exported as either a JPG, PNG or SVG at any 1:1 dimensions
-              (e.g. 1000x1000 or 8000x8000).
             </DetailedListBox>
           </div>
         </Section>
