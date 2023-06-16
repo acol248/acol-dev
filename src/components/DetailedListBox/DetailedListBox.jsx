@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 // components
 import Icon from "./DetailedListBox.icons";
@@ -17,10 +17,7 @@ export default function DetailedListBox({
   onClick,
   children,
 }) {
-  const [classList, setClassList] = useState("");
-
-  // classlist and variant
-  useEffect(() => {
+  const classList = useMemo(() => {
     const _classList = [styles["detailed-box"]];
 
     if (className)
@@ -30,7 +27,7 @@ export default function DetailedListBox({
       for (const item of variant.split(" "))
         _classList.push(styles[`detailed-box--${item}`]);
 
-    setClassList(_classList.join(" "));
+    return _classList.join(" ");
   }, [className, variant]);
 
   return (
@@ -45,7 +42,9 @@ export default function DetailedListBox({
           {tags && (
             <div className={styles["detailed-box__tags"]}>
               {tags?.map((tag) => (
-                <span className={styles["detailed-box__tag"]} key={tag}>{tag}</span>
+                <span className={styles["detailed-box__tag"]} key={tag}>
+                  {tag}
+                </span>
               ))}
             </div>
           )}
@@ -54,10 +53,9 @@ export default function DetailedListBox({
         <div className={styles["detailed-box__body"]}>{children}</div>
 
         {status && (
-            <div className={styles["detailed-box__status"]}>
-              <Icon type="web" /> <span>{status}</span>
-            </div>
-
+          <div className={styles["detailed-box__status"]}>
+            <Icon type="web" /> <span>{status}</span>
+          </div>
         )}
       </div>
     </button>

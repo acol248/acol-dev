@@ -1,13 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 // styles
 import styles from "./InfoBubble.module.scss";
 
 export default function InfoBubble({ className, variant, icon, children }) {
-  const [classList, setClassList] = useState("");
-
-  // classlist and variant
-  useEffect(() => {
+  const classList = useMemo(() => {
     const _classlist = [styles["info-bubble"]];
 
     if (className)
@@ -17,8 +14,8 @@ export default function InfoBubble({ className, variant, icon, children }) {
       for (const item of variant.split(" "))
         _classlist.push(styles[`info-bubble--${item}`]);
 
-    setClassList(_classlist.join(" "));
-  }, []);
+    return _classlist.join(" ");
+  }, [className, variant]);
 
   return (
     <div className={classList}>

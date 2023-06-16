@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useMemo } from "react";
 import Link from "next/link";
 import Router from "next/router";
 
@@ -15,28 +15,25 @@ import styles from "./Navbar.module.scss";
 export default function Navbar({ items, ...props }) {
   const { toggleTheme, theme } = useContext(ThemeContext);
 
-  const [classList, setClassList] = useState("");
-
   const [isMobile, setIsMobile] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   const [scrolled, setScrolled] = useState(false);
 
-  /**
-   * Handles theme toggle
-   */
-  const handleThemeToggle = () => {
-    toggleTheme();
-  };
-
-  // classlist and variant
-  useEffect(() => {
+  const classList = useMemo(() => {
     const _classlist = [styles["navbar"]];
 
     if (scrolled) _classlist.push(styles["navbar--scroll"]);
 
-    setClassList(_classlist.join(" "));
+    return _classlist.join(" ");
   }, [scrolled]);
+
+  /**
+   * Handles theme toggle ̰
+   */
+  const handleThemeToggle = () => {
+    toggleTheme();
+  };
 
   // auto-close mobile nav on route change
   useEffect(() => {
