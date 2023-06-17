@@ -1,6 +1,9 @@
-import { useMemo } from "react";
+"use client";
 
-export default function SkillIcon({ type, ...props }) {
+import { useMemo } from "react";
+import type { ISkillIcon } from "./SkillIcon.interface";
+
+export default function SkillIcon({ type, ...props }: ISkillIcon) {
   const icon = useMemo(() => {
     switch (type) {
       case "react":

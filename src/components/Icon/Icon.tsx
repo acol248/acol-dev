@@ -1,6 +1,9 @@
-import { useMemo } from "react";
+"use client";
 
-export default function Icon({ type, ...props }) {
+import { useMemo } from "react";
+import type { IIcon } from "./Icon.interface";
+
+export default function Icon({ type, ...props }: IIcon) {
   const icon = useMemo(() => {
     switch (type) {
       case "qr-code":

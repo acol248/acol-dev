@@ -15,6 +15,12 @@ import styles from "./Navbar.module.scss";
 import type { INavbar } from "./Navbar.interface";
 
 export default function Navbar({ className, items, ...props }: INavbar) {
+  const _theme = useMemo(() => {
+    return localStorage.getItem("theme");
+  }, []);
+
+  const [theme, setTheme] = useState(_theme);
+
   const [isMobile, setIsMobile] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
@@ -28,12 +34,19 @@ export default function Navbar({ className, items, ...props }: INavbar) {
     return _classlist.join(" ");
   }, [scrolled]);
 
+  const handleToggleTheme = () => {
+    const theme = localStorage.getItem("theme");
+    const next = theme === "light" ? "dark" : "light";
+
+    localStorage.setItem("theme", next);
+    setTheme(next);
+  };
+
   // auto-close mobile nav on route change
   useEffect(() => {
     Router.events.on("routeChangeComplete", () => setMobileNavOpen(false));
 
-    return () =>
-      Router.events.off("routeChangeComplete", () => setMobileNavOpen(false));
+    return () => Router.events.off("routeChangeComplete", () => setMobileNavOpen(false));
   }, []);
 
   // scroll detection
@@ -100,11 +113,7 @@ export default function Navbar({ className, items, ...props }: INavbar) {
 
                 if (type === "external")
                   out = (
-                    <a
-                      href={href}
-                      key={index}
-                      className={styles["nav-menu__item"]}
-                    >
+                    <a href={href} key={index} className={styles["nav-menu__item"]}>
                       {name}
                     </a>
                   );
@@ -118,10 +127,7 @@ export default function Navbar({ className, items, ...props }: INavbar) {
       <div className={styles["navbar__items"]}>
         {isMobile ? (
           <>
-            <button
-              onClick={() => setMobileNavOpen(true)}
-              className={styles["navbar__menu-button"]}
-            >
+            <button onClick={() => setMobileNavOpen(true)} className={styles["navbar__menu-button"]}>
               <Icon type="menu" />
             </button>
           </>
@@ -146,11 +152,7 @@ export default function Navbar({ className, items, ...props }: INavbar) {
 
                 if (type === "external")
                   out = (
-                    <a
-                      href={href}
-                      key={index}
-                      className={styles["navbar__item"]}
-                    >
+                    <a href={href} key={index} className={styles["navbar__item"]}>
                       {name}
                     </a>
                   );
@@ -163,23 +165,14 @@ export default function Navbar({ className, items, ...props }: INavbar) {
       </div>
 
       <div className={styles["navbar__items"]}>
-        {/* <button
-          className={styles["navbar__theme-toggle"]}
-          onClick={handleThemeToggle}
-          aria-label="Toggle theme"
-        >
+        <button className={styles["navbar__theme-toggle"]} onClick={handleToggleTheme} aria-label="Toggle theme">
           {theme === "light" ? <Icon type="light" /> : <Icon type="dark" />}
-        </button> */}
+        </button>
 
         <div className={styles["navbar__items-divider"]}></div>
 
         <div className={styles["navbar__icons"]}>
-          <a
-            className={styles["navbar__icon"]}
-            target="_blank"
-            rel="noreferrer"
-            href="https://github.com/acol248"
-          >
+          <a className={styles["navbar__icon"]} target="_blank" rel="noreferrer" href="https://github.com/acol248">
             <Icon type="github" />
           </a>
 
