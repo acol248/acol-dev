@@ -1,0 +1,115 @@
+.modal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2500;
+
+  & .modal__backdrop {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    transition-duration: 150ms;
+    transition-property: opacity, transform;
+    transition-timing-function: ease-in-out;
+  }
+
+  & .modal__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    opacity: 0;
+    border-radius: 6px;
+    transform: scale(0.925);
+    background-color: var(--modal-background-color);
+    max-width: 95vw;
+
+    @media screen and (min-width: 992px) {
+      max-width: 768px;
+    }
+
+    transition-duration: 150ms;
+    transition-property: opacity, transform;
+    transition-timing-function: ease-in-out;
+
+    & .modal__header {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      width: 100%;
+      padding: 1rem 1rem 0 1rem;
+
+      & .modal__title {
+        font-size: 1.25rem;
+        font-weight: 300;
+        color: var(--text-color);
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        line-height: 1.2;
+      }
+
+      & .modal__close {
+        width: 2rem;
+        height: 2rem;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        background-color: transparent;
+        box-sizing: content-box;
+        cursor: pointer;
+
+        & svg {
+          width: 100%;
+          height: 100%;
+          fill: var(--text-color);
+        }
+      }
+    }
+
+    & .modal__body {
+      padding: 0 1rem 1rem 1rem;
+    }
+  }
+
+  &--active {
+    & .modal__backdrop {
+      opacity: 1;
+    }
+
+    & .modal__content {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  &--nav-menu {
+    & .modal__backdrop {
+      opacity: 0;
+    }
+
+    & .modal__content {
+      max-width: 100%;
+      max-height: 100%;
+      min-height: 100%;
+      min-width: 100%;
+      border-radius: 0;
+      background-color: var(--background-color);
+
+      & .modal__header {
+        & .modal__close {
+          & svg {
+            fill: var(--title-color);
+          }
+        }
+      }
+    }
+  }
+}
