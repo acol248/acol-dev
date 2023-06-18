@@ -43,22 +43,37 @@ const theme = {
   },
 };
 
-const elementTheme = {
+const elementsLight = {
   core: {
     text: {
-      color: "",
-    },
-    scrollbar: {
-      thumb: "",
-      track: "",
+      color: theme.color.common.black,
+      inverted: theme.color.common.white,
     },
     content: {
       background: {
-        100: "",
-        200: "",
-        300: "",
-        400: "",
-        500: "",
+        100: theme.color.common.white,
+        200: theme.color.grey[100],
+        300: theme.color.grey[200],
+        400: theme.color.grey[300],
+        500: theme.color.grey[400],
+      },
+    },
+  },
+};
+
+const elementsDark = {
+  core: {
+    text: {
+      color: theme.color.common.white,
+      inverted: theme.color.common.black,
+    },
+    content: {
+      background: {
+        100: theme.color.common.black,
+        200: theme.color.grey[900],
+        300: theme.color.grey[800],
+        400: theme.color.grey[700],
+        500: theme.color.grey[600],
       },
     },
   },
@@ -116,4 +131,4 @@ export function generateCSSVariables(theme: ITheme): string {
   return `html {\n${cssVariables}}`;
 }
 
-export { theme, elementTheme };
+export { theme, elementsLight, elementsDark };
