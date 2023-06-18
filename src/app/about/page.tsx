@@ -61,7 +61,7 @@ export default function About() {
             found on the website under the{" "}
             <Link href="/projects" className={styles["about__projects"]}>
               projects
-            </Link>
+            </Link>{" "}
             page.
           </p>
         </Section>

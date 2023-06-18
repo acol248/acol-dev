@@ -1,8 +1,13 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useContext } from "react";
+
+// next
 import Link from "next/link";
 import Router from "next/router";
+
+// hooks
+import { ThemeContext } from "../ThemeWrapper/ThemeWrapper";
 
 // components
 import Icon from "./Navbar.icons";
@@ -15,11 +20,7 @@ import styles from "./Navbar.module.scss";
 import type { INavbar } from "./Navbar.interface";
 
 export default function Navbar({ className, items, ...props }: INavbar) {
-  const _theme = useMemo(() => {
-    return localStorage.getItem("theme");
-  }, []);
-
-  const [theme, setTheme] = useState(_theme);
+  const { themeState, toggleTheme } = useContext(ThemeContext);
 
   const [isMobile, setIsMobile] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -33,14 +34,6 @@ export default function Navbar({ className, items, ...props }: INavbar) {
 
     return _classlist.join(" ");
   }, [scrolled]);
-
-  const handleToggleTheme = () => {
-    const theme = localStorage.getItem("theme");
-    const next = theme === "light" ? "dark" : "light";
-
-    localStorage.setItem("theme", next);
-    setTheme(next);
-  };
 
   // auto-close mobile nav on route change
   useEffect(() => {
@@ -165,8 +158,8 @@ export default function Navbar({ className, items, ...props }: INavbar) {
       </div>
 
       <div className={styles["navbar__items"]}>
-        <button className={styles["navbar__theme-toggle"]} onClick={handleToggleTheme} aria-label="Toggle theme">
-          {theme === "light" ? <Icon type="light" /> : <Icon type="dark" />}
+        <button className={styles["navbar__theme-toggle"]} onClick={toggleTheme} aria-label="Toggle theme">
+          {themeState === "light" ? <Icon type="light" /> : <Icon type="dark" />}
         </button>
 
         <div className={styles["navbar__items-divider"]}></div>

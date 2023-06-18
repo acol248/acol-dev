@@ -1,6 +1,7 @@
 // components
 import Navbar from "@/components/Navbar";
 import ThemeWrapper from "@/components/ThemeWrapper";
+import Footer from "@/components/Footer";
 
 // styles
 import "@/styles/globals.css";
@@ -20,6 +21,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Navbar items={navbarItems} />
 
           <main>{children}</main>
+
+          <Footer />
         </ThemeWrapper>
       </body>
     </html>

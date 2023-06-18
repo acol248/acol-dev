@@ -13,6 +13,10 @@ body {
   font-family: Poppins;
 }
 
+main {
+  background-color: var(--core-content-background-100);
+}
+
 a {
   color: inherit;
   text-decoration: none;

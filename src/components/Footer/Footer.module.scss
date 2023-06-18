@@ -6,6 +6,7 @@
   border-top: 1px solid var(--color-common-grey);
   justify-content: center;
   align-items: center;
+  background-color: var(--core-content-background-100);
 
   & .footer__title-box {
     display: flex;
@@ -18,7 +19,7 @@
     }
 
     & .footer__site-title {
-      color: var(--title-color);
+      color: var(--core-text-color);
       font-weight: 300;
       font-size: 1.5rem;
     }
