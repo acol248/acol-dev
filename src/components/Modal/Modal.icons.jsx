@@ -1,6 +1,7 @@
 import { useMemo } from "react";
+import type { IModalIcon } from "./Modal.interface";
 
-export default function Icon({ type, ...props }) {
+export default function Icon({ type, ...props }: IModalIcon) {
   const icon = useMemo(() => {
     switch (type) {
       case "close":
