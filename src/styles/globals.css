@@ -1,9 +1,6 @@
 /* FONTS */
-@import "../fonts/Inter/font.css";
-@import "../fonts/Poppins/font.css";
-
-/* VARIABLES */
-@import "variables.css";
+@import "../interface/fonts/Inter/font.css";
+@import "../interface/fonts/Poppins/font.css";
 
 * {
   box-sizing: border-box;
@@ -14,6 +11,10 @@ body {
   padding: 0;
   margin: 0;
   font-family: Poppins;
+}
+
+main {
+  background-color: var(--core-content-background-100);
 }
 
 a {

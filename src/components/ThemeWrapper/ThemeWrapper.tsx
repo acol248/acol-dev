@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useCallback, useEffect, useMemo, useState } from "react";
 
 // theme
 import { generateCSSVariables, theme, elementsLight, elementsDark } from "@/interface/index";

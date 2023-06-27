@@ -1,4 +1,4 @@
-.container {
+.home {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,7 +6,7 @@
   min-height: 100vh;
   padding: max(6vh, 4rem) 0;
 
-  & .container__inner {
+  & .home__inner {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,7 +18,7 @@
     line-height: 1.2;
     text-align: center;
 
-    & .container__right {
+    & .home__right {
       display: none;
       aspect-ratio: 503 / 651;
       z-index: 1;
@@ -36,7 +36,7 @@
       }
     }
 
-    & .container__left {
+    & .home__left {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
@@ -45,22 +45,18 @@
       margin: auto;
       padding: 0 max(0.75vh, 0.5rem);
 
-      & .container__title {
+      & .home__title {
         position: relative;
         text-align: left;
         background-color: transparent;
         filter: drop-shadow(0 0.25rem 0.25rem rgba(0, 0, 0, 0.2));
         z-index: 50;
         pointer-events: none;
-        color: var(--title-color);
+        color: var(--core-text-color);
         margin: 1rem 0;
 
         & span {
-          background: linear-gradient(
-            60deg,
-            rgba(240, 78, 130, 1) 0%,
-            rgba(48, 60, 162, 1) 100%
-          );
+          background: linear-gradient(60deg, rgba(240, 78, 130, 1) 0%, rgba(48, 60, 162, 1) 100%);
           background-clip: text;
           -webkit-text-fill-color: transparent;
           background-size: 250% 250%;

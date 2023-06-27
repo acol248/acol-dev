@@ -1,87 +1,43 @@
 .policies {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   min-height: 100vh;
-  padding: 4rem 1rem;
+  padding: 3rem 1.5rem 3rem;
+  margin: auto;
+  max-width: 992px;
 
-  @media screen and (min-width: 768px) {
-    padding: 4rem 2rem;
-  }
-
-  & .policies__inner {
+  & .policies__header {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 1rem;
-    max-width: 1320px;
+    text-align: center;
+    margin: 3rem 0 0;
 
-    & .policies__header {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 1rem;
-      text-align: center;
-      margin: 4rem 0 0;
-
-      & .policies__title {
-        font-size: 2.25rem;
-        line-height: 1.2;
-        margin: 0.25rem 0;
-        padding: 0;
-        color: var(--title-color);
-
-        @media screen and (min-width: 992px) {
-          margin: 0.5rem 0;
-          font-size: 6rem;
-        }
-      }
-
-      & .policies__body {
-        font-size: 0.8rem;
-        line-height: 1.2;
-        margin: 0.125rem 0;
-        padding: 0;
-        width: 85%;
-
-        @media screen and (min-width: 992px) {
-          margin: 0.25rem 0;
-          font-size: 1.2rem;
-          width: 90%;
-        }
-      }
+    & .policies__title {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin: 0.25rem 0;
+      padding: 0;
+      color: var(--core-text-color);
 
       @media screen and (min-width: 992px) {
-        margin: 3rem 0 0;
+        margin: 0.5rem 0;
+        font-size: 4rem;
       }
     }
+  }
 
-    & .policies__content {
-      & .policies__content-part {
-        margin: 4rem 0;
+  & .policies__content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem 0 0 0;
+  }
 
-        & h2 {
-          font-size: 1.5rem;
-        }
-
-        & h3 {
-          font-size: 1.15rem;
-          font-weight: 200;
-          margin-top: -1rem;
-          font-style: italic;
-          opacity: 0.75;
-        }
-
-        & p {
-          margin: 0.8rem 0;
-          font-size: 1rem;
-        }
-
-        & a {
-          text-decoration: underline;
-        }
-      }
-    }
+  @media screen and (min-width: 768px) {
+    padding: 4rem 1.5rem 4rem;
   }
 }
