@@ -10,7 +10,7 @@
   border-radius: 0.25rem;
   font-size: 1rem;
   font-weight: 300;
-  color: var(--color-common-white);
+  color: var(--core-text-color);
   cursor: pointer;
 
   & svg {
@@ -38,15 +38,15 @@
     background-color: transparent;
     border-width: 1px;
     border-style: solid;
-    border-color: var(--text-color);
+    border-color: var(--core-text-color);
     border-radius: 0.25rem;
-    color: var(--text-color);
+    color: var(--core-text-color);
 
     &:hover {
-      background-color: var(--text-color);
+      background-color: var(--core-text-color);
 
       & span {
-        color: var(--text-color-inverted);
+        color: var(--core-text-inverted);
       }
     }
 
@@ -57,14 +57,14 @@
   }
 
   &--inverted {
-    border-color: var(--text-color-inverted);
-    color: var(--text-color-inverted);
+    border-color: var(--core-text-inverted);
+    color: var(--core-text-inverted);
 
     &:hover {
-      background-color: var(--text-color-inverted);
+      background-color: var(--core-text-inverted);
 
       & span {
-        color: var(--text-color);
+        color: var(--core-text-color);
       }
     }
   }
@@ -72,17 +72,17 @@
   &--tertiary {
     border: 0;
     background-color: transparent;
-    color: var(--text-color);
+    color: var(--core-text-color);
 
     & span {
-      color: var(--text-color);
+      color: var(--core-text-color);
     }
 
     &.button--inverted {
-      color: var(--text-color-inverted);
+      color: var(--core-text-inverted);
 
       & span {
-        color: var(--text-color-inverted);
+        color: var(--core-text-inverted);
       }
     }
 

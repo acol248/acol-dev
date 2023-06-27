@@ -22,7 +22,7 @@
       line-height: 1.2;
       margin: 0.25rem 0;
       padding: 0;
-      color: var(--title-color);
+      color: var(--core-text-color);
 
       @media screen and (min-width: 992px) {
         margin: 0.5rem 0;
@@ -38,11 +38,7 @@
     margin: 2rem 0 0 0;
 
     & .about__acol {
-      background: linear-gradient(
-        60deg,
-        rgba(240, 78, 130, 1) 0%,
-        rgba(48, 60, 162, 1) 100%
-      );
+      background: linear-gradient(60deg, rgba(240, 78, 130, 1) 0%, rgba(48, 60, 162, 1) 100%);
       background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: 600;
@@ -54,11 +50,7 @@
     }
 
     & .about__projects {
-      background: linear-gradient(
-        60deg,
-        rgba(240, 78, 130, 1) 0%,
-        rgba(48, 60, 162, 1) 100%
-      );
+      background: linear-gradient(60deg, rgba(240, 78, 130, 1) 0%, rgba(48, 60, 162, 1) 100%);
       background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: 600;

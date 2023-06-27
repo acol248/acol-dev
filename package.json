@@ -1,5 +1,5 @@
 {
-  "name": "acol-dev",
+  "name": "acol-dev_experimental",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,21 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@analytics/google-analytics": "^1.0.5",
-    "analytics": "^0.8.1",
-    "bcryptjs": "^2.4.3",
-    "mongoose": "^6.5.2",
-    "next": "^13.3.1",
-    "passport": "^0.6.0",
+    "eslint": "8.42.0",
+    "eslint-config-next": "13.4.6",
+    "next": "13.4.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-laag": "^2.0.5",
-    "react-qr-code": "^2.0.8",
-    "sass": "^1.54.0",
-    "typescript": "^4.7.4"
+    "sass": "^1.63.4"
   },
   "devDependencies": {
-    "eslint": "8.20.0",
-    "eslint-config-next": "12.2.3"
+    "@types/node": "^20.3.1",
+    "@types/react": "^18.2.12",
+    "@types/react-dom": "^18.2.5",
+    "typescript": "^5.1.3"
   }
 }
