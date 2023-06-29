@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo, useContext } from "react";
 
 // next
 import Link from "next/link";
-import Router from "next/router";
+import { usePathname, useRouter } from "next/navigation";
 
 // hooks
 import { ThemeContext } from "../ThemeWrapper/ThemeWrapper";
@@ -22,6 +22,8 @@ import type { INavbar } from "./Navbar.interface";
 export default function Navbar({ className, items, ...props }: INavbar) {
   const { themeState, toggleTheme } = useContext(ThemeContext);
 
+  const pathname = usePathname();
+
   const [isMobile, setIsMobile] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
@@ -35,12 +37,10 @@ export default function Navbar({ className, items, ...props }: INavbar) {
     return _classlist.join(" ");
   }, [scrolled]);
 
-  // auto-close mobile nav on route change
+  // hacky mobile nav fix
   useEffect(() => {
-    Router.events.on("routeChangeComplete", () => setMobileNavOpen(false));
-
-    return () => Router.events.off("routeChangeComplete", () => setMobileNavOpen(false));
-  }, []);
+    setMobileNavOpen(false);
+  }, [pathname]);
 
   // scroll detection
   useEffect(() => {
