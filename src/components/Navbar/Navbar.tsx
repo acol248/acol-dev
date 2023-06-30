@@ -4,7 +4,7 @@ import { useState, useEffect, useMemo, useContext } from "react";
 
 // next
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 // hooks
 import { ThemeContext } from "../ThemeWrapper/ThemeWrapper";
@@ -12,6 +12,7 @@ import { ThemeContext } from "../ThemeWrapper/ThemeWrapper";
 // components
 import Icon from "./Navbar.icons";
 import Modal from "../Modal";
+import Button from "@/interface/Button";
 
 // styles
 import styles from "./Navbar.module.scss";
@@ -22,7 +23,7 @@ import type { INavbar } from "./Navbar.interface";
 export default function Navbar({ className, items, ...props }: INavbar) {
   const { themeState, toggleTheme } = useContext(ThemeContext);
 
-  const pathname = usePathname();
+  const router = useRouter();
 
   const [isMobile, setIsMobile] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -37,10 +38,10 @@ export default function Navbar({ className, items, ...props }: INavbar) {
     return _classlist.join(" ");
   }, [scrolled]);
 
-  // hacky mobile nav fix
-  useEffect(() => {
+  const handleRouteChange = (href: string) => {
+    router.push(href);
     setMobileNavOpen(false);
-  }, [pathname]);
+  };
 
   // scroll detection
   useEffect(() => {
@@ -88,9 +89,9 @@ export default function Navbar({ className, items, ...props }: INavbar) {
         variant="nav-menu"
       >
         <div className={styles["nav-menu__container"]}>
-          <div className={styles["nav-menu__logo"]}>
-            <Link href="/">acol.dev</Link>
-          </div>
+          <button className={styles["nav-menu__logo"]} onClick={() => handleRouteChange("/")}>
+            <span>acol.dev</span>
+          </button>
 
           <div className={styles["nav-menu__items"]}>
             {items &&
@@ -99,9 +100,14 @@ export default function Navbar({ className, items, ...props }: INavbar) {
 
                 if (type === "internal")
                   out = (
-                    <Link href={href} key={index}>
+                    <Button
+                      className={styles["nav-menu__button"]}
+                      variant="tertiary"
+                      onClick={() => handleRouteChange(href)}
+                      key={index}
+                    >
                       {name}
-                    </Link>
+                    </Button>
                   );
 
                 if (type === "external")
