@@ -1,44 +1,30 @@
 "use client";
 
-import { createContext, useCallback, useEffect, useMemo, useState } from "react";
+import { createContext, useCallback, useMemo, useState } from "react";
 
 // theme
 import { generateCSSVariables, theme, elementsLight, elementsDark } from "@/interface/index";
 
 // types
 import type { IThemeWrapper } from "./ThemeWrapper.interface";
+import { setCookie } from "@/helpers/cookie";
 
 interface ITheme {
   themeState: string;
   toggleTheme: () => void;
 }
 
-function useTheme() {
-  // const _theme = useMemo(() => {
-  //   //if (typeof window !== "undefined") return;
-
-  //   //return localStorage?.getItem("theme") || "light";
-
-  //   return "light";
-  // }, []);
-
-  const [theme, setTheme] = useState("light");
+function useTheme(value: string) {
+  const [theme, setTheme] = useState(value);
 
   const toggleTheme = useCallback(() => {
     setTheme(t => {
       const update = t === "light" ? "dark" : "light";
 
-      if (localStorage) localStorage.setItem("theme", t === "light" ? "dark" : "light");
+      if (localStorage) setCookie("theme", update, 10000);
 
       return update;
     });
-  }, []);
-
-  // load theme
-  useEffect(() => {
-    if (typeof window !== "undefined") return;
-
-    setTheme(localStorage?.getItem("theme") || "light");
   }, []);
 
   return useMemo(() => ({ themeState: theme, toggleTheme }), [theme, toggleTheme]);
@@ -46,8 +32,8 @@ function useTheme() {
 
 export const ThemeContext = createContext<ITheme | any>(null);
 
-export default function ThemeWrapper({ children }: IThemeWrapper) {
-  const _theme = useTheme();
+export default function ThemeWrapper({ children, value }: IThemeWrapper) {
+  const _theme = useTheme(value);
 
   const themeStyles = generateCSSVariables(theme);
   const elementsTheme = generateCSSVariables(_theme.themeState === "light" ? elementsLight : elementsDark);
