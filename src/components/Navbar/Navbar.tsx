@@ -6,9 +6,6 @@ import { useState, useEffect, useMemo, useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
-// hooks
-import { ThemeContext } from "../ThemeWrapper/ThemeWrapper";
-
 // components
 import Icon from "./Navbar.icons";
 import Modal from "../Modal";
@@ -22,8 +19,6 @@ import type { INavbar } from "./Navbar.interface";
 import ThemeToggle from "../ThemeToggle";
 
 export default function Navbar({ className, items, ...props }: INavbar) {
-  const { themeState, toggleTheme } = useContext(ThemeContext);
-
   const router = useRouter();
 
   const [isMobile, setIsMobile] = useState(false);
