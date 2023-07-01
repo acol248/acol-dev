@@ -51,14 +51,22 @@
     --box-shadow-color: color-mix(in srgb, var(--core-text-color), var(--core-text-inverted) 80%);
 
     & .theme-toggle__icon {
-      background-color: color-mix(in srgb, var(--core-text-inverted), var(--core-text-color) 15%);
       opacity: 1;
     }
+  }
 
-    &::before {
-      opacity: 1;
-      background-color: color-mix(in srgb, var(--core-text-inverted), var(--core-text-color) 25%);
-      box-shadow: var(--box-shadow-color) 0px 7px 29px 0px;
+  @media screen and (min-width: 768px) {
+    &:hover {
+      & .theme-toggle__icon {
+        background-color: color-mix(in srgb, var(--core-text-inverted), var(--core-text-color) 15%);
+        opacity: 1;
+      }
+
+      &::before {
+        opacity: 1;
+        background-color: color-mix(in srgb, var(--core-text-inverted), var(--core-text-color) 25%);
+        box-shadow: var(--box-shadow-color) 0px 7px 29px 0px;
+      }
     }
   }
 
