@@ -19,6 +19,7 @@ import styles from "./Navbar.module.scss";
 
 // types
 import type { INavbar } from "./Navbar.interface";
+import ThemeToggle from "../ThemeToggle";
 
 export default function Navbar({ className, items, ...props }: INavbar) {
   const { themeState, toggleTheme } = useContext(ThemeContext);
@@ -164,9 +165,11 @@ export default function Navbar({ className, items, ...props }: INavbar) {
       </div>
 
       <div className={styles["navbar__items"]}>
-        <button className={styles["navbar__theme-toggle"]} onClick={toggleTheme} aria-label="Toggle theme">
+        {/* <button className={styles["navbar__theme-toggle"]} onClick={toggleTheme} aria-label="Toggle theme">
           {themeState === "light" ? <Icon type="light" /> : <Icon type="dark" />}
-        </button>
+        </button> */}
+
+        <ThemeToggle className={styles["navbar__theme-toggle"]} />
 
         <div className={styles["navbar__items-divider"]}></div>
 
