@@ -11,6 +11,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: Poppins;
+  background-color: var(--core-content-background-100);
 }
 
 main {
