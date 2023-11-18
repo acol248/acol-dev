@@ -1,0 +1,17 @@
+.detailed-button {
+  display: flex;
+
+  & .detailed-button__content {
+    & .detailed-button__tags {
+      display: flex;
+      gap: 0.5rem;
+
+      & .detailed-button__tag {
+        font-size: 1rem;
+        padding: 0.8rem;
+        margin: 0;
+        border-radius: 1rem;
+      }
+    }
+  }
+}
