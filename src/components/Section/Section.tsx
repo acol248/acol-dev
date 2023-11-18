@@ -1,28 +1,29 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import useClassList, { mapClassesCurried } from "@blocdigital/useclasslist";
 
-import styles from "./Section.module.scss";
-import { ISection } from "./Section.interface";
+// types
+import type { HTMLProps } from "react";
 
-export default function Section({ className, title, subtitle, children, ...props }: ISection) {
-  const [classList, setClassList] = useState("");
+// styles
+import maps from "./Section.module.scss";
 
-  // classlist and variant
-  useEffect(() => {
-    const _classlist = [styles["section"]];
+const mc = mapClassesCurried(maps, true) as (a: string) => string;
 
-    if (className) for (const item of className.split(" ")) _classlist.push(item);
+interface ISection extends HTMLProps<HTMLDivElement> {
+  title?: string;
+  subtitle?: string;
+}
 
-    setClassList(_classlist.join(" "));
-  }, [className]);
+export default function Section({ className, title, subtitle, children }: ISection) {
+  const classList = useClassList({ defaultClass: "section", className, maps, string: true }) as string;
 
   return (
     <div className={classList}>
       {(title || subtitle) && (
-        <div className={styles["section__header"]}>
-          {title && <h2 className={styles["section__title"]}>{title}</h2>}
-          {subtitle && <h4 className={styles["section__subtitle"]}>{subtitle}</h4>}
+        <div className={mc("section__header")}>
+          {title && <h2 className={mc("section__title")}>{title}</h2>}
+          {subtitle && <h4 className={mc("section__subtitle")}>{subtitle}</h4>}
         </div>
       )}
 
