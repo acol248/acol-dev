@@ -10,13 +10,13 @@ import { useRouter } from "next/navigation";
 import Icon from "./Navbar.icons";
 import Modal from "../Modal";
 import Button from "@/interface/Button";
+import ThemeToggle from "../ThemeToggle";
 
 // styles
 import styles from "./Navbar.module.scss";
 
 // types
 import type { INavbar } from "./Navbar.interface";
-import ThemeToggle from "../ThemeToggle";
 
 export default function Navbar({ className, items, ...props }: INavbar) {
   const router = useRouter();
