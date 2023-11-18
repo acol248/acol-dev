@@ -1,4 +1,5 @@
 // components
+import DetailedButton from "@/components/DetailedButton";
 import Section from "@/components/Section";
 
 // styles
@@ -10,7 +11,9 @@ export default function Projects() {
     <section className={styles["projects"]}>
       <div className={styles["projects__content"]}>
         <Section style={{ minHeight: "calc(100vh - 72px)" }}>
-          
+          <DetailedButton>
+            <h3>Title</h3>
+          </DetailedButton>
         </Section>
       </div>
     </section>
