@@ -9,7 +9,7 @@ import { HTMLProps, ReactNode } from "react";
 const mc = mapClassesCurried(maps, true) as (a: string) => string;
 
 interface IDetailedButton extends HTMLProps<HTMLButtonElement> {
-  varian?: string;
+  variant?: string;
   tags?: string[];
   ident?: ReactNode;
 }

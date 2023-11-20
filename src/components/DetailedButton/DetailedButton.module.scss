@@ -1,7 +1,23 @@
 .detailed-button {
   display: flex;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+
+  transition-duration: 125ms;
+  transition-property: transform;
+  transition-timing-function: ease-in-out;
 
   & .detailed-button__content {
+    padding: 0.5rem;
+
+    & * {
+      color: var(--core-text-color);
+    }
+
     & .detailed-button__tags {
       display: flex;
       gap: 0.5rem;
@@ -13,5 +29,13 @@
         border-radius: 1rem;
       }
     }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--core-text-color);
+  }
+
+  &:hover {
+    transform: scale(1.05);
   }
 }
