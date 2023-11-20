@@ -24,4 +24,8 @@
   & p:last-of-type {
     margin-bottom: 0;
   }
+
+  &:first-of-type {
+    padding-top: 2rem;
+  }
 }
