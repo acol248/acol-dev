@@ -16,7 +16,10 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const navbarItems = [{ name: "About", type: "internal", href: "/about" }];
+  const navbarItems = [
+    { name: "About", type: "internal", href: "/about" },
+    { name: "Projects", type: "internal", href: "/projects" },
+  ];
 
   const cookieStore = cookies();
   const theme = cookieStore.get("theme")?.value || "light";
