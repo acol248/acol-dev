@@ -1,24 +1,23 @@
 "use client";
 
-import useClassList, { mapClassesCurried } from "@blocdigital/useclasslist";
-
 // styles
+import useClassList, { mapClassesCurried } from "@blocdigital/useclasslist";
 import maps from "./DetailedButton.module.scss";
-import { HTMLProps, ReactNode } from "react";
-
 const mc = mapClassesCurried(maps, true) as (a: string) => string;
 
+// types
+import type { HTMLProps, ReactNode } from "react";
 interface IDetailedButton extends HTMLProps<HTMLButtonElement> {
   variant?: string;
   tags?: string[];
   ident?: ReactNode;
 }
 
-export default function DetailedButton({ className, variant, ident, tags = [], children }: IDetailedButton) {
+export default function DetailedButton({ className, variant, ident, tags = [], children, onClick }: IDetailedButton) {
   const classList = useClassList({ defaultClass: "detailed-button", className, variant, maps, string: true }) as string;
 
   return (
-    <button className={classList}>
+    <button className={classList} onClick={onClick} type="button">
       {ident && <div className={mc("detailed-button__ident")}>{ident}</div>}
       <div className={mc("detailed-button__content")}>
         {children}
