@@ -84,9 +84,9 @@ export default function Navbar({ className, items }: INavbar) {
     <nav className={classList}>
       <Modal open={mobileNavOpen} onClose={() => setMobileNavOpen(false)} className={mc("nav-menu")} variant="nav-menu">
         <div className={mc("nav-menu__container")}>
-          <button className={mc("nav-menu__logo")} onClick={() => handleRouteChange("/")}>
+          <a className={mc("nav-menu__logo")} onClick={() => handleRouteChange("/")}>
             <span>acol.dev</span>
-          </button>
+          </a>
 
           <div className={mc("nav-menu__items")}>
             {items &&
@@ -129,7 +129,7 @@ export default function Navbar({ className, items }: INavbar) {
           ) : (
             <>
               <div className={mc("navbar__logo")}>
-                <Link href="/">acol.dev</Link>
+                <Link href="#home">acol.dev</Link>
               </div>
 
               <div className={mc("navbar__items-divider")}></div>
