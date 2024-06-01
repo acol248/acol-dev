@@ -16,6 +16,8 @@ body {
 
 main {
   background-color: var(--core-content-background-100);
+  max-width: 1024px;
+  margin: auto;
 }
 
 a {
