@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useMemo, useContext } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 
 // next
 import Link from "next/link";
@@ -13,12 +13,14 @@ import Button from "@/interface/Button";
 import ThemeToggle from "../ThemeToggle";
 
 // styles
-import styles from "./Navbar.module.scss";
+import useClassList, { mapClassesCurried } from "@blocdigital/useclasslist";
+import maps from "./Navbar.module.scss";
+const mc = mapClassesCurried(maps, true) as (c: string) => string;
 
 // types
 import type { INavbar } from "./Navbar.interface";
 
-export default function Navbar({ className, items, ...props }: INavbar) {
+export default function Navbar({ className, items }: INavbar) {
   const router = useRouter();
 
   const [isMobile, setIsMobile] = useState(false);
@@ -26,13 +28,15 @@ export default function Navbar({ className, items, ...props }: INavbar) {
 
   const [scrolled, setScrolled] = useState(false);
 
-  const classList = useMemo(() => {
-    const _classlist = [styles["navbar"]];
-
-    if (scrolled) _classlist.push(styles["navbar--scroll"]);
-
-    return _classlist.join(" ");
-  }, [scrolled]);
+  const classList = useClassList(
+    { defaultClass: "navbar", className, maps, string: true },
+    useCallback(
+      (c: string[]) => {
+        scrolled && c.push("navbar--scroll");
+      },
+      [scrolled]
+    )
+  ) as string;
 
   const handleRouteChange = (href: string) => {
     router.push(href);
@@ -78,18 +82,13 @@ export default function Navbar({ className, items, ...props }: INavbar) {
 
   return (
     <nav className={classList}>
-      <Modal
-        open={mobileNavOpen}
-        onClose={() => setMobileNavOpen(false)}
-        className={styles["nav-menu"]}
-        variant="nav-menu"
-      >
-        <div className={styles["nav-menu__container"]}>
-          <button className={styles["nav-menu__logo"]} onClick={() => handleRouteChange("/")}>
+      <Modal open={mobileNavOpen} onClose={() => setMobileNavOpen(false)} className={mc("nav-menu")} variant="nav-menu">
+        <div className={mc("nav-menu__container")}>
+          <button className={mc("nav-menu__logo")} onClick={() => handleRouteChange("/")}>
             <span>acol.dev</span>
           </button>
 
-          <div className={styles["nav-menu__items"]}>
+          <div className={mc("nav-menu__items")}>
             {items &&
               items.map(({ name, href, type, ...props }, index) => {
                 let out;
@@ -97,7 +96,7 @@ export default function Navbar({ className, items, ...props }: INavbar) {
                 if (type === "internal")
                   out = (
                     <Button
-                      className={styles["nav-menu__button"]}
+                      className={mc("nav-menu__button")}
                       variant="tertiary"
                       onClick={() => handleRouteChange(href)}
                       key={index}
@@ -108,7 +107,7 @@ export default function Navbar({ className, items, ...props }: INavbar) {
 
                 if (type === "external")
                   out = (
-                    <a href={href} key={index} className={styles["nav-menu__item"]}>
+                    <a href={href} key={index} className={mc("nav-menu__item")}>
                       {name}
                     </a>
                   );
@@ -119,77 +118,75 @@ export default function Navbar({ className, items, ...props }: INavbar) {
         </div>
       </Modal>
 
-      <div className={styles["navbar__items"]}>
-        {isMobile ? (
-          <>
-            <button onClick={() => setMobileNavOpen(true)} className={styles["navbar__menu-button"]}>
-              <Icon type="menu" />
-            </button>
-          </>
-        ) : (
-          <>
-            <div className={styles["navbar__logo"]}>
-              <Link href="/">acol.dev</Link>
-            </div>
+      <div className={mc("navbar__inner")}>
+        <div className={mc("navbar__items")}>
+          {isMobile ? (
+            <>
+              <button onClick={() => setMobileNavOpen(true)} className={mc("navbar__menu-button")}>
+                <Icon type="menu" />
+              </button>
+            </>
+          ) : (
+            <>
+              <div className={mc("navbar__logo")}>
+                <Link href="/">acol.dev</Link>
+              </div>
 
-            <div className={styles["navbar__items-divider"]}></div>
+              <div className={mc("navbar__items-divider")}></div>
 
-            <div className={styles["navbar__links"]}>
-              {items.map(({ name, href, type }, index) => {
-                let out;
+              <div className={mc("navbar__links")}>
+                {items.map(({ name, href, type }, index) => {
+                  let out;
 
-                if (type === "internal")
-                  out = (
-                    <Link href={href} key={index}>
-                      {name}
-                    </Link>
-                  );
+                  if (type === "internal")
+                    out = (
+                      <Link href={href} key={index}>
+                        {name}
+                      </Link>
+                    );
 
-                if (type === "external")
-                  out = (
-                    <a href={href} key={index} className={styles["navbar__item"]}>
-                      {name}
-                    </a>
-                  );
+                  if (type === "external")
+                    out = (
+                      <a href={href} key={index} className={mc("navbar__item")}>
+                        {name}
+                      </a>
+                    );
 
-                return out;
-              })}
-            </div>
-          </>
-        )}
-      </div>
+                  return out;
+                })}
+              </div>
+            </>
+          )}
+        </div>
 
-      <div className={styles["navbar__items"]}>
-        {/* <button className={styles["navbar__theme-toggle"]} onClick={toggleTheme} aria-label="Toggle theme">
-          {themeState === "light" ? <Icon type="light" /> : <Icon type="dark" />}
-        </button> */}
+        <div className={mc("navbar__items")}>
+          <ThemeToggle className={mc("navbar__theme-toggle")} />
 
-        <ThemeToggle className={styles["navbar__theme-toggle"]} />
+          <div className={mc("navbar__items-divider")} />
 
-        <div className={styles["navbar__items-divider"]}></div>
+          <div className={mc("navbar__icons")}>
+            <a className={mc("navbar__icon")} target="_blank" rel="noreferrer" href="https://github.com/acol248">
+              <Icon type="github" />
+            </a>
 
-        <div className={styles["navbar__icons"]}>
-          <a className={styles["navbar__icon"]} target="_blank" rel="noreferrer" href="https://github.com/acol248">
-            <Icon type="github" />
-          </a>
+            <a
+              className={mc("navbar__icon")}
+              target="_blank"
+              rel="noreferrer"
+              href="https://www.linkedin.com/in/alex-collyer"
+            >
+              <Icon type="linkedin" />
+            </a>
 
-          <a
-            className={styles["navbar__icon"]}
-            target="_blank"
-            rel="noreferrer"
-            href="https://www.linkedin.com/in/alex-collyer"
-          >
-            <Icon type="linkedin" />
-          </a>
-
-          <a
-            className={styles["navbar__icon"]}
-            target="_blank"
-            rel="noreferrer"
-            href="https://drive.google.com/file/d/1VBmGbFeAkBS8umXGFzi27iDj-_7WoyD3/view?usp=sharing"
-          >
-            <Icon type="paper" />
-          </a>
+            <a
+              className={mc("navbar__icon")}
+              target="_blank"
+              rel="noreferrer"
+              href="https://drive.google.com/file/d/1VBmGbFeAkBS8umXGFzi27iDj-_7WoyD3/view?usp=sharing"
+            >
+              <Icon type="paper" />
+            </a>
+          </div>
         </div>
       </div>
     </nav>
