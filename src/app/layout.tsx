@@ -17,8 +17,8 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const navbarItems = [
-    { name: "About", type: "internal", href: "/about" },
-    { name: "Projects", type: "internal", href: "/projects" },
+    { name: "About", type: "internal", href: "#about" },
+    { name: "Projects", type: "internal", href: "#projects" },
   ];
 
   const cookieStore = cookies();
@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ThemeWrapper value={String(theme)}>
           <Navbar items={navbarItems} />
 
-          <main>{children}</main>
+          {children}
 
           <Footer />
         </ThemeWrapper>
