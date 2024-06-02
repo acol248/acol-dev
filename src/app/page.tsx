@@ -4,7 +4,6 @@ import Image from "next/image";
 
 // components
 import Button from "@/interface/Button";
-import StackingCards from "@/components/StackingCards";
 import InfoBubble from "@/components/InfoBubble";
 import SkillIcon from "@/components/SkillIcon";
 import Block from "@/components/Block";
