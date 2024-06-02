@@ -7,7 +7,7 @@ WORKDIR /app
 COPY ./package.json ./
 
 # run npm install silently
-RUN npm i -s
+RUN npm i
 
 # copy files
 COPY . .
