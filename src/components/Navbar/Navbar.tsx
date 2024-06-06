@@ -57,6 +57,8 @@ export default function Navbar({ className, items }: INavbar) {
       }
     };
 
+    handleScroll();
+
     window.addEventListener("scroll", handleScroll);
 
     return () => window.removeEventListener("scroll", handleScroll);
