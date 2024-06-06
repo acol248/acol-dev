@@ -18,6 +18,10 @@
       color: var(--core-text-color);
     }
 
+    & .detailed-button__body {
+      font-size: 1rem;
+    }
+
     & .detailed-button__tags {
       display: flex;
       gap: 0.5rem;
