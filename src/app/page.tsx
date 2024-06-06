@@ -15,6 +15,7 @@ const mc = mapClassesCurried(maps, true) as (c: string) => string;
 
 // assets
 import profilePicture from "@/assets/profile.png";
+import Card from "@/components/Card";
 
 export default function Home() {
   const classList = useClassList({ defaultClass: "home", maps, string: true }) as string;
@@ -86,20 +87,35 @@ export default function Home() {
             <InfoBubble icon={<SkillIcon type="env" />}>ENV</InfoBubble>
           </div>
         </Block>
-
-        <Block title="Where are my skills?">
-          <p>
-            I present some of my skills outside of my working environment in a number of personal projects. These can be
-            found on the website under the{" "}
-            <Link href="/projects" className={mc("home__projects")}>
-              projects
-            </Link>{" "}
-            page.
-          </p>
-        </Block>
       </section>
 
-      <section id="projects" className={mc("home__projects")}></section>
+      <section id="projects" className={mc("home__projects")}>
+        <Card title="Bills" img="/assets/bills-screenshots.webp">
+          <h2>Bills</h2>
+
+          <p>
+            An application that helps the user keep track of their financial obligations. It makes use of a number of
+            modern web APIs that not only run the core of the application, but add additional functionality (Web
+            Vibration API).
+          </p>
+          <p>All data input it stored locally on the device.</p>
+
+          <Link href="/app/bills/" target="_blank">
+            Try It Out
+          </Link>
+        </Card>
+
+        <Card title="Focus" img="/assets/focus-screenshots.webp">
+          <h2>Focus</h2>
+
+          <p>An experiment that makes use of the WakeLock API, now available in all mainstream browsers.</p>
+          <p>The goal is to encourage a user to put down their phone and focus on doing something in the real world.</p>
+
+          <Link href="/app/bills/" target="_blank">
+            Try It Out
+          </Link>
+        </Card>
+      </section>
     </main>
   );
 }
