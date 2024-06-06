@@ -111,7 +111,7 @@ export default function Home() {
           <p>An experiment that makes use of the WakeLock API, now available in all mainstream browsers.</p>
           <p>The goal is to encourage a user to put down their phone and focus on doing something in the real world.</p>
 
-          <a href="/app/bills/" target="_blank">
+          <a href="/app/focus/" target="_blank">
             Try It Out
           </a>
         </Card>
