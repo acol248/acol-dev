@@ -100,9 +100,17 @@ export default function Home() {
           </p>
           <p>All data input it stored locally on the device.</p>
 
-          <a href="/app/bills/" target="_blank">
-            Try It Out
-          </a>
+          <div className={mc("home__card-base")}>
+            <a href="/app/bills/" target="_blank">
+              Try It Out
+            </a>
+
+            <div className={mc("home__card-tags")}>
+              <span>In Development</span>
+              <span>Web</span>
+              <span>Javascript</span>
+            </div>
+          </div>
         </Card>
 
         <Card title="Focus" img="/assets/focus-screenshots.webp">
@@ -111,9 +119,16 @@ export default function Home() {
           <p>An experiment that makes use of the WakeLock API, now available in all mainstream browsers.</p>
           <p>The goal is to encourage a user to put down their phone and focus on doing something in the real world.</p>
 
-          <a href="/app/focus/" target="_blank">
-            Try It Out
-          </a>
+          <div className={mc("home__card-base")}>
+            <a href="/app/focus/" target="_blank">
+              Try It Out
+            </a>
+
+            <div className={mc("home__card-tags")}>
+              <span>Web</span>
+              <span>Typescript</span>
+            </div>
+          </div>
         </Card>
       </section>
     </main>
