@@ -106,9 +106,9 @@ export default function Home() {
             </a>
 
             <div className={mc("home__card-tags")}>
-              <span>In Development</span>
-              <span>Web</span>
+              <span style={{ backgroundColor: 'var(--color-primary-main)' }}>In Development</span>
               <span>Javascript</span>
+              <span>Mobile</span>
             </div>
           </div>
         </Card>
@@ -125,8 +125,8 @@ export default function Home() {
             </a>
 
             <div className={mc("home__card-tags")}>
-              <span>Web</span>
               <span>Typescript</span>
+              <span>Mobile</span>
             </div>
           </div>
         </Card>
