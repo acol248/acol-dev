@@ -90,7 +90,7 @@ export default function Home() {
       </section>
 
       <section id="projects" className={mc("home__projects")}>
-        <Card title="Bills" img="/assets/bills-screenshots.webp">
+        <Card title="Bills" img="/assets/bills-screenshots.png">
           <h2>Bills</h2>
 
           <p>
@@ -113,7 +113,7 @@ export default function Home() {
           </div>
         </Card>
 
-        <Card title="Focus" img="/assets/focus-screenshots.webp">
+        <Card title="Focus" img="/assets/focus-screenshots.png">
           <h2>Focus</h2>
 
           <p>A basic experiment that makes use of the WakeLock API, now available in all mainstream browsers.</p>
