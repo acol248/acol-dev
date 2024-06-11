@@ -4,6 +4,7 @@
   border-radius: 12px;
   overflow: hidden;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 12px 0px;
+  background-color: var(--core-content-background-200);
 
   & .card__left {
     display: flex;
@@ -28,7 +29,7 @@
       width: 50%;
       padding: 3rem;
     }
-  
+
     & .card__right {
       width: 50%;
       padding: 0;

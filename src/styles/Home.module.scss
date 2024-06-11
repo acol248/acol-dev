@@ -143,12 +143,14 @@
       font-size: 2rem;
       font-weight: 600;
       margin: 0 0 0.5rem;
+      color: var(--core-text-color);
     }
 
     & p {
       font-size: 1rem;
       font-weight: 400;
       margin: 0.375rem 0 1.5rem;
+      color: var(--core-text-color);
     }
 
     & .home__card-base {
@@ -160,21 +162,21 @@
       & a {
         display: block;
         padding: 0.5rem 0.75rem;
-        border: 2px solid var(--color-common-black);
+        border: 2px solid var(--core-text-color);
         border-radius: 8px;
-        color: var(--color-common-black);
+        color: var(--core-text-color);
         margin-right: auto;
         line-height: 1;
         flex-shrink: 0;
 
         &:focus-visible {
-          outline: 1px solid var(--color-common-black);
+          outline: 1px solid var(--core-text-color);
           outline-offset: 2px;
         }
 
         &:hover {
-          background-color: var(--color-common-black);
-          color: var(--color-common-white);
+          background-color: var(--core-text-color);
+          color: var(--core-text-inverted);
         }
       }
 
@@ -188,7 +190,7 @@
 
         & > span {
           padding: 0.375rem 0.5rem;
-          background-color: var(--color-grey-900);
+          background-color: var(--color-grey-700);
           color: var(--color-common-white);
           border-radius: 8px;
           line-height: 1;
