@@ -5,12 +5,12 @@
   width: 100%;
   height: 64px;
   margin: 0;
-  background-color: var(--color-common-white);
+  background-color: var(--core-content-background-100);
 
   box-sizing: border-box;
   z-index: 2000;
 
-  transition-property: box-shadow background-color color;
+  transition-property: box-shadow;
   transition-duration: 150ms;
   transition-timing-function: ease;
 
