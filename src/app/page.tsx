@@ -94,7 +94,7 @@ export default function Home() {
           <h2>Bills</h2>
 
           <p>
-            An application that helps the user keep track of their financial obligations. It makes use of a number of
+            A basic application that helps the user keep track of their financial obligations. It makes use of a number of
             modern web APIs that not only run the core of the application, but add additional functionality (Web
             Vibration API).
           </p>
@@ -116,7 +116,7 @@ export default function Home() {
         <Card title="Focus" img="/assets/focus-screenshots.webp">
           <h2>Focus</h2>
 
-          <p>An experiment that makes use of the WakeLock API, now available in all mainstream browsers.</p>
+          <p>A basic experiment that makes use of the WakeLock API, now available in all mainstream browsers.</p>
           <p>The goal is to encourage a user to put down their phone and focus on doing something in the real world.</p>
 
           <div className={mc("home__card-base")}>
