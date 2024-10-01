@@ -184,7 +184,7 @@ export default function Navbar({ className, items }: INavbar) {
               className={mc("navbar__icon")}
               target="_blank"
               rel="noreferrer"
-              href="https://drive.google.com/file/d/1VBmGbFeAkBS8umXGFzi27iDj-_7WoyD3/view?usp=sharing"
+              href="https://drive.google.com/file/d/1_JbUgNYxCRgX61-WWCtFmRy8YBCclVmK/view?usp=sharing"
             >
               <Icon type="paper" />
             </a>
