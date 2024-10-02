@@ -26,6 +26,18 @@
     white-space: nowrap;
   }
 
+  &--two-tone {
+    & svg {
+      width: 1.4rem;
+      height: 1.4rem;
+      fill: var(--color-common-white);
+
+      & > path:nth-of-type(2) {
+        fill: color-mix(in srgb, var(--color-secondary-main), transparent 25%);
+      }
+    }
+  }
+
   &:hover {
     background-color: var(--color-secondary-light);
   }

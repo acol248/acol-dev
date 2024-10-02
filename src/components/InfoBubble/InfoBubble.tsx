@@ -1,27 +1,26 @@
 "use client";
 
-import { useMemo } from "react";
-
 // styles
-import styles from "./InfoBubble.module.scss";
+import useClassList, { mapClassesCurried } from "@blocdigital/useclasslist";
+import maps from "./InfoBubble.module.scss";
+const mc = mapClassesCurried(maps, true);
 
 // types
-import type { IInfoBubble } from "./InfoBubble.interface";
+import type { ReactNode } from "react";
 
-export default function InfoBubble({ className, variant, icon, children }: IInfoBubble) {
-  const classList = useMemo(() => {
-    const _classlist = [styles["info-bubble"]];
+export interface InfoBubbleProps {
+  className?: string;
+  variant?: string;
+  icon?: ReactNode;
+  children: ReactNode;
+}
 
-    if (className) for (const item of className.split(" ")) _classlist.push(item);
-
-    if (variant) for (const item of variant.split(" ")) _classlist.push(styles[`info-bubble--${item}`]);
-
-    return _classlist.join(" ");
-  }, [className, variant]);
+export default function InfoBubble({ className, variant, icon, children }: InfoBubbleProps) {
+  const classList = useClassList({ defaultClass: "info-bubble", className, variant, maps, string: true });
 
   return (
     <div className={classList}>
-      {icon} <span className={styles["info-bubble__body"]}>{children}</span>
+      {icon} <span className={mc("info-bubble__body")}>{children}</span>
     </div>
   );
 }
