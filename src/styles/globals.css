@@ -4,6 +4,10 @@
 
 * {
   box-sizing: border-box;
+
+  &::selection {
+    background-color: color-mix(in srgb, var(--core-text-color) 25%, transparent);
+  }
 }
 
 html,
